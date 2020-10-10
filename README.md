@@ -65,7 +65,7 @@ user/ <-- You should be here on Terminal load
    ```
         git checkout master
         git pull
-        git checkout mobiledevicesupport
+        git checkout <your_branch_name>
         git merge master
    ```
 8. Ta da! You can now see the team's code changes and also share yours! 
