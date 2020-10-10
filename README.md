@@ -1,5 +1,5 @@
 # arc_robot_arm
-This is where the robot arm project from the Autonomous Robotics Club at Purdue lives!
+This is where the robot arm project from the Autonomous Robotics Club at Purdue lives!!
 
 ### General Information
 - ROS version: Melodic
