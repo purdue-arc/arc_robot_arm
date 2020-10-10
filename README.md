@@ -9,8 +9,8 @@ This is where the robot arm project from the Autonomous Robotics Club at Purdue 
 
 ## Get Project Workspace Setup on ROS Development Studio
 
-1. Sign in/Sign up at https://rds.theconstructsim.com/ to get your own ROS Dev workspace
-2. Follow this link to "fork" (make your own copy) of the ROSject
+1. Sign in/Sign up on the [ROS Development Studio](https://rds.theconstructsim.com/) to get your own ROS Dev workspace
+2. Follow this [link](http://www.rosject.io/l/1762f8b9/) to "fork" (make your own copy) of the ROSject
 3. Click the red "Open" button to load the ROSject
 4. Once the workspace loads (can take a few min), that's it! Your ROS workspace is created!
 
