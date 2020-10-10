@@ -27,7 +27,7 @@ This is where the robot arm project from the Autonomous Robotics Club at Purdue 
 ### Rviz
 
 - Click on "Tools" in the top left corner, then click "Graphical Tools"
-- NOTE: you must start rviz by using roslaunchon a rviz enabled launch file or to just open Rviz, otherwise nothing will load here
+- NOTE: you must start rviz by using the "roslaunch" command on a rviz enabled launch file or to just open Rviz, otherwise nothing will load here
 
 ### RDS File Structure
 ```
