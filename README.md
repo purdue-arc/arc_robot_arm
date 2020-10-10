@@ -30,7 +30,7 @@ This is where the robot arm project from the Autonomous Robotics Club at Purdue 
 - NOTE: you must start rviz by using roslaunchon a rviz enabled launch file or to just open Rviz, otherwise nothing will load here
 
 ### RDS File Structure
-
+```
 user/ <-- You should be here on Terminal load
 │
 └───ai_ws/
@@ -58,7 +58,7 @@ user/ <-- You should be here on Terminal load
            └───arc_robot_arm_moveit_config/ (ARC robot arm MoveIt config)
            │
            └───robot_arm_urdf_description/ (URDF description of ARC robot arm)
-
+```
 Play around with more of the features! RDS/The Construct has tutorials on YouTube!
            
 
