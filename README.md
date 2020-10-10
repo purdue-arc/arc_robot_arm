@@ -12,7 +12,7 @@ This is where the robot arm project from the Autonomous Robotics Club at Purdue 
 1. Sign in/Sign up at https://rds.theconstructsim.com/ to get your own ROS Dev workspace
 2. Follow this link to "fork" (make your own copy) of the ROSject
 3. Click the red "Open" button to load the ROSject
-4. Once the workspace loads (can take a few min), that's it! Your workspace is set up!
+4. Once the workspace loads (can take a few min), that's it! Your ROS workspace is created!
 
 ### Terminal/Workspace Setup
 
@@ -50,7 +50,7 @@ user/ <-- You should be here on Terminal load
            └───arc_robot_arm_moveit_config/ (ARC robot arm MoveIt config)
            │
            └───robot_arm_urdf_description/ (URDF description of ARC robot arm)
-    ```
+```
 ## Setup GitHub to push,pull code
 1. Navigate to the `arc_robot_arm/ (Name of GitHub repo)` directory shown in the above file structure
 2. Run `git status`. If you don't get any errors, that means all has gone well so far.
