@@ -8,8 +8,8 @@ License removed for brevity
 from __future__ import print_function
 from six.moves import input
 
-import moveit_commander
 import rospy
+import moveit_commander
 import sys
 import moveit_msgs
 from geometry_msgs.msg import Point, Pose,PoseStamped
@@ -43,7 +43,7 @@ class RobotArmPathPlanner(object):
     "RobotArmPathPlanner"
     def __init__(self):
         super(RobotArmPathPlanner, self).__init__()
-            
+        print("here")
         ## First initialize `moveit_commander`_ and a `rospy`_ node:
         moveit_commander.roscpp_initialize(sys.argv)
         rospy.init_node('RobotArmPathPlanner', anonymous=True)
@@ -65,11 +65,10 @@ class RobotArmPathPlanner(object):
         ## This interface can be used to plan and execute motions:
         group_name = "robot_arm"
         move_group = moveit_commander.MoveGroupCommander(group_name)
-        move_group.set_planning_time(5)
+        move_group.set_planning_time(10)
         move_group.set_num_planning_attempts(5)
-        move_group.set_max_velocity_scaling_factor(0.1)
-        move_group.set_max_acceleration_scaling_factor(0.1)
-        move_group.set_workspace([-1,-1,-1,1,1,1])
+        print(robot.get_current_state())
+        move_group.set_start_state(robot.get_current_state())
         
 
         ## Create a `DisplayTrajectory`_ ROS publisher which is used to display
@@ -96,8 +95,6 @@ class RobotArmPathPlanner(object):
         # Sometimes for debugging it is useful to print the entire state of the
         # robot:
         print("============ Printing robot state")
-        print(robot.get_current_state())
-        print("")
 
         # Misc variables
         self.box_name = ''
@@ -115,6 +112,9 @@ class RobotArmPathPlanner(object):
                 
         goal_pose = Pose()
         goal_pose.orientation.w = 1.0 # Arbitrary, need to research more on quaternions
+        goal_pose.orientation.x = 0
+        goal_pose.orientation.y = 0
+        goal_pose.orientation.z = 0
         goal_pose.position.x = pose_pos[0]
         goal_pose.position.y = pose_pos[1]
         goal_pose.position.z = pose_pos[2]
@@ -131,14 +131,13 @@ class RobotArmPathPlanner(object):
     def move_out_of_singularity(self):
         pass
 
-    def execute_plan(self, plan):
+    def execute_plan(self):
         # Copy class variables to local variables to make the web tutorials more clear.
         # In practice, you should use the class variables directly unless you have a good
         # reason not to.
         move_group = self.move_group
 
-        ## BEGIN_SUB_TUTORIAL plan_to_joint_state
-        ##
+        ## BEGIN_SUB_TUTORpose_goal
         ## Planning to a Joint Goal
         ## ^^^^^^^^^^^^^^^^^^^^^^^^
         ## The Panda's zero configuration is at a `singularity <https://www.quora.com/Robotics-What-is-meant-by-kinematic-singularity>`_ so the first
@@ -146,24 +145,14 @@ class RobotArmPathPlanner(object):
         # We can get the joint values from the group and adjust some of the values:
         joint_goal = move_group.get_current_joint_values()
         joint_goal[0] = 0
-        joint_goal[1] = -pi/4
+        joint_goal[1] = pi/4
         joint_goal[2] = 0
-        joint_goal[3] = -pi/2
+        joint_goal[3] = pi/2
         joint_goal[4] = 0
 
         # The go command can be called with joint values, poses, or without any
         # parameters if you have already set the pose or joint target for the group
         move_group.go(joint_goal, wait=True)
-
-        # Calling ``stop()`` ensures that there is no residual movement
-        move_group.stop()
-
-        ## END_SUB_TUTORIAL
-
-        # For testing:
-        current_joints = move_group.get_current_joint_values()
-        return all_close(joint_goal, current_joints, 0.01)
-
     # Object Related
 
     def create_box(self, box_dim, box_loc):
@@ -203,18 +192,21 @@ class RobotArmPathPlanner(object):
         ## end-effector:
         pose_goal = Pose()
         pose_goal.orientation.w = 1.0
+        pose_goal.orientation.x = 0
+        pose_goal.orientation.y = 0
+        pose_goal.orientation.z = 0
         pose_goal.position.x = -0.1
-        pose_goal.position.y = -0.1
-        pose_goal.position.z = 0.1
+        pose_goal.position.y = 0
+        pose_goal.position.z = 0.3
 
-        move_group.set_pose_target(pose_goal, "Gripper_Base_v1")
+        move_group.set_pose_target(pose_goal, "gripper_base_v1")
 
         ## Now, we call the planner to compute the plan and execute it.
         plan = move_group.go(wait=True)
         # Calling `stop()` ensures that there is no residual movement
         move_group.stop()
         # It is always good to clear your targets after planning with poses.
-        # Note: there is no equivalent function for clear_joint_value_targets()
+        # Note: there is npose_goalo equivalent function for clear_joint_value_targets()
         move_group.clear_pose_targets()
 
         ## END_SUB_TUTORIAL
@@ -231,8 +223,11 @@ class RobotArmPathPlanner(object):
 def main():
     planner = RobotArmPathPlanner()
 
-    pose = (-0.1,0.1,0.1)
+    print(planner.move_group.get_current_pose())
 
+    pose = (-0.05,-0.05,0.3)
+
+    planner.execute_plan()
     planner.plan_to_goal_pose(pose)
 
 if __name__ == "__main__":

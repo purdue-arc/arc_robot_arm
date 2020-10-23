@@ -6,12 +6,10 @@ controller_list:
       - Rev3
       - Rev4
       - Rev5
-  - name: fake_stubby_gripper_controller
+  - name: fake_gripper_controller
     joints:
       - Rev6
       - Rev7
 initial:  # Define initial robot poses.
   - group: robot_arm
-    pose: home_pose_arm
-  - group: stubby_gripper
-    pose: open_pose
+    pose: home
