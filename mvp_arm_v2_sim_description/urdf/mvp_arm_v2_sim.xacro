@@ -1,0 +1,629 @@
+<?xml version="1.0" ?>
+<robot name="mvp_arm_v2_sim" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find mvp_arm_v2_sim_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find mvp_arm_v2_sim_description)/urdf/mvp_arm_v2_sim.trans" />
+<xacro:include filename="$(find mvp_arm_v2_sim_description)/urdf/mvp_arm_v2_sim.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.003139221237424357 0.007112092878934391 0.09744651147654458"/>
+    <mass value="0.2255222028913783"/>
+    <inertia ixx="0.000624" ixy="0.0" ixz="0.0" iyy="0.000615" iyz="1e-06" izz="0.001121"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Spinny_Thing_On_Servo_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.010053463885565e-05 -1.259502991068917e-06 -0.002248960573131231"/>
+    <mass value="0.012286224598738087"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.003026 -0.329964 -0.337601"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Spinny_Thing_On_Servo_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.003026 -0.329964 -0.337601"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Spinny_Thing_On_Servo_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="AX-12A_Servo_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.006844397716463661 0.019372363950331595 -0.017899908655313768"/>
+    <mass value="0.32411536495008075"/>
+    <inertia ixx="9.1e-05" ixy="0.0" ixz="0.0" iyy="5e-05" iyz="-1e-06" izz="7.9e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.009733 -0.297485 -0.371223"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/AX-12A_Servo_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.009733 -0.297485 -0.371223"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/AX-12A_Servo_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Spinny_Thing_On_Servo_2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.002248723852282898 1.0899252977925045e-07 1.9672056998709664e-05"/>
+    <mass value="0.012286224598738087"/>
+    <inertia ixx="1e-06" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.019384 -0.261974 -0.354035"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Spinny_Thing_On_Servo_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.019384 -0.261974 -0.354035"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Spinny_Thing_On_Servo_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="AX-12A_Servo_2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.015394349743787807 0.022878705562556806 -0.00814884451855008"/>
+    <mass value="0.32411536495008075"/>
+    <inertia ixx="7.9e-05" ixy="2e-06" ixz="-0.0" iyy="5e-05" iyz="0.0" izz="9.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.019064 -0.225979 -0.362054"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/AX-12A_Servo_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.019064 -0.225979 -0.362054"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/AX-12A_Servo_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="AX-12A_Servo_3_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.008692941406935287 -0.016872496794597514 -0.01929838841732684"/>
+    <mass value="0.32411536495008075"/>
+    <inertia ixx="9.1e-05" ixy="0.0" ixz="0.0" iyy="7.9e-05" iyz="-2e-06" izz="5e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.005672 -0.21714 -0.386345"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/AX-12A_Servo_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.005672 -0.21714 -0.386345"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/AX-12A_Servo_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Spinny_Thing_On_Servo_3_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-3.354762194564091e-07 0.0022492825643248837 -1.1344660777456994e-06"/>
+    <mass value="0.012286224598738087"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="0.0" iyy="1e-06" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.003135 -0.215974 -0.353921"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Spinny_Thing_On_Servo_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.003135 -0.215974 -0.353921"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Spinny_Thing_On_Servo_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bottom_Connector__1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.007999664523551065 0.0018414055268290708 6.837536046383486e-05"/>
+    <mass value="0.0016262220015435807"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.004865 -0.220474 -0.353849"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Bottom_Connector__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.004865 -0.220474 -0.353849"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Bottom_Connector__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="AX-12A_Servo_5_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-2.5065005857449404e-07 0.01572277873113477 0.013106537518999761"/>
+    <mass value="0.32411536495008075"/>
+    <inertia ixx="9.1e-05" ixy="-0.0" ixz="-0.0" iyy="7.9e-05" iyz="1e-06" izz="5e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.002332 -0.039577 -0.354023"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/AX-12A_Servo_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.002332 -0.039577 -0.354023"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/AX-12A_Servo_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bottom_Connector__2__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.008000486205254101 0.016001930051550324 0.003648509599558425"/>
+    <mass value="0.0016262220015435807"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="-0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.005668 -0.039849 -0.390023"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Bottom_Connector__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.005668 -0.039849 -0.390023"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Bottom_Connector__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Spinny_Thing_On_Servo_5_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.862052316962837e-07 0.002256036378218064 0.007998161392409109"/>
+    <mass value="0.012286224598738087"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="-0.0" iyy="1e-06" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.002332 -0.035072 -0.346026"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Spinny_Thing_On_Servo_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.002332 -0.035072 -0.346026"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Spinny_Thing_On_Servo_5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="AX-12A_Servo_4_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.015714221557267063 0.013116615324266908 -8.933544773326307e-06"/>
+    <mass value="0.32411536495008075"/>
+    <inertia ixx="7.9e-05" ixy="2e-06" ixz="-0.0" iyy="5e-05" iyz="0.0" izz="9.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.01386 0.006423 -0.354051"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/AX-12A_Servo_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.01386 0.006423 -0.354051"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/AX-12A_Servo_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bottom_Connector_Bracket_4_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.01599951379473832 0.003663913415711831 0.00799765156585941"/>
+    <mass value="0.0016262220015435807"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.018332 -0.029572 -0.346029"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Bottom_Connector_Bracket_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.018332 -0.029572 -0.346029"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Bottom_Connector_Bracket_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Wrist_Connector__1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.4193676218165249e-05 0.020451062703479406 0.001669458393851686"/>
+    <mass value="0.24638999063533176"/>
+    <inertia ixx="9.9e-05" ixy="0.0" ixz="-0.0" iyy="6e-05" iyz="-8e-06" izz="0.000118"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.002332 -0.167846 -0.385945"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Wrist_Connector__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.002332 -0.167846 -0.385945"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Wrist_Connector__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Arm_Segment_80mm__1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.861124078213951e-07 0.040000256660945824 -2.3913742601855414e-05"/>
+    <mass value="0.6503411791785553"/>
+    <inertia ixx="0.000442" ixy="-0.0" ixz="-0.0" iyy="0.000126" iyz="0.0" izz="0.000472"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.002332 -0.087846 -0.385993"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Arm_Segment_80mm__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.002332 -0.087846 -0.385993"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Arm_Segment_80mm__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bottom_Connector_Bracket_3_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.008015653129645035 -0.008001096220477677 -0.0017664080467950094"/>
+    <mass value="0.0016262220015435807"/>
+    <inertia ixx="0.0" ixy="-0.0" ixz="-0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.00575 -0.207852 -0.39535"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Bottom_Connector_Bracket_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.00575 -0.207852 -0.39535"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Bottom_Connector_Bracket_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Elbow_Connector__1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="4.854072580360441e-07 0.01954555339504626 -0.007829917675297227"/>
+    <mass value="0.24639014270019174"/>
+    <inertia ixx="9.9e-05" ixy="0.0" ixz="-0.0" iyy="6e-05" iyz="8e-06" izz="0.000118"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.002332 -0.047852 -0.395518"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Elbow_Connector__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.002332 -0.047852 -0.395518"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Elbow_Connector__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Spinny_Thing_On_Servo_4_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.002250457525271629 0.00800030818575853 -5.215042616468768e-06"/>
+    <mass value="0.012286224598738087"/>
+    <inertia ixx="1e-06" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.01836 0.014423 -0.354056"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Spinny_Thing_On_Servo_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.01836 0.014423 -0.354056"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Spinny_Thing_On_Servo_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="f2Bracket__1__2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="2.2123218426130242e-07 -0.01349497011844943 0.010253562328138288"/>
+    <mass value="0.0037556666472927302"/>
+    <inertia ixx="1e-06" ixy="-0.0" ixz="0.0" iyy="2e-06" iyz="-0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.002639 -0.007061 -0.327543"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/f2Bracket__1__2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.002639 -0.007061 -0.327543"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/f2Bracket__1__2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Arm_segment_2_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.019000221232186202 4.675663709389783e-05 0.07720582991353392"/>
+    <mass value="0.21463602179697447"/>
+    <inertia ixx="0.000568" ixy="-0.0" ixz="0.0" iyy="0.000582" iyz="-0.0" izz="3.7e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.016361 0.005539 -0.16255"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Arm_segment_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.016361 0.005539 -0.16255"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Arm_segment_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Rotating_Base__1___1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0016851816583102388 7.331635761464658e-05 0.01301663136886358"/>
+    <mass value="0.1980303324276481"/>
+    <inertia ixx="0.000259" ixy="0.0" ixz="6e-06" iyy="0.000259" iyz="-0.0" izz="0.00042"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.003139 -0.006444 -0.130999"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Rotating_Base__1___1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.003139 -0.006444 -0.130999"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Rotating_Base__1___1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="f2Bracket__1___1__1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.020998313854940994 0.008254232058487798 -0.00018921791860893045"/>
+    <mass value="0.0037556666472927302"/>
+    <inertia ixx="1e-06" ixy="-0.0" ixz="-0.0" iyy="1e-06" iyz="0.0" izz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.023883 -0.269974 -0.354069"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/f2Bracket__1___1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.023883 -0.269974 -0.354069"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/f2Bracket__1___1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bottom_Connector_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.007930323167322334 0.0018363914140208104 -0.008070506274529043"/>
+    <mass value="0.0016262220015435807"/>
+    <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.010815 -0.288479 -0.361944"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Bottom_Connector_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.010815 -0.288479 -0.361944"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_v2_sim_description/meshes/Bottom_Connector_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev7" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.006707 0.032479 -0.033622"/>
+  <parent link="AX-12A_Servo_1"/>
+  <child link="Spinny_Thing_On_Servo_1"/>
+  <axis xyz="0.008727 -0.000609 -0.999962"/>
+</joint>
+
+<joint name="Rigid3" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.001082 0.009006 0.009279"/>
+  <parent link="Bottom_Connector_1"/>
+  <child link="AX-12A_Servo_1"/>
+</joint>
+
+<joint name="Rev6" type="continuous">
+  <origin rpy="0 0 0" xyz="0.00032 0.035995 -0.008019"/>
+  <parent link="AX-12A_Servo_2_1"/>
+  <child link="Spinny_Thing_On_Servo_2_1"/>
+  <axis xyz="-0.999962 -5e-06 -0.008727"/>
+</joint>
+
+<joint name="Rigid4" type="fixed">
+  <origin rpy="0 0 0" xyz="0.023929 0.005505 0.008205"/>
+  <parent link="Bottom_Connector__1__1"/>
+  <child link="AX-12A_Servo_2_1"/>
+</joint>
+
+<joint name="Rigid5" type="fixed">
+  <origin rpy="0 0 0" xyz="7.8e-05 0.009288 -0.009005"/>
+  <parent link="Bottom_Connector_Bracket_3_1"/>
+  <child link="AX-12A_Servo_3_1"/>
+</joint>
+
+<joint name="Rev5" type="continuous">
+  <origin rpy="0 0 0" xyz="0.008807 -0.001166 -0.032424"/>
+  <parent link="AX-12A_Servo_3_1"/>
+  <child link="Spinny_Thing_On_Servo_3_1"/>
+  <axis xyz="-0.0 1.0 -0.000609"/>
+</joint>
+
+<joint name="Rigid6" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.008 0.0045 -7.2e-05"/>
+  <parent link="Spinny_Thing_On_Servo_3_1"/>
+  <child link="Bottom_Connector__1__1"/>
+</joint>
+
+<joint name="Rev4" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.004505 0.007997"/>
+  <parent link="Spinny_Thing_On_Servo_5_1"/>
+  <child link="AX-12A_Servo_5_1"/>
+  <axis xyz="-0.0 1.0 -0.000609"/>
+</joint>
+
+<joint name="Rigid7" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.008 0.000272 0.036"/>
+  <parent link="AX-12A_Servo_5_1"/>
+  <child link="Bottom_Connector__2__1"/>
+</joint>
+
+<joint name="Rigid8" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.016 0.0055 -3e-06"/>
+  <parent link="Bottom_Connector_Bracket_4_1"/>
+  <child link="Spinny_Thing_On_Servo_5_1"/>
+</joint>
+
+<joint name="Rev3" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0045 0.008 -5e-06"/>
+  <parent link="Spinny_Thing_On_Servo_4_1"/>
+  <child link="AX-12A_Servo_4_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="Rigid9" type="fixed">
+  <origin rpy="0 0 0" xyz="0.032192 0.035995 -0.008022"/>
+  <parent link="AX-12A_Servo_4_1"/>
+  <child link="Bottom_Connector_Bracket_4_1"/>
+</joint>
+
+<joint name="Rigid10" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.08 -4.8e-05"/>
+  <parent link="Arm_Segment_80mm__1__1"/>
+  <child link="Wrist_Connector__1__1"/>
+</joint>
+
+<joint name="Rigid11" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.039994 -0.009525"/>
+  <parent link="Elbow_Connector__1__1"/>
+  <child link="Arm_Segment_80mm__1__1"/>
+</joint>
+
+<joint name="Rigid12" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.008082 0.040006 0.009405"/>
+  <parent link="Wrist_Connector__1__1"/>
+  <child link="Bottom_Connector_Bracket_3_1"/>
+</joint>
+
+<joint name="Rigid13" type="fixed">
+  <origin rpy="0 0 0" xyz="0.008 0.008003 0.005495"/>
+  <parent link="Bottom_Connector__2__1"/>
+  <child link="Elbow_Connector__1__1"/>
+</joint>
+
+<joint name="Rigid14" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.020999 -0.021484 0.026513"/>
+  <parent link="f2Bracket__1__2"/>
+  <child link="Spinny_Thing_On_Servo_4_1"/>
+</joint>
+
+<joint name="Rigid15" type="fixed">
+  <origin rpy="0 0 0" xyz="0.019 0.0126 0.164993"/>
+  <parent link="Arm_segment_2_1"/>
+  <child link="f2Bracket__1__2"/>
+</joint>
+
+<joint name="Rev2" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.0195 -0.011983 0.031551"/>
+  <parent link="Rotating_Base__1___1__1"/>
+  <child link="Arm_segment_2_1"/>
+  <axis xyz="-1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="Rev1" type="continuous">
+  <origin rpy="0 0 0" xyz="0.003139 0.006444 0.130999"/>
+  <parent link="base_link"/>
+  <child link="Rotating_Base__1___1__1"/>
+  <axis xyz="0.0 -0.0 -1.0"/>
+</joint>
+
+<joint name="Rigid16" type="fixed">
+  <origin rpy="0 0 0" xyz="0.004499 0.008 3.4e-05"/>
+  <parent link="Spinny_Thing_On_Servo_2_1"/>
+  <child link="f2Bracket__1___1__1"/>
+</joint>
+
+<joint name="Rigid17" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.013068 0.018505 0.007875"/>
+  <parent link="f2Bracket__1___1__1"/>
+  <child link="Bottom_Connector_1"/>
+</joint>
+
+</robot>
