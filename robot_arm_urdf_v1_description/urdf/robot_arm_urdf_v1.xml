@@ -1,8 +1,0 @@
-<Robot name="robot_arm_urdf_v1" file="arc_robot_arm_v1.dae">
-  <Manipulator name="robot_arm_urdf_v1">
-    <base>base_link</base>
-    <effector>gripper_base_v1_1</effector>
-    <direction>0 0 1</direction>
-    <translation>0 0 0</translation>
-  </Manipulator>
-</Robot>

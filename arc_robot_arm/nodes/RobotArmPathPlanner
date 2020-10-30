@@ -12,10 +12,13 @@ import rospy
 import moveit_commander
 import sys
 import moveit_msgs
-from geometry_msgs.msg import Point, Pose,PoseStamped
+from geometry_msgs.msg import Point, Pose, PoseStamped
 from math import pi
 from std_msgs.msg import String
 from moveit_commander.conversions import pose_to_list
+import ikpy
+import numpy as np
+
 
 def all_close(goal, actual, tolerance):
   """
@@ -31,54 +34,53 @@ def all_close(goal, actual, tolerance):
       if abs(actual[index] - goal[index]) > tolerance:
         return False
 
-  elif type(goal) is PoseStamped:
+  elif type(goal) is geometry_msgs.msg.PoseStamped:
     return all_close(goal.pose, actual.pose, tolerance)
 
-  elif type(goal) is Pose:
+  elif type(goal) is geometry_msgs.msg.Pose:
     return all_close(pose_to_list(goal), pose_to_list(actual), tolerance)
 
   return True
 
+
 class RobotArmPathPlanner(object):
-    "RobotArmPathPlanner"
+    "RobotArmPlanner"
+
     def __init__(self):
         super(RobotArmPathPlanner, self).__init__()
-        print("here")
-        ## First initialize `moveit_commander`_ and a `rospy`_ node:
+        # First initialize `moveit_commander`_ and a `rospy`_ node:
         moveit_commander.roscpp_initialize(sys.argv)
         rospy.init_node('RobotArmPathPlanner', anonymous=True)
 
-        ## Instantiate a `RobotCommander`_ object. Provides information such as the robot's
-        ## kinematic model and the robot's current joint states
+        # Instantiate a `RobotCommander`_ object. Provides information such as the robot's
+        # kinematic model and the robot's current joint states
         robot = moveit_commander.RobotCommander()
 
-        ## Instantiate a `PlanningSceneInterface`_ object.  This provides a remote interface
-        ## for getting, setting, and updating the robot's internal understanding of the
-        ## surrounding world:
+        # Instantiate a `PlanningSceneInterface`_ object.  This provides a remote interface
+        # for getting, setting, and updating the robot's internal understanding of the
+        # surrounding world:
         scene = moveit_commander.PlanningSceneInterface()
 
-        ## Instantiate a `MoveGroupCommander`_ object.  This object is an interface
-        ## to a planning group (group of joints).  In this tutorial the group is the primary
-        ## arm joints in the Panda robot, so we set the group's name to "panda_arm".
-        ## If you are using a different robot, change this value to the name of your robot
-        ## arm planning group.
-        ## This interface can be used to plan and execute motions:
+        # Instantiate a `MoveGroupCommander`_ object.  This object is an interface
+        # to a planning group (group of joints).  In this tutorial the group is the primary
+        # arm joints in the Panda robot, so we set the group's name to "panda_arm".
+        # If you are using a different robot, change this value to the name of your robot
+        # arm planning group.
+        # This interface can be used to plan and execute motions:
         group_name = "robot_arm"
         move_group = moveit_commander.MoveGroupCommander(group_name)
         move_group.set_planning_time(10)
         move_group.set_num_planning_attempts(5)
         print(robot.get_current_state())
         move_group.set_start_state(robot.get_current_state())
-        
 
-        ## Create a `DisplayTrajectory`_ ROS publisher which is used to display
-        ## trajectories in Rviz:
-        display_trajectory_publisher = rospy.Publisher('/move_group/display_planned_path',
-                                                    moveit_msgs.msg.DisplayTrajectory,
-                                                    queue_size=20)
-        
-        ## Getting Basic Information
-        ## ^^^^^^^^^^^^^^^^^^^^^^^^^
+        # Create a `DisplayTrajectory`_ RO S publisher which is used to display
+        # trajectories in Rviz:
+        display_trajectory_publisher = rospy.Publisher(
+            '/move_group/display_planned_path', moveit_msgs.msg.DisplayTrajectory, queue_size=20)
+
+        # Getting Basic Information
+        # ^^^^^^^^^^^^^^^^^^^^^^^^^
         # We can get the name of the reference frame for this robot:
         planning_frame = move_group.get_planning_frame()
         print("============ Planning frame: %s" % planning_frame)
@@ -87,7 +89,6 @@ class RobotArmPathPlanner(object):
         eef_link = move_group.get_end_effector_link()
         print("============ End effector link: %s" % eef_link)
 
-
         # We can get a list of all the groups in the robot:
         group_names = robot.get_group_names()
         print("============ Available Planning Groups:", robot.get_group_names())
@@ -95,7 +96,7 @@ class RobotArmPathPlanner(object):
         # Sometimes for debugging it is useful to print the entire state of the
         # robot:
         print("============ Printing robot state")
-
+        print(move_group.get_current_pose(end_effector_link="gripper_base_v1_1"))
         # Misc variables
         self.box_name = ''
         self.robot = robot
@@ -109,51 +110,23 @@ class RobotArmPathPlanner(object):
     # Arm Path Planning Related
 
     def plan_to_goal_pose(self, pose_pos):
-                
-        goal_pose = Pose()
-        goal_pose.orientation.w = 1.0 # Arbitrary, need to research more on quaternions
-        goal_pose.orientation.x = 0
-        goal_pose.orientation.y = 0
-        goal_pose.orientation.z = 0
-        goal_pose.position.x = pose_pos[0]
-        goal_pose.position.y = pose_pos[1]
-        goal_pose.position.z = pose_pos[2]
-
-        self.move_group.set_pose_target(goal_pose, end_effector_link="gripper_base_v1_1")
-
+        joints = self.inverse_kinematics(pose_pos)
+        joints = joints[:-2]
+        print(list(map(np.rad2deg,joints)))
         # The go command can be called with joint values, poses, or without any
         # parameters if you have already set the pose or joint target for the group
-        plan = self.move_group.plan()
+        plan = self.move_group.go(joints, wait=True)
+        # Calling `stop()` ensures that there is no residual movement
+        self.move_group.stop()
+        
+        # It is always good to clear your targets after planning with poses.
+        # Note: there is npose_goalo equivalent function for clear_joint_value_targets()
+        self.move_group.clear_pose_targets()
 
-        print("============ Waiting while RVIZ displays plan1...")
-        rospy.sleep(5)
+        print("============ Printing final position")
+        print(self.move_group.get_current_pose(end_effector_link="gripper_base_v1_1"))
     
-    def move_out_of_singularity(self):
-        pass
-
-    def execute_plan(self):
-        # Copy class variables to local variables to make the web tutorials more clear.
-        # In practice, you should use the class variables directly unless you have a good
-        # reason not to.
-        move_group = self.move_group
-
-        ## BEGIN_SUB_TUTORpose_goal
-        ## Planning to a Joint Goal
-        ## ^^^^^^^^^^^^^^^^^^^^^^^^
-        ## The Panda's zero configuration is at a `singularity <https://www.quora.com/Robotics-What-is-meant-by-kinematic-singularity>`_ so the first
-        ## thing we want to do is move it to a slightly better configuration.
-        # We can get the joint values from the group and adjust some of the values:
-        joint_goal = move_group.get_current_joint_values()
-        joint_goal[0] = 0
-        joint_goal[1] = pi/4
-        joint_goal[2] = 0
-        joint_goal[3] = pi/2
-        joint_goal[4] = 0
-
-        # The go command can be called with joint values, poses, or without any
-        # parameters if you have already set the pose or joint target for the group
-        move_group.go(joint_goal, wait=True)
-    # Object Related
+    # Object Relatedself.move_group.get_current_pose(end_effector_link="gripper_base_v1_1")
 
     def create_box(self, box_dim, box_loc):
         pass
@@ -172,63 +145,39 @@ class RobotArmPathPlanner(object):
     def close_eef(self):
         pass
 
-    def grip_object(self):
-        pass
-
     def release_object(self):
         pass
 
-    def go_to_pose_goal(self):
-        # Copy class variables to local variables to make the web tutorials more clear.
-        # In practice, you should use the class variables directly unless you have a good
-        # reason not to.
-        move_group = self.move_group
-
-        ## BEGIN_SUB_TUTORIAL plan_to_pose
-        ##
-        ## Planning to a Pose Goal
-        ## ^^^^^^^^^^^^^^^^^^^^^^^
-        ## We can plan a motion for this group to a desired pose for the
-        ## end-effector:
-        pose_goal = Pose()
-        pose_goal.orientation.w = 1.0
-        pose_goal.orientation.x = 0
-        pose_goal.orientation.y = 0
-        pose_goal.orientation.z = 0
-        pose_goal.position.x = -0.1
-        pose_goal.position.y = 0
-        pose_goal.position.z = 0.3
-
-        move_group.set_pose_target(pose_goal, "gripper_base_v1")
-
-        ## Now, we call the planner to compute the plan and execute it.
-        plan = move_group.go(wait=True)
+    def go_home(self):
+        joints = [0,0,0,0,0]
+        plan = self.move_group.go(joints, wait=True)
         # Calling `stop()` ensures that there is no residual movement
-        move_group.stop()
+        self.move_group.stop()
+        
         # It is always good to clear your targets after planning with poses.
         # Note: there is npose_goalo equivalent function for clear_joint_value_targets()
-        move_group.clear_pose_targets()
+        self.move_group.clear_pose_targets()
 
-        ## END_SUB_TUTORIAL
+        print("============ Printing final position")
+        print(self.move_group.get_current_pose(end_effector_link="gripper_base_v1_1"))
 
-        # For testing:
-        # Note that since this section of code will not be included in the tutorials
-        # we use the class variable rather than the copied state variable
-        current_pose = self.move_group.get_current_pose().pose
-        return all_close(pose_goal, current_pose, 0.01)
-
-    def go_home(self):
-        pass
-
+    def inverse_kinematics(self,target_pose):
+        arm_chain = ikpy.chain.Chain.from_urdf_file("/home/raghavauppuluri/ws_moveit/src/arc_robot_arm/arc_robot_arm/nodes/arc_robot_arm_urdf.urdf")
+        return(arm_chain.inverse_kinematics(target_position=target_pose))
 def main():
+  try:
     planner = RobotArmPathPlanner()
+    pose1 = [0.25,0.25,0.02]
+    planner.plan_to_goal_pose(pose1)
+    planner.go_home()
+    pose2 = [-0.25,-0.25,0.02]
+    planner.plan_to_goal_pose(pose2)
 
-    print(planner.move_group.get_current_pose())
+  except rospy.ROSInterruptException:
+    return
+  except KeyboardInterrupt:
+    return
 
-    pose = (-0.05,-0.05,0.3)
+if __name__ == '__main__':
+  main()
 
-    planner.execute_plan()
-    planner.plan_to_goal_pose(pose)
-
-if __name__ == "__main__":
-    main()
