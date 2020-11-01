@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: mvp_arm_4dof_description
+    relative_path: urdf/mvp_arm_4dof.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/mvp_arm_4dof.srdf
+  CONFIG:
+    author_name: Raghava
+    author_email: raghava.upp13@gmail.com
+    generated_timestamp: 1604169301

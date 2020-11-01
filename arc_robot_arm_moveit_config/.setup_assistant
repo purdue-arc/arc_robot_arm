@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: arc_robot_arm_urdf_description
+    relative_path: urdf/arc_robot_arm_urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/robot_arm_urdf_v1.srdf
+  CONFIG:
+    author_name: Raghava Uppuluri
+    author_email: raghava.upp13@gmail.com
+    generated_timestamp: 1603763463

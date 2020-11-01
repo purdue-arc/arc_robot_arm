@@ -67,7 +67,7 @@ class RobotArmPathPlanner(object):
         # If you are using a different robot, change this value to the name of your robot
         # arm planning group.
         # This interface can be used to plan and execute motions:
-        group_name = "robot_arm"
+        group_name = "arm"
         move_group = moveit_commander.MoveGroupCommander(group_name)
         move_group.set_planning_time(10)
         move_group.set_num_planning_attempts(5)
@@ -167,11 +167,11 @@ class RobotArmPathPlanner(object):
 def main():
   try:
     planner = RobotArmPathPlanner()
-    pose1 = [0.25,0.25,0.02]
-    planner.plan_to_goal_pose(pose1)
-    planner.go_home()
-    pose2 = [-0.25,-0.25,0.02]
-    planner.plan_to_goal_pose(pose2)
+    # pose1 = [0.25,0.25,0.02]
+    # planner.plan_to_goal_pose(pose1)
+    # planner.go_home()
+    # pose2 = [-0.25,-0.25,0.02]
+    # planner.plan_to_goal_pose(pose2)
 
   except rospy.ROSInterruptException:
     return

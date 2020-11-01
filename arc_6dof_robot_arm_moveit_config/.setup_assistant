@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: mvp_arm_v2_sim_description
+    relative_path: urdf/mvp_arm_v2_sim.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/mvp_arm_v2_sim.srdf
+  CONFIG:
+    author_name: Raghava Uppuluri
+    author_email: raghava.upp13@gmail.com
+    generated_timestamp: 1604014070
