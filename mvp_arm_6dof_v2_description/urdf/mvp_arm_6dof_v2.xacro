@@ -25,7 +25,7 @@
   </collision>
 </link>
 
-<link name="old_component__4__1">
+<link name="Servo_Rotator__1__1">
   <inertial>
     <origin rpy="0 0 0" xyz="-0.00016594327411623144 -2.746746623999636e-06 -0.0022433652870559873"/>
     <mass value="0.012286224598738087"/>
@@ -34,19 +34,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.278672 -0.000395 -0.297363"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__4__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo_Rotator__1__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.278672 -0.000395 -0.297363"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__4__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo_Rotator__1__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__6__1">
+<link name="Servo_Rotator__2__1">
   <inertial>
     <origin rpy="0 0 0" xyz="-1.9052915553596783e-07 -0.0022492646837299415 2.4533432791407073e-06"/>
     <mass value="0.012286224598738087"/>
@@ -55,19 +55,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.222902 0.015475 -0.385928"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__6__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo_Rotator__2__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.222902 0.015475 -0.385928"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__6__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo_Rotator__2__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__7__1">
+<link name="Servo__3__1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.022878488280711123 0.015454485443440637 -0.008032933007486143"/>
     <mass value="0.32411536495008075"/>
@@ -76,19 +76,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.186907 0.015215 -0.393949"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__7__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo__3__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.186907 0.015215 -0.393949"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__7__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo__3__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__9__1">
+<link name="Servo__2__1">
   <inertial>
     <origin rpy="0 0 0" xyz="-0.0182436166094693 -0.008545149871361533 -0.018077639575404758"/>
     <mass value="0.32411536495008075"/>
@@ -97,19 +97,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.23753 -0.00898 -0.34922"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__9__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo__2__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.23753 -0.00898 -0.34922"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__9__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo__2__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__10__1">
+<link name="Servo_Rotator__3__1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.002243165392088464 2.5336489333719747e-07 -0.00016573648369289096"/>
     <mass value="0.012286224598738087"/>
@@ -118,19 +118,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.233991 -0.000418 -0.316903"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__10__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo_Rotator__3__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.233991 -0.000418 -0.316903"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__10__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo_Rotator__3__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__12__1">
+<link name="Servo__4__1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.015722336863971474 -1.2746670361859992e-05 0.013106406607165055"/>
     <mass value="0.32411536495008075"/>
@@ -139,19 +139,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.033133 -0.000807 -0.354024"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__12__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo__4__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.033133 -0.000807 -0.354024"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__12__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo__4__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__3__1">
+<link name="Bracket__3__1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.016001488175731965 -0.008003232726281992 0.003640364466268753"/>
     <mass value="0.0016262220015435807"/>
@@ -160,19 +160,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.033405 -0.00877 -0.390032"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__3__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Bracket__3__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.033405 -0.00877 -0.390032"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__3__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Bracket__3__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__11__1">
+<link name="Servo_Rotator__4__1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.0022555945146578715 -2.6497304426618355e-07 0.007999036398771475"/>
     <mass value="0.012286224598738087"/>
@@ -181,19 +181,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.028628 -0.000807 -0.346026"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__11__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo_Rotator__4__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.028628 -0.000807 -0.346026"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__11__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo_Rotator__4__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__15__1">
+<link name="Servo__5__1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.013116173460706801 -0.01571500032507959 -9.058538409600914e-06"/>
     <mass value="0.32411536495008075"/>
@@ -202,19 +202,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="0.012867 -0.017 -0.354052"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__15__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo__5__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0.012867 -0.017 -0.354052"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__15__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo__5__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__13__1">
+<link name="Bracket__5__1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.0036634715521508127 0.01599973502692581 0.007997526572222857"/>
     <mass value="0.0016262220015435807"/>
@@ -223,19 +223,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.023128 0.015193 -0.34603"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__13__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Bracket__5__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.023128 0.015193 -0.34603"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__13__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Bracket__5__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__20__1">
+<link name="Forearm_1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.048128469775268856 4.4527298823126334e-07 -6.254652134507488e-05"/>
     <mass value="0.7719250888938243"/>
@@ -244,19 +244,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.081402 -0.000774 -0.385994"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__20__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Forearm_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.081402 -0.000774 -0.385994"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__20__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Forearm_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__18__1">
+<link name="Forearm_Joint_1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.019545111524890385 7.79105773380162e-06 -0.00783005977281992"/>
     <mass value="0.24639014270019174"/>
@@ -265,19 +265,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.041408 -0.000765 -0.395519"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__18__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Forearm_Joint_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.041408 -0.000765 -0.395519"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__18__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Forearm_Joint_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__14__1">
+<link name="Servo_Rotator__5__1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.00799986632219811 -0.002251236293083818 -5.340036253298486e-06"/>
     <mass value="0.012286224598738087"/>
@@ -286,19 +286,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="0.020867 -0.0215 -0.354057"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__14__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo_Rotator__5__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0.020867 -0.0215 -0.354057"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__14__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo_Rotator__5__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__16__2">
+<link name="Elbow_Hinge__1__2">
   <inertial>
     <origin rpy="0 0 0" xyz="-0.013495411982010678 3.3022629769563494e-15 0.010254437334501432"/>
     <mass value="0.0037556666472927302"/>
@@ -307,19 +307,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.000617 -0.0005 -0.327543"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__16__2.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Elbow_Hinge__1__2.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.000617 -0.0005 -0.327543"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__16__2.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Elbow_Hinge__1__2.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__17__1">
+<link name="Arm_Link_1">
   <inertial>
     <origin rpy="0 0 0" xyz="4.7314773535239024e-05 -0.018999999999999035 0.07720570491989823"/>
     <mass value="0.21463602179697447"/>
@@ -328,19 +328,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="0.011984 -0.0195 -0.162551"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__17__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Arm_Link_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0.011984 -0.0195 -0.162551"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__17__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Arm_Link_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__21__1">
+<link name="Shoulder_Joint_1">
   <inertial>
     <origin rpy="0 0 0" xyz="7.287449404962842e-05 0.0016854028904963768 0.013016506375220449"/>
     <mass value="0.1980303324276481"/>
@@ -349,19 +349,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="0.0 -0.0 -0.131"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__21__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Shoulder_Joint_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="0.0 -0.0 -0.131"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__21__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Shoulder_Joint_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__22__1">
+<link name="Wrist_Hinge_1">
   <inertial>
     <origin rpy="0 0 0" xyz="-0.0006100381163169633 0.020989965286603927 -0.008256993530336987"/>
     <mass value="0.0037556666472927302"/>
@@ -370,19 +370,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.222312 0.019985 -0.377955"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__22__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Wrist_Hinge_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.222312 0.019985 -0.377955"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__22__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Wrist_Hinge_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__1__1">
+<link name="Bracket__1__1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.0024261508410601262 9.893036074812322e-06 0.007842544811764884"/>
     <mass value="0.0016262220015435807"/>
@@ -391,19 +391,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.237889 -0.000408 -0.308593"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__1__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Bracket__1__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.237889 -0.000408 -0.308593"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__1__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Bracket__1__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__5__1">
+<link name="Servo__1__1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.021606945197516048 -0.00802128163614104 -0.018110424224670407"/>
     <mass value="0.32411536495008075"/>
@@ -412,19 +412,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.245143 -0.008437 -0.332112"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__5__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo__1__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.245143 -0.008437 -0.332112"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__5__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Servo__1__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__8__1">
+<link name="Bracket__4__1">
   <inertial>
     <origin rpy="0 0 0" xyz="-0.00811417993813654 -1.5506993148743566e-06 -0.0012463246048003418"/>
     <mass value="0.0016262220015435807"/>
@@ -433,19 +433,19 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.228926 -0.000992 -0.35889"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__8__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Bracket__4__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.228926 -0.000992 -0.35889"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__8__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Bracket__4__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="old_component__2__1">
+<link name="Bracket__2__1">
   <inertial>
     <origin rpy="0 0 0" xyz="0.001834190694373461 -1.551436972530723e-05 -0.01250068848377417"/>
     <mass value="0.0016262220015435807"/>
@@ -454,149 +454,149 @@
   <visual>
     <origin rpy="0 0 0" xyz="-0.181409 -0.00079 -0.398433"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__2__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Bracket__2__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
     <origin rpy="0 0 0" xyz="-0.181409 -0.00079 -0.398433"/>
     <geometry>
-      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/old_component__2__1.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://mvp_arm_6dof_v2_description/meshes/Bracket__2__1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
 <joint name="Rev7" type="continuous">
   <origin rpy="0 0 0" xyz="0.033529 -0.008042 -0.034749"/>
-  <parent link="old_component__5__1"/>
-  <child link="old_component__4__1"/>
+  <parent link="Servo__1__1"/>
+  <child link="Servo_Rotator__1__1"/>
   <axis xyz="-0.073732 -0.001201 -0.997277"/>
 </joint>
 
 <joint name="Rev6" type="continuous">
   <origin rpy="0 0 0" xyz="0.035995 -0.00026 -0.008021"/>
-  <parent link="old_component__7__1"/>
-  <child link="old_component__6__1"/>
+  <parent link="Servo__3__1"/>
+  <child link="Servo_Rotator__2__1"/>
   <axis xyz="-1e-06 0.999999 -0.001204"/>
 </joint>
 
 <joint name="Rigid4" type="fixed">
   <origin rpy="0 0 0" xyz="0.005498 -0.016005 -0.004484"/>
-  <parent link="old_component__2__1"/>
-  <child link="old_component__7__1"/>
+  <parent link="Bracket__2__1"/>
+  <child link="Servo__3__1"/>
 </joint>
 
 <joint name="Rigid5" type="fixed">
   <origin rpy="0 0 0" xyz="0.008604 0.007988 -0.00967"/>
-  <parent link="old_component__8__1"/>
-  <child link="old_component__9__1"/>
+  <parent link="Bracket__4__1"/>
+  <child link="Servo__2__1"/>
 </joint>
 
 <joint name="Rev5" type="continuous">
   <origin rpy="0 0 0" xyz="-0.003539 -0.008562 -0.032317"/>
-  <parent link="old_component__9__1"/>
-  <child link="old_component__10__1"/>
+  <parent link="Servo__2__1"/>
+  <child link="Servo_Rotator__3__1"/>
   <axis xyz="0.997278 -8.8e-05 -0.073732"/>
 </joint>
 
 <joint name="Rev4" type="continuous">
   <origin rpy="0 0 0" xyz="0.004505 0.0 0.007998"/>
-  <parent link="old_component__11__1"/>
-  <child link="old_component__12__1"/>
+  <parent link="Servo_Rotator__4__1"/>
+  <child link="Servo__4__1"/>
   <axis xyz="1.0 0.0 -0.000609"/>
 </joint>
 
 <joint name="Rigid7" type="fixed">
   <origin rpy="0 0 0" xyz="0.000272 0.007963 0.036008"/>
-  <parent link="old_component__12__1"/>
-  <child link="old_component__3__1"/>
+  <parent link="Servo__4__1"/>
+  <child link="Bracket__3__1"/>
 </joint>
 
 <joint name="Rigid8" type="fixed">
   <origin rpy="0 0 0" xyz="0.0055 0.016 -4e-06"/>
-  <parent link="old_component__13__1"/>
-  <child link="old_component__11__1"/>
+  <parent link="Bracket__5__1"/>
+  <child link="Servo_Rotator__4__1"/>
 </joint>
 
 <joint name="Rev3" type="continuous">
   <origin rpy="0 0 0" xyz="0.008 -0.0045 -5e-06"/>
-  <parent link="old_component__14__1"/>
-  <child link="old_component__15__1"/>
+  <parent link="Servo_Rotator__5__1"/>
+  <child link="Servo__5__1"/>
   <axis xyz="0.0 -1.0 0.0"/>
 </joint>
 
 <joint name="Rigid9" type="fixed">
   <origin rpy="0 0 0" xyz="0.035995 -0.032193 -0.008022"/>
-  <parent link="old_component__15__1"/>
-  <child link="old_component__13__1"/>
+  <parent link="Servo__5__1"/>
+  <child link="Bracket__5__1"/>
 </joint>
 
 <joint name="Rigid11" type="fixed">
   <origin rpy="0 0 0" xyz="0.039994 9e-06 -0.009525"/>
-  <parent link="old_component__18__1"/>
-  <child link="old_component__20__1"/>
+  <parent link="Forearm_Joint_1"/>
+  <child link="Forearm_1"/>
 </joint>
 
 <joint name="Rigid13" type="fixed">
   <origin rpy="0 0 0" xyz="0.008003 -0.008005 0.005487"/>
-  <parent link="old_component__3__1"/>
-  <child link="old_component__18__1"/>
+  <parent link="Bracket__3__1"/>
+  <child link="Forearm_Joint_1"/>
 </joint>
 
 <joint name="Rigid14" type="fixed">
   <origin rpy="0 0 0" xyz="-0.021484 0.021 0.026514"/>
-  <parent link="old_component__16__2"/>
-  <child link="old_component__14__1"/>
+  <parent link="Elbow_Hinge__1__2"/>
+  <child link="Servo_Rotator__5__1"/>
 </joint>
 
 <joint name="Rigid15" type="fixed">
   <origin rpy="0 0 0" xyz="0.012601 -0.019 0.164992"/>
-  <parent link="old_component__17__1"/>
-  <child link="old_component__16__2"/>
+  <parent link="Arm_Link_1"/>
+  <child link="Elbow_Hinge__1__2"/>
 </joint>
 
 <joint name="Rev2" type="continuous">
   <origin rpy="0 0 0" xyz="-0.011984 0.0195 0.031551"/>
-  <parent link="old_component__21__1"/>
-  <child link="old_component__17__1"/>
+  <parent link="Shoulder_Joint_1"/>
+  <child link="Arm_Link_1"/>
   <axis xyz="0.0 1.0 -0.0"/>
 </joint>
 
 <joint name="Rev1" type="continuous">
   <origin rpy="0 0 0" xyz="0.0 0.0 0.131"/>
   <parent link="base_link"/>
-  <child link="old_component__21__1"/>
+  <child link="Shoulder_Joint_1"/>
   <axis xyz="0.0 -0.0 -1.0"/>
 </joint>
 
 <joint name="Rigid16" type="fixed">
   <origin rpy="0 0 0" xyz="-0.00059 -0.00451 -0.007973"/>
-  <parent link="old_component__6__1"/>
-  <child link="old_component__22__1"/>
+  <parent link="Servo_Rotator__2__1"/>
+  <child link="Wrist_Hinge_1"/>
 </joint>
 
 <joint name="Rigid70" type="fixed">
   <origin rpy="0 0 0" xyz="0.003898 -1e-05 -0.00831"/>
-  <parent link="old_component__10__1"/>
-  <child link="old_component__1__1"/>
+  <parent link="Servo_Rotator__3__1"/>
+  <child link="Bracket__1__1"/>
 </joint>
 
 <joint name="Rigid71" type="fixed">
   <origin rpy="0 0 0" xyz="0.007254 0.008029 0.023519"/>
-  <parent link="old_component__1__1"/>
-  <child link="old_component__5__1"/>
+  <parent link="Bracket__1__1"/>
+  <child link="Servo__1__1"/>
 </joint>
 
 <joint name="Rigid72" type="fixed">
   <origin rpy="0 0 0" xyz="0.006614 0.020977 -0.019065"/>
-  <parent link="old_component__22__1"/>
-  <child link="old_component__8__1"/>
+  <parent link="Wrist_Hinge_1"/>
+  <child link="Bracket__4__1"/>
 </joint>
 
 <joint name="Rigid74" type="fixed">
   <origin rpy="0 0 0" xyz="0.100007 1.6e-05 0.012439"/>
-  <parent link="old_component__20__1"/>
-  <child link="old_component__2__1"/>
+  <parent link="Forearm_1"/>
+  <child link="Bracket__2__1"/>
 </joint>
 
 </robot>
