@@ -16,8 +16,6 @@ from geometry_msgs.msg import Point, Pose, PoseStamped
 from math import pi
 from std_msgs.msg import String
 from moveit_commander.conversions import pose_to_list
-import ikpy
-import numpy as np
 
 
 def all_close(goal, actual, tolerance):
@@ -95,8 +93,7 @@ class RobotArmPathPlanner(object):
 
         # Sometimes for debugging it is useful to print the entire state of the
         # robot:
-        print("============ Printing robot state")
-        print(move_group.get_current_pose(end_effector_link="gripper_base_v1_1"))
+
         # Misc variables
         self.box_name = ''
         self.robot = robot
@@ -109,22 +106,18 @@ class RobotArmPathPlanner(object):
 
     # Arm Path Planning Related
 
-    def plan_to_goal_pose(self, pose_pos):
-        joints = self.inverse_kinematics(pose_pos)
-        joints = joints[:-2]
-        print(list(map(np.rad2deg,joints)))
+    def plan_to_goal_pose(self, pose_goal):
         # The go command can be called with joint values, poses, or without any
         # parameters if you have already set the pose or joint target for the group
-        plan = self.move_group.go(joints, wait=True)
+        
+        self.move_group.set_pose_target(pose_goal)
+        plan = self.move_group.go(wait=True)
         # Calling `stop()` ensures that there is no residual movement
         self.move_group.stop()
-        
+        print("Pose Goal Reached!")
         # It is always good to clear your targets after planning with poses.
         # Note: there is npose_goalo equivalent function for clear_joint_value_targets()
         self.move_group.clear_pose_targets()
-
-        print("============ Printing final position")
-        print(self.move_group.get_current_pose(end_effector_link="gripper_base_v1_1"))
     
     # Object Relatedself.move_group.get_current_pose(end_effector_link="gripper_base_v1_1")
 
@@ -157,21 +150,24 @@ class RobotArmPathPlanner(object):
         # It is always good to clear your targets after planning with poses.
         # Note: there is npose_goalo equivalent function for clear_joint_value_targets()
         self.move_group.clear_pose_targets()
-
-        print("============ Printing final position")
-        print(self.move_group.get_current_pose(end_effector_link="gripper_base_v1_1"))
-
-    def inverse_kinematics(self,target_pose):
-        arm_chain = ikpy.chain.Chain.from_urdf_file("/home/raghavauppuluri/ws_moveit/src/arc_robot_arm/arc_robot_arm/nodes/arc_robot_arm_urdf.urdf")
-        return(arm_chain.inverse_kinematics(target_position=target_pose))
 def main():
   try:
     planner = RobotArmPathPlanner()
-    # pose1 = [0.25,0.25,0.02]
-    # planner.plan_to_goal_pose(pose1)
-    # planner.go_home()
-    # pose2 = [-0.25,-0.25,0.02]
-    # planner.plan_to_goal_pose(pose2)
+    xyz_1 = [0.335,0.0504,0.294]
+    xyz_2 = [0.335,0.0504,0.4]
+    xyz_3 = [-0.3,-0.3,0.3]
+
+    positions = [xyz_1,xyz_2,xyz_3]
+    poses = []
+    for i in range(len(positions)):
+        poses.append(Pose())
+        poses[i].orientation.w = 1.0
+        poses[i].position.x = positions[i][0]
+        poses[i].position.y = positions[i][1]
+        poses[i].position.z = positions[i][2]
+    for pose in poses:
+        planner.plan_to_goal_pose(pose)
+        print("Pose Goal Requested!")
 
   except rospy.ROSInterruptException:
     return
