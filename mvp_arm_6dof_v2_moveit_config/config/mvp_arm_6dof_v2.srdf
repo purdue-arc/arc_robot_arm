@@ -51,6 +51,9 @@
     <disable_collisions link1="Bracket__1__1" link2="Bracket__5__1" reason="Never" />
     <disable_collisions link1="Bracket__1__1" link2="Elbow_Hinge__1__2" reason="Never" />
     <disable_collisions link1="Bracket__1__1" link2="Forearm_Joint_1" reason="Never" />
+    <disable_collisions link1="Bracket__1__1" link2="Gripper_Slider_1" reason="Never" />
+    <disable_collisions link1="Bracket__1__1" link2="Left_Gripper_Finger_1" reason="Never" />
+    <disable_collisions link1="Bracket__1__1" link2="Right_Gripper_Finger_1" reason="Never" />
     <disable_collisions link1="Bracket__1__1" link2="Servo_Rotator__1__1" reason="Never" />
     <disable_collisions link1="Bracket__1__1" link2="Servo_Rotator__2__1" reason="Never" />
     <disable_collisions link1="Bracket__1__1" link2="Servo_Rotator__3__1" reason="Adjacent" />
@@ -68,6 +71,9 @@
     <disable_collisions link1="Bracket__2__1" link2="Elbow_Hinge__1__2" reason="Never" />
     <disable_collisions link1="Bracket__2__1" link2="Forearm_1" reason="Adjacent" />
     <disable_collisions link1="Bracket__2__1" link2="Forearm_Joint_1" reason="Never" />
+    <disable_collisions link1="Bracket__2__1" link2="Gripper_Slider_1" reason="Never" />
+    <disable_collisions link1="Bracket__2__1" link2="Left_Gripper_Finger_1" reason="Never" />
+    <disable_collisions link1="Bracket__2__1" link2="Right_Gripper_Finger_1" reason="Never" />
     <disable_collisions link1="Bracket__2__1" link2="Servo_Rotator__1__1" reason="Never" />
     <disable_collisions link1="Bracket__2__1" link2="Servo_Rotator__2__1" reason="Never" />
     <disable_collisions link1="Bracket__2__1" link2="Servo_Rotator__3__1" reason="Never" />
@@ -83,6 +89,9 @@
     <disable_collisions link1="Bracket__3__1" link2="Elbow_Hinge__1__2" reason="Never" />
     <disable_collisions link1="Bracket__3__1" link2="Forearm_1" reason="Never" />
     <disable_collisions link1="Bracket__3__1" link2="Forearm_Joint_1" reason="Adjacent" />
+    <disable_collisions link1="Bracket__3__1" link2="Gripper_Slider_1" reason="Never" />
+    <disable_collisions link1="Bracket__3__1" link2="Left_Gripper_Finger_1" reason="Never" />
+    <disable_collisions link1="Bracket__3__1" link2="Right_Gripper_Finger_1" reason="Never" />
     <disable_collisions link1="Bracket__3__1" link2="Servo_Rotator__1__1" reason="Never" />
     <disable_collisions link1="Bracket__3__1" link2="Servo_Rotator__2__1" reason="Never" />
     <disable_collisions link1="Bracket__3__1" link2="Servo_Rotator__3__1" reason="Never" />
@@ -99,6 +108,9 @@
     <disable_collisions link1="Bracket__4__1" link2="Elbow_Hinge__1__2" reason="Never" />
     <disable_collisions link1="Bracket__4__1" link2="Forearm_1" reason="Never" />
     <disable_collisions link1="Bracket__4__1" link2="Forearm_Joint_1" reason="Never" />
+    <disable_collisions link1="Bracket__4__1" link2="Gripper_Slider_1" reason="Never" />
+    <disable_collisions link1="Bracket__4__1" link2="Left_Gripper_Finger_1" reason="Never" />
+    <disable_collisions link1="Bracket__4__1" link2="Right_Gripper_Finger_1" reason="Never" />
     <disable_collisions link1="Bracket__4__1" link2="Servo_Rotator__1__1" reason="Never" />
     <disable_collisions link1="Bracket__4__1" link2="Servo_Rotator__2__1" reason="Never" />
     <disable_collisions link1="Bracket__4__1" link2="Servo_Rotator__3__1" reason="Never" />
@@ -112,6 +124,9 @@
     <disable_collisions link1="Bracket__5__1" link2="Elbow_Hinge__1__2" reason="Never" />
     <disable_collisions link1="Bracket__5__1" link2="Forearm_1" reason="Never" />
     <disable_collisions link1="Bracket__5__1" link2="Forearm_Joint_1" reason="Never" />
+    <disable_collisions link1="Bracket__5__1" link2="Gripper_Slider_1" reason="Never" />
+    <disable_collisions link1="Bracket__5__1" link2="Left_Gripper_Finger_1" reason="Never" />
+    <disable_collisions link1="Bracket__5__1" link2="Right_Gripper_Finger_1" reason="Never" />
     <disable_collisions link1="Bracket__5__1" link2="Servo_Rotator__1__1" reason="Never" />
     <disable_collisions link1="Bracket__5__1" link2="Servo_Rotator__2__1" reason="Never" />
     <disable_collisions link1="Bracket__5__1" link2="Servo_Rotator__3__1" reason="Never" />
@@ -127,6 +142,9 @@
     <disable_collisions link1="Bracket__5__1" link2="base_link" reason="Never" />
     <disable_collisions link1="Elbow_Hinge__1__2" link2="Forearm_1" reason="Never" />
     <disable_collisions link1="Elbow_Hinge__1__2" link2="Forearm_Joint_1" reason="Never" />
+    <disable_collisions link1="Elbow_Hinge__1__2" link2="Gripper_Slider_1" reason="Never" />
+    <disable_collisions link1="Elbow_Hinge__1__2" link2="Left_Gripper_Finger_1" reason="Never" />
+    <disable_collisions link1="Elbow_Hinge__1__2" link2="Right_Gripper_Finger_1" reason="Never" />
     <disable_collisions link1="Elbow_Hinge__1__2" link2="Servo_Rotator__1__1" reason="Never" />
     <disable_collisions link1="Elbow_Hinge__1__2" link2="Servo_Rotator__2__1" reason="Never" />
     <disable_collisions link1="Elbow_Hinge__1__2" link2="Servo_Rotator__3__1" reason="Never" />
@@ -147,6 +165,7 @@
     <disable_collisions link1="Forearm_1" link2="Servo__4__1" reason="Never" />
     <disable_collisions link1="Forearm_1" link2="Servo__5__1" reason="Never" />
     <disable_collisions link1="Forearm_1" link2="Wrist_Hinge_1" reason="Never" />
+    <disable_collisions link1="Forearm_Joint_1" link2="Gripper_Slider_1" reason="Never" />
     <disable_collisions link1="Forearm_Joint_1" link2="Servo_Rotator__1__1" reason="Never" />
     <disable_collisions link1="Forearm_Joint_1" link2="Servo_Rotator__2__1" reason="Never" />
     <disable_collisions link1="Forearm_Joint_1" link2="Servo_Rotator__3__1" reason="Never" />
@@ -158,6 +177,42 @@
     <disable_collisions link1="Forearm_Joint_1" link2="Servo__4__1" reason="Default" />
     <disable_collisions link1="Forearm_Joint_1" link2="Servo__5__1" reason="Never" />
     <disable_collisions link1="Forearm_Joint_1" link2="Wrist_Hinge_1" reason="Never" />
+    <disable_collisions link1="Gripper_Slider_1" link2="Left_Gripper_Finger_1" reason="Adjacent" />
+    <disable_collisions link1="Gripper_Slider_1" link2="Right_Gripper_Finger_1" reason="Adjacent" />
+    <disable_collisions link1="Gripper_Slider_1" link2="Servo_Rotator__1__1" reason="Never" />
+    <disable_collisions link1="Gripper_Slider_1" link2="Servo_Rotator__2__1" reason="Never" />
+    <disable_collisions link1="Gripper_Slider_1" link2="Servo_Rotator__3__1" reason="Never" />
+    <disable_collisions link1="Gripper_Slider_1" link2="Servo_Rotator__4__1" reason="Never" />
+    <disable_collisions link1="Gripper_Slider_1" link2="Servo_Rotator__5__1" reason="Never" />
+    <disable_collisions link1="Gripper_Slider_1" link2="Servo__1__1" reason="Adjacent" />
+    <disable_collisions link1="Gripper_Slider_1" link2="Servo__2__1" reason="Never" />
+    <disable_collisions link1="Gripper_Slider_1" link2="Servo__3__1" reason="Never" />
+    <disable_collisions link1="Gripper_Slider_1" link2="Servo__4__1" reason="Never" />
+    <disable_collisions link1="Gripper_Slider_1" link2="Servo__5__1" reason="Never" />
+    <disable_collisions link1="Gripper_Slider_1" link2="Wrist_Hinge_1" reason="Never" />
+    <disable_collisions link1="Left_Gripper_Finger_1" link2="Right_Gripper_Finger_1" reason="Never" />
+    <disable_collisions link1="Left_Gripper_Finger_1" link2="Servo_Rotator__1__1" reason="Never" />
+    <disable_collisions link1="Left_Gripper_Finger_1" link2="Servo_Rotator__2__1" reason="Never" />
+    <disable_collisions link1="Left_Gripper_Finger_1" link2="Servo_Rotator__3__1" reason="Never" />
+    <disable_collisions link1="Left_Gripper_Finger_1" link2="Servo_Rotator__4__1" reason="Never" />
+    <disable_collisions link1="Left_Gripper_Finger_1" link2="Servo_Rotator__5__1" reason="Never" />
+    <disable_collisions link1="Left_Gripper_Finger_1" link2="Servo__1__1" reason="Never" />
+    <disable_collisions link1="Left_Gripper_Finger_1" link2="Servo__2__1" reason="Never" />
+    <disable_collisions link1="Left_Gripper_Finger_1" link2="Servo__3__1" reason="Never" />
+    <disable_collisions link1="Left_Gripper_Finger_1" link2="Servo__4__1" reason="Never" />
+    <disable_collisions link1="Left_Gripper_Finger_1" link2="Servo__5__1" reason="Never" />
+    <disable_collisions link1="Left_Gripper_Finger_1" link2="Wrist_Hinge_1" reason="Never" />
+    <disable_collisions link1="Right_Gripper_Finger_1" link2="Servo_Rotator__1__1" reason="Never" />
+    <disable_collisions link1="Right_Gripper_Finger_1" link2="Servo_Rotator__2__1" reason="Never" />
+    <disable_collisions link1="Right_Gripper_Finger_1" link2="Servo_Rotator__3__1" reason="Never" />
+    <disable_collisions link1="Right_Gripper_Finger_1" link2="Servo_Rotator__4__1" reason="Never" />
+    <disable_collisions link1="Right_Gripper_Finger_1" link2="Servo_Rotator__5__1" reason="Never" />
+    <disable_collisions link1="Right_Gripper_Finger_1" link2="Servo__1__1" reason="Never" />
+    <disable_collisions link1="Right_Gripper_Finger_1" link2="Servo__2__1" reason="Never" />
+    <disable_collisions link1="Right_Gripper_Finger_1" link2="Servo__3__1" reason="Never" />
+    <disable_collisions link1="Right_Gripper_Finger_1" link2="Servo__4__1" reason="Never" />
+    <disable_collisions link1="Right_Gripper_Finger_1" link2="Servo__5__1" reason="Never" />
+    <disable_collisions link1="Right_Gripper_Finger_1" link2="Wrist_Hinge_1" reason="Never" />
     <disable_collisions link1="Servo_Rotator__1__1" link2="Servo_Rotator__2__1" reason="Never" />
     <disable_collisions link1="Servo_Rotator__1__1" link2="Servo_Rotator__3__1" reason="Never" />
     <disable_collisions link1="Servo_Rotator__1__1" link2="Servo_Rotator__4__1" reason="Never" />

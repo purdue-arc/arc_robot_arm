@@ -16,6 +16,8 @@ hardware_interface:
     - Rev6
     - Rev5
     - Rev7
+    - Slider1
+    - Slider2
   sim_control_mode: 1  # 0: position, 1: velocity
 # Publish all joint states
 # Creates the /joint_states topic necessary in ROS
@@ -39,7 +41,7 @@ controller_list:
     default: True
     type: FollowJointTrajectory
     joints:
-      Rev7
+      []
 arm_position_controller:
   type: position_controllers/JointPositionController
   joints:
