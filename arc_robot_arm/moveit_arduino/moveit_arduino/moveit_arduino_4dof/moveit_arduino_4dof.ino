@@ -1,15 +1,6 @@
 /*
- * rosserial interface with 4dof robot arm
+ * Rosserial interface with 4dof robot arm
  *
- * This sketch demonstrates the control of hobby R/C servos
- * using ROS and the arduiono
- * 
- * For the full tutorial write up, visit
- * www.ros.org/wiki/rosserial_arduino_demos
- *
- * For more information on the Arduino Servo Library
- * Checkout :
- * http://www.arduino.cc/en/Reference/Servo
  */
 
 #if defined(ARDUINO) && ARDUINO >= 100
@@ -30,8 +21,8 @@
 #define Rev5_PIN 10
 #define Rev6_PIN 11
 
-#define DOF 5
-#define OFFSET 90
+#define DOF 5 // Only 4 are used
+#define OFFSET 90 // Offset angle from sim to real robot
 
 ros::NodeHandle  nh;
 
@@ -44,7 +35,7 @@ Servo rev6; // gripper servo
 
 char print_str[15]; // used to print out 15 char outputs
 
-float gripper = 0.0; // angle in degrees [0-45]
+float gripper = 45.0; // angle in degrees [0-45]
 float arm[DOF] = {90,90,90,90,90}; // angles in degrees [0,180]
 
 inline float RadiansToDegrees(float position_radians)
