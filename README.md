@@ -19,7 +19,7 @@ This is where the robot arm project from the Autonomous Robotics Club at Purdue 
 1. Click on "Tools" in the top left corner, then click "Terminal" for the terminal to load
  NOTE:
     - As shown in the file structure below, there are multiple workspaces(technically _catkin_ workspaces). We will only be using the simulation_ws for now.
-    - Make sure to **ALWAYS** source the devel/setup.sh for the simulation_ws or whatever workspace you're in whenever the ROSject loads to let know ROS what           workspace you are using: `source devel/setup.sh` (executed when in simulation_ws directory)
+    - Make sure to **ALWAYS** source the devel/setup.bash for the simulation_ws or whatever workspace you're in whenever the ROSject loads to let know ROS what           workspace you are using: `source devel/setup.bash` (executed when in simulation_ws directory)
 
 ### RDS File Structure
 ```
