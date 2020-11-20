@@ -32,7 +32,8 @@
   <exec_depend>snakesim</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>tf</exec_depend>
-
+  <exec_depend>rosserial_arduino</exec_depend>
+  <exec_depend>moveit</exec_depend>
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- Other tools can request additional information be placed here -->
