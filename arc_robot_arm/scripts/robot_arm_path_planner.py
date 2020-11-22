@@ -73,12 +73,14 @@ class RobotArmPathPlanner(object):
         self.arm_move_group = arm_move_group
         self.gripper_move_group = gripper_move_group
         self.solver=solver
+        self.arm_joint_names = arm_move_group.get_joints() 
+        self.gripper_joint_names = gripper_move_group.get_joints()
     
     ## Arm Path Planning
 
     def plan_to_pose_goal(self, pose_goal):
         if(callable(self.solver)):
-            joints = self.solver(pose_goal)
+            joints = self.solver(self.arm_joint_names, pose_goal)
             if(type(joints) is JointState):
                return self.arm_move_group.plan(joints)
             else:

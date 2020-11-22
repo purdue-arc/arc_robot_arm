@@ -26,7 +26,8 @@ def pose2arr(pose):
 
     return arr
 
-def request_ik_solution(joint_names, goal_pose):
+def ikine4dof(joint_names, goal_pose):
+    # Socket setup
     port = 5556
 
     context = zmq.Context()

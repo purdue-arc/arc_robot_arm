@@ -43,9 +43,7 @@ class Ikine4DOFSolver:
             goal_pose, mask=self.mask, ilimit=1000)
 
         if (failure):
-            raise Exception(reason)
-
+            return reason
         joints = np.add(joints, self.transf_vec)
-
-        
+ 
         return np.unwrap(joints)
