@@ -1,0 +1,223 @@
+<?xml version="1.0" ?>
+<robot name="mvp_arm_4dof" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find mvp_arm_4dof_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find mvp_arm_4dof_description)/urdf/mvp_arm_4dof.trans" />
+<xacro:include filename="$(find mvp_arm_4dof_description)/urdf/mvp_arm_4dof.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.005977131812596751 0.0034085511625430998 0.04750670712014007"/>
+    <mass value="2.456555111592732"/>
+    <inertia ixx="0.00924" ixy="-9.9e-05" ixz="1.9e-05" iyy="0.009207" iyz="-5e-06" izz="0.009587"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_1_v1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0012586062575677065 -0.006369596212062548 0.017322156193060212"/>
+    <mass value="0.5341010747394327"/>
+    <inertia ixx="0.000353" ixy="-7e-06" ixz="4.8e-05" iyy="0.000457" iyz="4.2e-05" izz="0.000429"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.006279 -0.004346 -0.131179"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/link_1_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.006279 -0.004346 -0.131179"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/link_1_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_2_v1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0012276439170236068 0.008160238213973405 0.05914223528678397"/>
+    <mass value="0.5015278384318742"/>
+    <inertia ixx="0.00084" ixy="-1e-06" ixz="-1.9e-05" iyy="0.000878" iyz="-3e-06" izz="7.2e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.020207 -0.000222 -0.17144"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/link_2_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.020207 -0.000222 -0.17144"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/link_2_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="gear2_v1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.014964060940163476 -0.0015293078229423416 -7.109503833219177e-05"/>
+    <mass value="0.027479876879980724"/>
+    <inertia ixx="2e-06" ixy="-0.0" ixz="-1e-06" iyy="1e-05" iyz="0.0" izz="1.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.174125 0.013949 -0.306984"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/gear2_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.174125 0.013949 -0.306984"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/gear2_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="gear1_v1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.014724091458428873 0.0016482402222450197 -0.00014497690263320928"/>
+    <mass value="0.028106280846863212"/>
+    <inertia ixx="2e-06" ixy="0.0" ixz="-1e-06" iyy="1e-05" iyz="0.0" izz="1.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.174859 -0.012922 -0.30596"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/gear1_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.174859 -0.012922 -0.30596"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/gear1_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="gripper_base_v1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.019788486695241747 -0.002219022659886948 0.00232379711041808"/>
+    <mass value="0.10839935246360793"/>
+    <inertia ixx="1.7e-05" ixy="-1.1e-05" ixz="4e-06" iyy="4e-05" iyz="2e-06" izz="4.8e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.135027 -0.00469 -0.297799"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/gripper_base_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.135027 -0.00469 -0.297799"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/gripper_base_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_4_v1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.017641925972066652 0.005015171425043511 0.005922235102376161"/>
+    <mass value="0.1295112121194818"/>
+    <inertia ixx="2e-05" ixy="4e-06" ixz="0.0" iyy="4e-05" iyz="-1e-06" izz="3.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.107006 0.008795 -0.291635"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/link_4_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.107006 0.008795 -0.291635"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/link_4_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_3_v1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.039010552933404094 -0.008385818475854033 0.0024684495178514676"/>
+    <mass value="0.39461490281663475"/>
+    <inertia ixx="7.5e-05" ixy="-1.2e-05" ixz="2.2e-05" iyy="0.000456" iyz="1e-06" izz="0.000427"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.017319 -0.000979 -0.291403"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/link_3_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.017319 -0.000979 -0.291403"/>
+    <geometry>
+      <mesh filename="package://mvp_arm_4dof_description/meshes/link_3_v1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev1" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.006279 0.004346 0.131179"/>
+  <parent link="base_link"/>
+  <child link="link_1_v1_1"/>
+  <axis xyz="-0.002854 0.005633 0.99998"/>
+</joint>
+
+<joint name="Rev2" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.013928 -0.004124 0.040261"/>
+  <parent link="link_1_v1_1"/>
+  <child link="link_2_v1_1"/>
+  <axis xyz="-0.025335 0.999663 -0.005703"/>
+</joint>
+
+<joint name="Rev5" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.039098 -0.018639 0.009185"/>
+  <parent link="gripper_base_v1_1"/>
+  <child link="gear2_v1_1"/>
+  <axis xyz="-0.141793 0.033815 0.989319"/>
+</joint>
+
+<joint name="Rev6" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.039832 0.008232 0.008161"/>
+  <parent link="gripper_base_v1_1"/>
+  <child link="gear1_v1_1"/>
+  <axis xyz="-0.141793 0.033815 0.989319"/>
+</joint>
+
+<joint name="Rev4" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.028021 0.013485 0.006164"/>
+  <parent link="link_4_v1_1"/>
+  <child link="gripper_base_v1_1"/>
+  <axis xyz="0.027296 -0.998903 0.038055"/>
+</joint>
+
+<joint name="Rigid1" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.089687 -0.009774 0.000232"/>
+  <parent link="link_3_v1_1"/>
+  <child link="link_4_v1_1"/>
+</joint>
+
+<joint name="Rev3" type="continuous">
+  <origin rpy="0 0 0" xyz="0.002888 0.000757 0.119963"/>
+  <parent link="link_2_v1_1"/>
+  <child link="link_3_v1_1"/>
+  <axis xyz="0.025335 -0.999663 0.005703"/>
+</joint>
+
+</robot>
