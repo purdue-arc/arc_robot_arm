@@ -99,7 +99,7 @@ void drive_arm(){
     rev1.write(arm[0]);
     rev2.write(arm[1]);
     rev3.write(arm[2]);
-    //rev4.write(arm[3]);
+    rev4.write(arm[3]);
     rev5.write(arm[4]);
   }
   else{
