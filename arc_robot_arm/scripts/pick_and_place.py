@@ -32,7 +32,10 @@ release_offset = 0.02
 
 # Retreat
 retreat_angle = pi/12
-# box locations
+
+# Box locations (x, y positions of box on table)
+x = -.165
+y = .18
 
 def get_gripper_joint_from_distance(dist) :
     # linear regression to go from distance between gripper fingers
@@ -57,6 +60,11 @@ def pick_box(planner):
 
     retreat(planner)
 
+def add_box(planner,box_pose, box_name):
+    box_pose.header.frame_id = "gripper"
+    box_pose.pose.orientation.w = 1.0
+    planner.scene.add_box(box_name, box_pose, size=(box_width, box_length, box_height))
+
 def go_to_high_pose(planner):
     joints = [0,0,-pi/6,pi/6]
     joint_state = JointState()
@@ -73,10 +81,13 @@ if __name__=='__main__':
     planner = RobotArmPathPlanner('arm','gripper',ikine4dof)
     
     z_offset = 0.11 # to account for base in ik
-    
-    box1_start = Pose()
-    box1_start.position.x = -0.16
-    box1_start.position.y = 0.205
+    box1 = PoseStamped() 
+    box2 = PoseStamped()
+
+    box1_name = 'box1'
+    box1_start = box1.pose
+    box1_start.position.x = x
+    box1_start.position.y = y
     box1_start.position.z = box_height * 2 - z_offset # 2 box height
     box1_start.orientation.w = 1
 
@@ -86,7 +97,8 @@ if __name__=='__main__':
     box1_end.position.z = box1_start.position.z - box_height
     box1_end.orientation.w = 1
     
-    box2_start = Pose()
+    box2_name = 'box2'
+    box2_start = box2.pose
     box2_start.position.x = box1_start.position.x
     box2_start.position.y = box1_start.position.y
     box2_start.position.z = box_height - z_offset
@@ -97,6 +109,9 @@ if __name__=='__main__':
     box2_end.position.y = box2_start.position.y * -1
     box2_end.position.z = box1_start.position.z
     box2_end.orientation.w = 1
+    
+    add_box(planner, box1, box1_name)
+    add_box(planner, box2, box2_name)
     
     planner.go_to_pose_goal(box1_start)
     pick_box(planner)
@@ -109,7 +124,8 @@ if __name__=='__main__':
 
     planner.go_to_pose_goal(box2_end)
     release_box(planner)
-    ''' 
+    
+    '''
     go_to_high_pose(planner)
 
     # Invert motions, put boxes back
