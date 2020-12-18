@@ -1,10 +1,6 @@
 # arc_robot_arm
 This is where the robot arm project from the Autonomous Robotics Club at Purdue lives!!
 
-### General Information
-- ROS version: Melodic
-- TODO
-
 # Getting Started
 
 ## Get Project Workspace Setup on ROS Development Studio
@@ -95,3 +91,9 @@ Play around with more of the features! RDS/The Construct has tutorials on YouTub
 2. Make sure you sourced your simulation_ws (run `source devel/setup.bash` in the root catkin ws directory) so you can execute ROS commands like roslaunch and roscd for your new packages. (FYI: Whenever you get a new ROS package in your workspace, complete steps 1 and 2 to avoid issues)
 3. Run `roslaunch arc_robot_arm arm_setup.launch` to start the Rviz simulation for the 4dof arm, arduino controller, and the custom Matlab IK solver for the 4dof arm
 4. You can now execute commands in Rviz or from python code.
+
+## TODO
+1. Write unit tests
+2. Fully implement custom IK solver
+3. Support for customer solvers to be used within MoveIt to get better support of MoveIt Grasping pipeline
+4. Add robot vision
