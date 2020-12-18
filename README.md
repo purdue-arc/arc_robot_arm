@@ -89,6 +89,7 @@ To run the 6dof robot arm simulation in Rviz, follow these steps:
 Play around with more of the features! RDS/The Construct has tutorials on YouTube!
 
 ## Launch 4dof Robot Arm in Sim + Real Robot
+** Must have [robotics-toolbox-python](https://github.com/petercorke/robotics-toolbox-python) downloaded for inverse kinematics to work!**
 
 1. Run `catkin_make` while still in the simulation_ws root directory to compile C/C++ code
 2. Make sure you sourced your simulation_ws (run `source devel/setup.bash` in the root catkin ws directory) so you can execute ROS commands like roslaunch and roscd for your new packages. (FYI: Whenever you get a new ROS package in your workspace, complete steps 1 and 2 to avoid issues)
