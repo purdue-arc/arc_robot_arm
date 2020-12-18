@@ -51,7 +51,7 @@ user/ <-- You should be here on Terminal load
            │
            └───robot_arm_urdf_description/ (URDF description of ARC robot arm)
 ```
-## Setup GitHub to push,pull code
+## Setup GitHub to push,pull code (If you have commit access ONLY)
 1. Navigate to the `arc_robot_arm/ (Name of GitHub repo)` directory shown in the above file structure
 2. Run `git status`. If you don't get any errors, that means all has gone well so far.
 3. Run `git pull` this will make sure your local repo is the same as the remote
@@ -74,16 +74,23 @@ user/ <-- You should be here on Terminal load
 
 ### IDE: VSCode
 
-- Coding in the Terminal sucks, use the VSCode IDE to save lots of hours debugging and makes it easier to find bugs with autocomplete + suggestions
+- Use the VSCode IDE to save lots of hours debugging and makes it easier to find bugs with autocomplete + suggestions
 - Click on "Tools" in the top left corner, then click "IDE" to get to the IDE
 
 ### Rviz
 
-To run the robot_arm simulation in Rviz, follow these steps:
-1. Make sure you sourced your simulation_ws
-2. Run `catkin_make` while still in the simulation_ws root directory to let ROS know of all the packages and launch files
-3. Run `roslaunch arc_robot_arm_moveit_config demo.launch` to start the Rviz simulation
+To run the 6dof robot arm simulation in Rviz, follow these steps:
+1. Run `catkin_make` while still in the simulation_ws root directory to compile C/C++ code
+2. Make sure you sourced your simulation_ws (run `source devel/setup.bash` in the root catkin ws directory) so you can execute ROS commands like roslaunch and roscd for your new packages. (FYI: Whenever you get a new ROS package in your workspace, complete steps 1 and 2 to avoid issues)
+3. Run `roslaunch mvp_arm_6dof_moveit_config demo.launch` to start the Rviz simulation for the 6dof arm
 4. Click on "Tools" in the top left corner, then click "Graphical Tools"
 5. Give it a second to load, but once it does, click Resize Window to get it to full screen and you should see the robot arm in Rviz!
 
 Play around with more of the features! RDS/The Construct has tutorials on YouTube!
+
+## Launch 4dof Robot Arm in Sim + Real Robot
+
+1. Run `catkin_make` while still in the simulation_ws root directory to compile C/C++ code
+2. Make sure you sourced your simulation_ws (run `source devel/setup.bash` in the root catkin ws directory) so you can execute ROS commands like roslaunch and roscd for your new packages. (FYI: Whenever you get a new ROS package in your workspace, complete steps 1 and 2 to avoid issues)
+3. Run `roslaunch arc_robot_arm arm_setup.launch` to start the Rviz simulation for the 4dof arm, arduino controller, and the custom Matlab IK solver for the 4dof arm
+4. You can now execute commands in Rviz or from python code.
