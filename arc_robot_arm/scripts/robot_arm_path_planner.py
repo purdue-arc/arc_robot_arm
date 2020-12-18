@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Node to send path planning commands to Robot arm MoveGroup.
+Node to send customized path planning commands to Robot arm MoveGroup.
 """
 
 # Python 2/3 compatibility imports
@@ -40,8 +40,12 @@ def all_close(goal, actual, tolerance):
   return True
 
 class RobotArmPathPlanner(object):
-    "RobotArmPlanner"
-
+    """
+    Wrapper class for the moveit.commander for simpler customization of inverse kinematics algorithms
+    @param: arg_mg_name, String type, Name of Move Group for arm
+    @param: gripper_mg_name, String type, Name of Move Group for gripper
+    @param: solver, function type, Callback to function that returns a JointState given a target pose of the end-effector (defaults to MoveIt solver)
+    """
     def __init__(self, arm_mg_name, gripper_mg_name, solver="MoveIt"):
         super(RobotArmPathPlanner, self).__init__()
         # First initialize `moveit_commander`_ and a `rospy`_ node:
@@ -66,6 +70,7 @@ class RobotArmPathPlanner(object):
         # gripper arm_move_group:
         gripper_move_group = moveit_commander.MoveGroupCommander(gripper_mg_name)
         print('here')
+        
         # Initialization
         self.box_name = ''
         self.robot = robot
@@ -79,6 +84,13 @@ class RobotArmPathPlanner(object):
     ## Arm Path Planning
 
     def plan_to_pose_goal(self, pose_goal):
+        '''
+        Given a pose goal of the end-effector, determines JointState of final position using custom or 
+        default IK solver and returns a planned trajectory of arm from initial to final state
+        
+        @param: pose_goal, Pose() msg type, final end-effector position
+        '''
+        
         if(callable(self.solver)):
             joints = self.solver(self.arm_joint_names, pose_goal)
             if(type(joints) is JointState):
@@ -89,20 +101,46 @@ class RobotArmPathPlanner(object):
             return self.arm_move_group.plan(pose_goal)
     
     def go_to_pose_goal(self, pose_goal):
+        '''
+        Given a pose goal of the end effector, this function plans to the pose goal 
+        and executes the planned trajectory on a robot arm
+        
+        @param: pose_goal, Pose() msg type, final end-effector position
+        '''
+
         plan = self.plan_to_pose_goal(pose_goal)
         self.execute_plan(plan)
 
     def plan_to_joint_goal(self, joint_goal):
+        '''
+        Given a joint goal of arm, returns a planned trajectory of the arm from current joint state to the given joint goal
+
+        @param: joint_goal, JointState msg type, final arm joint goal
+        '''
+
         if(type(joint_goal) is JointState):
             return self.arm_move_group.plan(joint_goal)
         else:
             raise Exception("joint_goal is not JointState type")
     
     def go_to_joint_goal(self, joint_goal):
+        '''
+        Given a joint goal of arm, plans and executes a generated trajectory of the arm from current joint state to the given joint goal
+
+        @param: joint_goal, JointState msg type, final arm joint goal
+
+        '''
+
         plan = self.plan_to_joint_goal(joint_goal)
         self.execute_plan(plan)
 
-    def execute_plan(self,plan): 
+    def execute_plan(self, plan):
+        '''
+        Given a computed trajectory plan, executes it on a simulated and/or real robot arm
+        
+        @param: plan, DisplayTrajectory msg type, computed trajectory plan of arm
+        '''
+
         self.arm_move_group.execute(plan,wait=True)
         
         # Calling `stop()` ensures that there is no residual movement
@@ -112,8 +150,8 @@ class RobotArmPathPlanner(object):
     
     def go_home(self):
         joints = JointState()
-        joints.name = ['Rev1', 'Rev2', 'Rev3', 'Rev4']
-        joints.position = [0,0,0,0]
+        joints.name = self.arm_move_group.get_joints()
+        joints.position = [0] * len(joints.name)
 
         plan = self.go_to_joint_goal(joints)
     def move_gripper(self, theta):
