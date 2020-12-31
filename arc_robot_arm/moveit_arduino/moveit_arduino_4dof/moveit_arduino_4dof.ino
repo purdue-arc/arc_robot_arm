@@ -23,6 +23,16 @@
 
 #define DOF 5 // Only 4 are used
 #define OFFSET 90 // Offset angle from sim to real robot
+#define UPPER_REAL_GRIP 180
+#define LOWER_REAL_GRIP 90
+#define UPPER_REAL_ARM 180
+#define LOWER_REAL_ARM 0
+
+#define UPPER_SIM_GRIP -45
+#define LOWER_SIM_GRIP 0
+#define UPPER_SIM_ARM 90
+#define LOWER_SIM_ARM -90
+
 
 ros::NodeHandle  nh;
 
@@ -35,7 +45,7 @@ Servo rev6; // gripper servo
 
 char print_str[15]; // used to print out 15 char outputs
 
-float gripper = 45.0; // angle in degrees [0-45]
+float gripper = 180.0; // angle in degrees [90-180]
 float arm[DOF] = {90,90,90,90,90}; // angles in degrees [0,180]
 
 inline float RadiansToDegrees(float position_radians)
@@ -43,9 +53,14 @@ inline float RadiansToDegrees(float position_radians)
   return position_radians * 57.2958;
 }
 
+float mapf(float x, float in_min, float in_max, float out_min, float out_max)
+{
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 int val_arm_joints() {
   for(int i = 0; i < DOF; i++){
-    if(arm[i] < 0 || arm[i] > 180){
+    if(arm[i] < LOWER_REAL_ARM || arm[i] > UPPER_REAL_ARM){
       return 0;
     }
   }
@@ -53,23 +68,28 @@ int val_arm_joints() {
 }
 
 int val_gripper_joint() {
-  return gripper >= 0 && gripper <= 45;
+  return gripper >= LOWER_REAL_GRIP && gripper <= UPPER_REAL_GRIP;
 }
 
 // Sets gripper joint from JointState msg
 void set_gripper_joint(const sensor_msgs::JointState& joint_state){
-  gripper = abs(RadiansToDegrees(joint_state.position[1])); // left finger actuation only
+  gripper = mapf(RadiansToDegrees(joint_state.position[1]), LOWER_SIM_GRIP, UPPER_SIM_GRIP, LOWER_REAL_GRIP, UPPER_REAL_GRIP); // left finger actuation only
 }
 
 /* Sets arm joint values from JointState msg 
 *  and maps them to real arm space
 */
 void set_arm_joints(const sensor_msgs::JointState& joint_state) {
-  arm[0] = RadiansToDegrees(joint_state.position[0]) + OFFSET;
-  arm[1] = RadiansToDegrees(joint_state.position[1]) + OFFSET;
-  arm[2] = RadiansToDegrees(joint_state.position[2]) + OFFSET;
+  arm[0] = mapf(RadiansToDegrees(joint_state.position[0]), LOWER_SIM_ARM, UPPER_SIM_ARM, LOWER_REAL_ARM, UPPER_REAL_ARM);
+  arm[1] = mapf(RadiansToDegrees(joint_state.position[1]), LOWER_SIM_ARM, UPPER_SIM_ARM, LOWER_REAL_ARM, UPPER_REAL_ARM);
+  arm[2] = mapf(RadiansToDegrees(joint_state.position[2]), LOWER_SIM_ARM, UPPER_SIM_ARM, LOWER_REAL_ARM, UPPER_REAL_ARM);
+  //arm[3] = mapf(RadiansToDegrees(joint_state.position[3]), LOWER_SIM_ARM, UPPER_SIM_ARM, LOWER_REAL_ARM, UPPER_REAL_ARM);
+  arm[4] = mapf(-1 * RadiansToDegrees(joint_state.position[3]), LOWER_SIM_ARM, UPPER_SIM_ARM, LOWER_REAL_ARM, UPPER_REAL_ARM);
+
+  //arm[1] = map(RadiansToDegrees(joint_state.position[1]) + OFFSET;
+  //arm[2] = RadiansToDegrees(joint_state.position[2]) + OFFSET;
   //arm[3] = joint_state.position[3] + OFFSET;
-  arm[4] = RadiansToDegrees(joint_state.position[3]) * -1 + OFFSET;
+  //arm[4] = RadiansToDegrees(joint_state.position[3]) * -1 + OFFSET;
 }
 
 // checks whether the JointState msg is for the arm or gripper movegroup
