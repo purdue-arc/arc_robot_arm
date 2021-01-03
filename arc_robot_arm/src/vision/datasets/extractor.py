@@ -14,4 +14,5 @@ data = list(filter(lambda x: x[0] != '.' ,data))
 
 with open(file_name, "a") as f:
     for name in data:
-        f.write(" - ![%(name)s](%(dir_n)s/%(name)s_0.jpg)\n" % {"name" : name, "dir_n" : folder_name})
+        f.write(" - %s\n" % name)
+        f.write("[%(name)s](%(dir_n)s/%(name)s_0.jpg)\n" % {"name" : name, "dir_n" : folder_name})
