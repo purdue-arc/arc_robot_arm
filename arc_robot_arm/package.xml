@@ -34,6 +34,13 @@
   <exec_depend>tf</exec_depend>
   <exec_depend>rosserial_arduino</exec_depend>
   <exec_depend>moveit</exec_depend>
+  <exec_depend>numpy</exec_depend>
+  <exec_depend>opencv-python</exec_depend>
+  <exec_depend>torch</exec_depend>
+  <exec_depend>torch-vision</exec_depend>
+  <exec_depend>pynput</exec_depend>
+  <exec_depend>Pillow</exec_depend>
+
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- Other tools can request additional information be placed here -->
