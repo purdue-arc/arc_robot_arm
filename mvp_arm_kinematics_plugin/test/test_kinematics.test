@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+  <group ns="mvp_arm">
+
+    <include file="$(find mvp_arm_4dof_moveit_config)/launch/planning_context.launch">
+      <arg name="load_robot_description" value="true"/>
+    </include>
+
+    <test test-name="mvp_arm_kinematics" pkg="mvp_arm_kinematics_plugin" type="test_mvp_arm_kinematics_plugin" time-limit="180" >
+      <param name="tip_link" value="gripper_base_v1_1" />
+      <param name="root_link" value="base_link" />
+      <param name="group" value="arm" />
+      <param name="num_fk_tests" value="100" />
+      <param name="num_ik_tests" value="100" />
+      <param name="num_ik_cb_tests" value="100" />
+      <param name="num_ik_multiple_tests" value="100" />
+      <param name="num_nearest_ik_tests" value="1000" />
+      <param name="ik_plugin_name" value="mvp_arm_kinematics_plugin/MVPArmKinematicsPlugin" />
+      <rosparam param="joint_names">[Rev1, Rev2, Rev3, Rev4, Rev5]</rosparam>
+    </test>
+
+  </group>
+</launch>
