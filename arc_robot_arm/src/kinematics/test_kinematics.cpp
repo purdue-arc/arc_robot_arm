@@ -15,7 +15,6 @@ std::vector<geometry_msgs::Pose> testFileToPoses(std::string test_file_name) {
 	std::ifstream infile("test_kinematics.txt");	
 	std::string line;
 
-	ROS_INFO("Hello %s", "World");
 	while (std::getline(infile, line)) {
 			if(line.at(0) != '#') {  // NOTE: Comment lines in test txt files start with '#'
 				std::istringstream iss(line);

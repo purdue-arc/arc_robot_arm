@@ -22,13 +22,10 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-catkin_install_python(PROGRAMS src/kinematics/Other/kinematics_test.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-
 add_executable(sensors_tf_broadcaster src/tf/sensors_tf_broadcaster.cpp)
 
 target_link_libraries(sensors_tf_broadcaster ${catkin_LIBRARIES})
 
-add_executable(kinematics src/kinematics/test_kinematics.cpp src/kinematics/kinematics.cpp)
+add_executable(test_kinematics src/kinematics/test_kinematics.cpp src/kinematics/kinematics.cpp)
 
-target_link_libraries(kinematics ${catkin_LIBRARIES})
+target_link_libraries(test_kinematics ${catkin_LIBRARIES})
