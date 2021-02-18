@@ -27,13 +27,13 @@
         <joint name="Rev3" value="0"/>
         <joint name="Rev4" value="0"/>
     </group_state>
-    <group_state name="open" group="gripper">
-        <joint name="Rev5" value="0.781"/>
-        <joint name="Rev6" value="-0.7116"/>
-    </group_state>
     <group_state name="closed" group="gripper">
         <joint name="Rev5" value="0"/>
         <joint name="Rev6" value="0"/>
+    </group_state>
+    <group_state name="open" group="gripper">
+        <joint name="Rev5" value="0.7"/>
+        <joint name="Rev6" value="-0.7"/>
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="gripper" parent_link="gripper_base_v1_1" group="gripper"/>
