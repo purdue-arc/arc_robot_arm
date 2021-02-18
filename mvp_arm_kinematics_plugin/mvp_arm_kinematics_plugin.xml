@@ -1,5 +1,0 @@
-<library path="lib/libmvp_arm_kinematics_plugin">
-  <class name="mvp_arm_kinematics_plugin/MVPArmKinematicsPlugin"type="mvp_arm_kinematics_plugin::MVPArmKinematicsPlugin" base_class_type="kinematics::KinematicsBase">
-    <description>Kinematic solver for MVP arm of ARC</description>
-  </class>
-</library>
