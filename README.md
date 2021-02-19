@@ -25,10 +25,10 @@ source ~/catkin_ws/devel/setup.bash
 ## Quickstart (Sim or Sim + Real) 
 
 ### Sim Only
-
-1. roslaunch arc_robot_arm robot.launch
-2. rosrun arc_robot_arm test_kinematics
-
+```
+roslaunch arc_robot_arm robot.launch
+rosrun arc_robot_arm test_kinematics
+```
 ### Sim + Real
 
 #### Prerequisites
@@ -37,10 +37,10 @@ source ~/catkin_ws/devel/setup.bash
 - Camera connected at device 0, is calibrated and has camera.yaml file loaded
 
 #### Run Sim + Real 
-
-1. roslaunch arc_robot_arm robot.launch real:=true
-2. rosrun arc_robot_arm test_kinematics
-
+```
+roslaunch arc_robot_arm robot.launch real:=true
+rosrun arc_robot_arm test_kinematics
+```
 #### Roslaunch params
 - If no Arduino/Robot -> add `robot:=false` to roslaunch command
 - If no Camera -> add `camera:=false` to roslaunch command
