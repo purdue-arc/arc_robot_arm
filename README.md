@@ -3,97 +3,47 @@ This is where the robot arm project from the Autonomous Robotics Club at Purdue 
 
 # Getting Started
 
-## Get Project Workspace Setup on ROS Development Studio
+## Prerequisites
 
-1. Sign in/Sign up on the [ROS Development Studio](https://rds.theconstructsim.com/) to get your own ROS Dev workspace
-2. Follow this [link](http://www.rosject.io/l/1762f8b9/) to "fork" (make your own copy) of the ROSject
-3. Click the red "Open" button to load the ROSject
-4. Once the workspace loads (can take a few min), that's it! Your ROS workspace is created!
-
-### Terminal/Workspace Setup
-
-1. Click on "Tools" in the top left corner, then click "Terminal" for the terminal to load
- NOTE:
-    - As shown in the file structure below, there are multiple workspaces(technically _catkin_ workspaces). We will only be using the simulation_ws for now.
-    - Make sure to **ALWAYS** source the devel/setup.bash for the simulation_ws or whatever workspace you're in whenever the ROSject loads to let know ROS what           workspace you are using: `source devel/setup.bash` (executed when in simulation_ws directory)
-
-### RDS File Structure
+1. Full ROS install of melodic or noetic on native linux/WSL or on virtual ROS env (i.e. [ROS Development Studio](https://rds.theconstructsim.com/))
+2. ROS catkin workspace is setup (steps assume catkin workspace folder is `catkin_ws` and located in home dir
+3. Clone this repository to `src` folder in catkin workspace 
+4. Build (Compiles C/C++ files)
 ```
-user/ <-- You should be here on Terminal load
-│
-└───ai_ws/
-│
-└───catkin_ws/
-│
-└───datasets_ws/
-│
-└───notebook_ws/
-│
-└───webpage_ws/
-│
-└───simulation_ws/
-    │
-    └───src/
-        │
-        └───arc_robot_arm/ (Name of GitHub repo)
-           │
-           └───arc_robot_arm/ (main project folder with all the nodes + launch files for the arm)
-               │
-               └───nodes/ (ROS Python scripts with nodes for path planning + ROS/Arduino Interface, etc)
-               │
-               └───launch/ (Launch files)
-           │
-           └───arc_robot_arm_moveit_config/ (ARC robot arm MoveIt config)
-           │
-           └───robot_arm_urdf_description/ (URDF description of ARC robot arm)
+catkin build
 ```
-## Setup GitHub to push,pull code (If you have commit access ONLY)
-1. Navigate to the `arc_robot_arm/ (Name of GitHub repo)` directory shown in the above file structure
-2. Run `git status`. If you don't get any errors, that means all has gone well so far.
-3. Run `git pull` this will make sure your local repo is the same as the remote
-3. Setup your own branch to safely make changes to using this command: `git checkout -b <your_branch_name>`
-    - NOTE: the name of the branch should be something logical related what you are changing
-4. Make some changes
-5. Stage + commit your changes to your branch in one command: `git commit -am "Message for my commit"`
-6. To push your commits and your changes on your branch to remote (basically so the rest of the team can see it), 
-   run this: `git push -u origin <your_branch_name>`
-7. To update your local repo to sync any changes made to the main branch run this code snippet:
-   ```
-        git checkout master
-        git pull
-        git checkout <your_branch_name>
-        git merge master
-   ```
-8. Ta da! You can now see the team's code changes and also share yours! 
 
-## Get Familiar with Dev Environment
+or
 
-### IDE: VSCode
+```
+cd ~/catkin_ws
+catkin_make
+```
+5. Source  
+```
+source ~/catkin_ws/devel/setup.bash
+```
 
-- Use the VSCode IDE to save lots of hours debugging and makes it easier to find bugs with autocomplete + suggestions
-- Click on "Tools" in the top left corner, then click "IDE" to get to the IDE
+## Quickstart (Sim or Sim + Real) 
 
-### Rviz
+### Sim Only
 
-To run the 6dof robot arm simulation in Rviz, follow these steps:
-1. Run `catkin_make` while still in the simulation_ws root directory to compile C/C++ code
-2. Make sure you sourced your simulation_ws (run `source devel/setup.bash` in the root catkin ws directory) so you can execute ROS commands like roslaunch and roscd for your new packages. (FYI: Whenever you get a new ROS package in your workspace, complete steps 1 and 2 to avoid issues)
-3. Run `roslaunch mvp_arm_6dof_moveit_config demo.launch` to start the Rviz simulation for the 6dof arm
-4. Click on "Tools" in the top left corner, then click "Graphical Tools"
-5. Give it a second to load, but once it does, click Resize Window to get it to full screen and you should see the robot arm in Rviz!
+1. roslaunch arc_robot_arm robot.launch
+2. rosrun arc_robot_arm test_kinematics
 
-Play around with more of the features! RDS/The Construct has tutorials on YouTube!
+### Sim + Real
 
-## Launch 4dof Robot Arm in Sim + Real Robot
-** Must have [robotics-toolbox-python](https://github.com/petercorke/robotics-toolbox-python) downloaded for inverse kinematics to work!**
+#### Prerequisites
+- Arduino with arduino code loaded is connected at /dev/ttyACM0 (can change the launch file to match yours)
+- Robot is wired + powered correctly, tested using Arduino test code
+- Camera connected at device 0, is calibrated and has camera.yaml file loaded
 
-1. Run `catkin_make` while still in the simulation_ws root directory to compile C/C++ code
-2. Make sure you sourced your simulation_ws (run `source devel/setup.bash` in the root catkin ws directory) so you can execute ROS commands like roslaunch and roscd for your new packages. (FYI: Whenever you get a new ROS package in your workspace, complete steps 1 and 2 to avoid issues)
-3. Run `roslaunch arc_robot_arm arm_setup.launch` to start the Rviz simulation for the 4dof arm, arduino controller, and the custom Matlab IK solver for the 4dof arm
-4. You can now execute commands in Rviz or from python code.
+#### Run Sim + Real 
 
-## TODO
-1. Write unit tests
-2. Fully implement custom IK solver
-3. Support for customer solvers to be used within MoveIt to get better support of MoveIt Grasping pipeline
-4. Add robot vision
+1. roslaunch arc_robot_arm robot.launch real:=true
+2. rosrun arc_robot_arm test_kinematics
+
+#### Roslaunch params
+- If no Arduino/Robot -> add `robot:=false` to roslaunch command
+- If no Camera -> add `camera:=false` to roslaunch command
+
