@@ -1,0 +1,55 @@
+mvp_arm_4dof_v2_controller:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Position Controllers --------------------------------------
+  Rev1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev1
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  Rev2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  Rev3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev3
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  Rev4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev4
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  G_Rev2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: G_Rev2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  G_Rev3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: G_Rev3
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  G_Rev1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: G_Rev1
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  G_Rev4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: G_Rev4
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  G_Rev5_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: G_Rev5
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  G_Rev6_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: G_Rev6
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  G_Rev7_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: G_Rev7
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  G_Rev8_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: G_Rev8
+    pid: {p: 100.0, i: 0.01, d: 10.0}

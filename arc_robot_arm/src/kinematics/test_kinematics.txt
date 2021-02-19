@@ -1,0 +1,9 @@
+# IK Test Cases
+# Moves gripper_base link to specified pose
+# x y z - POV of arm
+# gripper down 
+-0.2 0 0.15
+# gripper right 
+-0.2 0.1 0.15
+# gripper left
+-0.2 -0.1 0.15
