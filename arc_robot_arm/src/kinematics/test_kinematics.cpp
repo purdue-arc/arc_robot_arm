@@ -12,7 +12,7 @@
 
 std::vector<geometry_msgs::Pose> testFileToPoses(std::string test_file_name) {
 	std::vector<geometry_msgs::Pose> test_goal_poses;
-	std::ifstream infile("test_kinematics.txt");	
+	std::ifstream infile(test_file_name);	
 	std::string line;
 
 	while (std::getline(infile, line)) {
