@@ -4,7 +4,6 @@ This is where the robot arm project from the Autonomous Robotics Club at Purdue 
 # Getting Started
 
 ## Prerequisites
-
 1. Full ROS install of melodic or noetic on native linux/WSL or on virtual ROS env (i.e. [ROS Development Studio](https://rds.theconstructsim.com/))
 2. ROS catkin workspace is setup (steps assume catkin workspace folder is `catkin_ws` and located in home dir
 3. Clone this repository to `src` folder in catkin workspace 
@@ -12,7 +11,6 @@ This is where the robot arm project from the Autonomous Robotics Club at Purdue 
 ```
 catkin build
 ```
-
 or
 
 ```
@@ -46,4 +44,3 @@ source ~/catkin_ws/devel/setup.bash
 #### Roslaunch params
 - If no Arduino/Robot -> add `robot:=false` to roslaunch command
 - If no Camera -> add `camera:=false` to roslaunch command
-
