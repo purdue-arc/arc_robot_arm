@@ -27,6 +27,7 @@ source ~/catkin_ws/devel/setup.bash
 ### Sim Only
 ```
 roslaunch arc_robot_arm robot.launch
+roscd arc_robot_arm/src/kinematics
 rosrun arc_robot_arm test_kinematics
 ```
 ### Sim + Real
@@ -39,6 +40,7 @@ rosrun arc_robot_arm test_kinematics
 #### Run Sim + Real 
 ```
 roslaunch arc_robot_arm robot.launch real:=true
+roscd arc_robot_arm/src/kinematics
 rosrun arc_robot_arm test_kinematics
 ```
 #### Roslaunch params
