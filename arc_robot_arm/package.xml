@@ -21,15 +21,10 @@
   <depend>rospy</depend>
 	<depend>roscpp</depend>
   <depend>tf2_ros</depend>
-  <depend>snakesim</depend>
   <depend>std_msgs</depend>
   <depend>tf</depend>
   <depend>rosserial_arduino</depend>
   <depend>moveit</depend>
-  <depend>numpy</depend>
-  <depend>opencv-python</depend>
-  <depend>torch</depend>
-  <depend>torch-vision</depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
