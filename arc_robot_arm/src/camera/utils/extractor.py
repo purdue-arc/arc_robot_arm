@@ -1,12 +1,12 @@
 import os
 
-print("Enter folder name to extract file name types from: ")
+print("Enter folder name in datasets folder to extract file name types from: ")
 folder_name = input()
 
 print("Enter file to append extraction: ")
 file_name = input()
 
-mypath = os.path.dirname(os.path.abspath(__file__)) + "/" + folder_name
+mypath = os.path.dirname(os.path.abspath(__file__)) + "/datasets/" + folder_name
 data = os.listdir(mypath)
 
 data = set(map(lambda x: "_".join(x.split("_")[:-1]),data))

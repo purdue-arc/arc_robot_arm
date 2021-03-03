@@ -12,7 +12,7 @@ i=0
 cap = cv.VideoCapture(0)
 cv.namedWindow('frame',cv.WINDOW_NORMAL)
 print('Input folder name in datasets folder to add data in: ')
-dataset_path = os.path.dirname(os.path.abspath(__file__)) + '/' + input()
+dataset_path = os.path.dirname(os.path.abspath(__file__)) + '/datasets/' + input()
 
 print('Input initial file_prefix name: ')
 file_prefix = input() + '_'

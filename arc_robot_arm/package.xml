@@ -17,29 +17,14 @@
 
 
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>geometry_msgs</build_depend>
-  <build_depend>rospy</build_depend>
-  <build_depend>snakesim</build_depend>
-  <build_depend>std_msgs</build_depend>
-  <build_depend>tf</build_depend>
-  <build_export_depend>geometry_msgs</build_export_depend>
-  <build_export_depend>rospy</build_export_depend>
-  <build_export_depend>snakesim</build_export_depend>
-  <build_export_depend>std_msgs</build_export_depend>
-  <build_export_depend>tf</build_export_depend>
-  <exec_depend>geometry_msgs</exec_depend>
-  <exec_depend>rospy</exec_depend>
-  <exec_depend>snakesim</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
-  <exec_depend>tf</exec_depend>
-  <exec_depend>rosserial_arduino</exec_depend>
-  <exec_depend>moveit</exec_depend>
-  <exec_depend>numpy</exec_depend>
-  <exec_depend>opencv-python</exec_depend>
-  <exec_depend>torch</exec_depend>
-  <exec_depend>torch-vision</exec_depend>
-  <exec_depend>pynput</exec_depend>
-  <exec_depend>Pillow</exec_depend>
+  <depend>geometry_msgs</depend>
+  <depend>rospy</depend>
+	<depend>roscpp</depend>
+  <depend>tf2_ros</depend>
+  <depend>std_msgs</depend>
+  <depend>tf</depend>
+  <depend>rosserial_arduino</depend>
+  <depend>moveit</depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
