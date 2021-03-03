@@ -1,0 +1,3 @@
+[submodule "yolov5_pytorch_ros"]
+	path = yolov5_pytorch_ros
+	url = https://github.com/raghavauppuluri13/yolov5_pytorch_ros.git
