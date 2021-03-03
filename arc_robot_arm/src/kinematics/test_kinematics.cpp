@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
 
 	Kinematics robot_arm = Kinematics();
 	std::vector<geometry_msgs::Pose> test_goal_poses = testFileToPoses("test_kinematics.txt");
-	double tolerance = 0.02; // meters
+	double tolerance = 0.001; // meters
 
 	for(int i = 0; i < test_goal_poses.size(); i++) {
 		robot_arm.moveToPoseGoal(test_goal_poses[i], tolerance);	
