@@ -3,16 +3,17 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Pose.h>
 
-#include <arc_robot_arm/kinematics.h>
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
 
-std::vector<geometry_msgs::Pose> testFileToPoses(std::string test_file_name) {
+static const std::string TEST_FILE_NAME = "test_kinematics.txt"; // Must be in local path when running ROS node!!
+
+std::vector<geometry_msgs::Pose> testFileToPoses() {
 	std::vector<geometry_msgs::Pose> test_goal_poses;
-	std::ifstream infile(test_file_name);	
+	std::ifstream infile(TEST_FILE_NAME);	
 	std::string line;
 
 	while (std::getline(infile, line)) {
@@ -36,17 +37,28 @@ std::vector<geometry_msgs::Pose> testFileToPoses(std::string test_file_name) {
 
 int main(int argc, char** argv) {
   ros::init(argc, argv, "test_kinematics");
-  ros::NodeHandle node_handle("~");
+  ros::NodeHandle nh;
   ros::AsyncSpinner spinner(1);
   spinner.start();
-  ROS_INFO("Waiting for context to come up");
 
-	Kinematics robot_arm = Kinematics();
-	std::vector<geometry_msgs::Pose> test_goal_poses = testFileToPoses("test_kinematics.txt");
-	double tolerance = 0.001; // meters
+	ros::Publisher test_goal_pose_pub = nh.advertise<geometry_msgs::Pose>("move_to_pose", 1000);
+
+	ros::Rate poll_rate(100);
+
+	// waits until subscribers are setup
+	while(test_goal_pose_pub.getNumSubscribers() == 0) {
+		poll_rate.sleep();
+	}
+
+	std::vector<geometry_msgs::Pose> test_goal_poses = testFileToPoses();
+
+	geometry_msgs::Pose pose;
+	pose.position.x = -0.2;
+	pose.position.y = 0;
+	pose.position.z = 0.15;
 
 	for(int i = 0; i < test_goal_poses.size(); i++) {
-		robot_arm.moveToPoseGoal(test_goal_poses[i], tolerance);	
+		test_goal_pose_pub.publish(test_goal_poses[i]);	
 	}
 
 	return 0;

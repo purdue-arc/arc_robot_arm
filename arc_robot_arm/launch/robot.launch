@@ -1,9 +1,18 @@
 <launch>
-	<arg name="real" default="0"/>
-	<arg name="robot" default="1"/>
-	<arg name="camera" default="1"/>
-  <include file="$(find mvp_arm_4dof_moveit_config)/launch/demo.launch"/>
+	<arg name="real" default="false"/>
+	<arg name="robot" default="true"/>
+	<arg name="camera" default="true"/>
+	<arg name="gazebo" default="false"/>
+  <arg name="urdf_path" value="$(find arc_robot_arm)/urdf/arm_with_camera.xacro"/>
+
+
+
+  <include file="$(find arc_robot_arm)/launch/rviz_gazebo.launch">
+  	<arg name="gazebo" value="$(arg gazebo)"/>
+  	<arg name="urdf_path" value="$(arg urdf_path)"/>
+	</include>
   <include file="$(find yolov5_pytorch_ros)/launch/detector.launch"/>
+	<node pkg="arc_robot_arm" type="move_to_pose" name="move_to_pose"/>
 	<group if="$(arg real)">
 		<group if="$(arg robot)">
 			<node pkg="rosserial_python" type="serial_node.py" name="rosserial" output="screen">
@@ -16,5 +25,9 @@
 		</group>
 		<node pkg="arc_robot_arm" type="sensors_tf_broadcaster" name="sensors_tf_broadcaster"/>
 	</group>
+  <param name="robot_description" command="xacro '$(arg urdf_path)'"/>
+
+  <!-- The semantic description that corresponds to the URDF -->
+  <param name="robot_description_semantic" textfile="$(find arc_robot_arm)/urdf/arm_with_camera.srdf" />
 
 </launch>
