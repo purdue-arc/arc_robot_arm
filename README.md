@@ -30,6 +30,13 @@ roslaunch arc_robot_arm robot.launch
 roscd arc_robot_arm/src/kinematics
 rosrun arc_robot_arm test_kinematics
 ```
+
+### Gazebo
+```
+
+roslaunch arc_robot_arm robot.launch gazebo:=true
+```
+
 ### Sim + Real
 
 #### Prerequisites
