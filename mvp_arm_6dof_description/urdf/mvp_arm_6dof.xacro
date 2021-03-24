@@ -1,9 +1,20 @@
 <?xml version="1.0" ?>
 <robot name="mvp_arm_6dof" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+	<!--
+	     ADDED DUMMY LINK AND DUMMMY JOINT
+	     -->
+
+
 <xacro:include filename="$(find mvp_arm_6dof_description)/urdf/materials.xacro" />
 <xacro:include filename="$(find mvp_arm_6dof_description)/urdf/mvp_arm_6dof.trans" />
 <xacro:include filename="$(find mvp_arm_6dof_description)/urdf/mvp_arm_6dof.gazebo" />
+
+<!-- dummy link below -->
+<link name="dummy">
+</link>
+<!-- dummy link above -->
+
 <link name="base_link">
   <inertial>
     <origin rpy="0 0 0" xyz="1.5273427923512274e-08 -0.0012615194115251204 0.015200351763726439"/>
@@ -570,6 +581,13 @@
     </geometry>
   </collision>
 </link>
+
+<!-- dummy joint below -->
+<joint name="dummy_joint" type="fixed">
+  <parent link="dummy"/>
+  <child link="base_link"/>
+ </joint>
+<!-- dummy joint above -->
 
 <joint name="Rigid14" type="fixed">
   <origin rpy="0 0 0" xyz="-0.019 -0.01475 0.041"/>
