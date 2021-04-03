@@ -14,15 +14,15 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   sensor_msgs
   std_msgs
+	yolov5_pytorch_ros
 )
 
 ## System dependencies are found with CMake's conventions
 find_package(OpenCV REQUIRED)
 
-
 catkin_package(
-	INCLUDE_DIRS
-	CATKIN_DEPENDS cv_bridge image_transport roscpp rospy sensor_msgs std_msgs
+  INCLUDE_DIRS
+	CATKIN_DEPENDS cv_bridge image_transport roscpp rospy sensor_msgs std_msgs yolov5_pytorch_ros
 )
 
 ###########
@@ -35,7 +35,3 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
 )
-
-## Declare a C++ executable
-add_executable(ibvs_node src/ibvs_node.cpp)
-target_link_libraries(ibvs_node ${catkin_LIBRARIES} ${OpenCV_INCLUDE_DIRS})

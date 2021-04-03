@@ -1,3 +1,9 @@
 <launch>
-	<node ns="cv_camera_node" name="visual_servoing_node" pkg="arc_robot_arm_visual_servoing" type="ibvs_node" respawn="true"/>
+  <arg name="image_topic" default="/cv_camera_node/image_rect_color" />
+
+	<group ns="visual_servoing">
+		<param name="image_topic" type="str" value="$(arg image_topic)" />
+		<node name="visual_servoing_node" pkg="arc_robot_arm_visual_servoing" type="vs_node" output="screen" respawn="true"/>
+	</group>
+
 </launch>
