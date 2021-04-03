@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+  <world name="default">
+
+    <!-- A gazebo links attacher -->
+    <plugin name="ros_link_attacher_plugin" filename="libgazebo_ros_link_attacher.so"/>
+    
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+      <pose>0 0 -0.0405 0 0 0</pose>
+    </include>
+
+    <!-- camera view -->
+    <gui>
+      <camera name="user_default">
+            <pose>0.556 -0.9132 0.8266 0 0.59 2.15</pose>
+      </camera>
+    </gui>
+
+    <!-- chessboard -->
+    <include>
+      <uri>model://chessboard</uri>
+      <pose>0 0 -0.02 0 0 1.5708</pose>
+      <static>1</static>
+    </include>
+
+    <!-- white pieces -->
+    <include>
+      <uri>model://pawnW1</uri>
+      <pose>-0.125 -0.175 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnW2</uri>
+      <pose>-0.125 -0.125 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnW3</uri>
+      <pose>-0.125 -0.075 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnW4</uri>
+      <pose>-0.125 -0.025 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnW5</uri>
+      <pose>-0.125 0.025 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnW6</uri>
+      <pose>-0.125 0.075 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnW7</uri>
+      <pose>-0.125 0.125 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnW8</uri>
+      <pose>-0.125 0.175 0.0201 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://towerW1</uri>
+      <pose>-0.175 -0.175 0.0301 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://horseW1</uri>
+      <pose>-0.175 -0.125 0.0301 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://knightW1</uri>
+      <pose>-0.175 -0.075 0.0301 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://queenW</uri>
+      <pose>-0.175 0.025 0.04 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://kingW</uri>
+      <pose>-0.175 -0.025 0.04 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://knightW2</uri>
+      <pose>-0.175 0.075 0.0301 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://horseW2</uri>
+      <pose>-0.175 0.125 0.0301 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://towerW2</uri>
+      <pose>-0.175 0.175 0.0301 0 0 0</pose>
+    </include>
+
+
+    <!-- black pieces -->
+    <include>
+      <uri>model://pawnB1</uri>
+      <pose>0.125 -0.175 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnB2</uri>
+      <pose>0.125 -0.125 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnB3</uri>
+      <pose>0.125 -0.075 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnB4</uri>
+      <pose>0.125 -0.025 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnB5</uri>
+      <pose>0.125 0.025 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnB6</uri>
+      <pose>0.125 0.075 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnB7</uri>
+      <pose>0.125 0.125 0.0201 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://pawnB8</uri>
+      <pose>0.125 0.175 0.0201 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://towerB1</uri>
+      <pose>0.175 -0.175 0.0301 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://horseB1</uri>
+      <pose>0.175 -0.125 0.0301 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://knightB1</uri>
+      <pose>0.175 -0.075 0.0301 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://queenB</uri>
+      <pose>0.175 0.025 0.04 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://kingB</uri>
+      <pose>0.175 -0.025 0.04 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://knightB2</uri>
+      <pose>0.175 0.075 0.0301 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://horseB2</uri>
+      <pose>0.175 0.125 0.0301 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://towerB2</uri>
+      <pose>0.175 0.175 0.0301 0 0 0</pose>
+    </include>
+  </world>
+</sdf>

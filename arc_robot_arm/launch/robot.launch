@@ -2,17 +2,39 @@
 	<arg name="real" default="false"/>
 	<arg name="robot" default="true"/>
 	<arg name="camera" default="true"/>
+	<arg name="detect" default="true"/>
+	<arg name="vs" default="true"/>
 	<arg name="gazebo" default="false"/>
   <arg name="urdf_path" value="$(find arc_robot_arm)/urdf/arm_with_camera.xacro"/>
+  <arg name="world_name" value="$(find arc_robot_arm)/worlds/test_visual_servoing.world"/>
 
+<!-- Object detection -->
+	<group if="$(arg detect)">
+		<include file="$(find yolov5_pytorch_ros)/launch/detector.launch">	
+			<arg name="image_topic" if="$(eval gazebo == false)" value="/cv_camera_node/image_rect_color"/>
+			<arg name="image_topic" if="$(eval gazebo == true)" value="/camera/color/image_raw"/>
+    	<arg name="confidence" value="0.40"/>
+    	<arg name="weights_name" value="chess_v2.pt"/>
+		</include>
+	</group>
 
+<!-- Visual Servoing -->
+	<group if="$(arg vs)">
+		<include file="$(find arc_robot_arm_visual_servoing)/launch/visual_servoing.launch">	
+			<arg name="image_topic" if="$(eval gazebo == false)" value="/cv_camera_node/image_rect_color"/> <arg name="image_topic" if="$(eval gazebo == true)" value="/camera/color/image_raw"/>
+		</include>
+	</group>
 
+<!-- Rviz + Gazebo -->
   <include file="$(find arc_robot_arm)/launch/rviz_gazebo.launch">
-  	<arg name="gazebo" value="$(arg gazebo)"/>
-  	<arg name="urdf_path" value="$(arg urdf_path)"/>
+    <arg name="gazebo" value="$(arg gazebo)"/>
+    <arg name="urdf_path" value="$(arg urdf_path)"/>
+    <arg name="world_name" value="$(arg world_name)"/>
 	</include>
-  <include file="$(find yolov5_pytorch_ros)/launch/detector.launch"/>
-	<node pkg="arc_robot_arm" type="move_to_pose" name="move_to_pose"/>
+
+
+	<node pkg="arc_robot_arm" type="move_to" name="move_to" output="screen"/>
+
 	<group if="$(arg real)">
 		<group if="$(arg robot)">
 			<node pkg="rosserial_python" type="serial_node.py" name="rosserial" output="screen">
@@ -25,6 +47,7 @@
 		</group>
 		<node pkg="arc_robot_arm" type="sensors_tf_broadcaster" name="sensors_tf_broadcaster"/>
 	</group>
+
   <param name="robot_description" command="xacro '$(arg urdf_path)'"/>
 
   <!-- The semantic description that corresponds to the URDF -->

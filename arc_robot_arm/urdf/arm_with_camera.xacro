@@ -7,7 +7,7 @@
 	<xacro:if value="$(arg load_camera)">
 		<xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro"/>
 		<xacro:sensor_d435 name="camera" topics_ns="camera" parent="gripper_base_v1_1" publish_pointcloud="true">
-			<origin xyz="0 0 0.02" rpy="0 0 ${pi}" />
+			<origin xyz="0 0 0.025" rpy="0 0.26 ${pi}" />
 		</xacro:sensor_d435>
 	</xacro:if>
 

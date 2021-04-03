@@ -33,10 +33,6 @@ add_executable(sensors_tf_broadcaster src/tf/sensors_tf_broadcaster.cpp)
 
 target_link_libraries(sensors_tf_broadcaster ${catkin_LIBRARIES})
 
-add_executable(move_to_pose src/kinematics/move_to_pose_node.cpp src/kinematics/kinematics.cpp)
+add_executable(move_to src/kinematics/move_to.cpp src/kinematics/kinematics.cpp)
 
-target_link_libraries(move_to_pose ${catkin_LIBRARIES})
-
-add_executable(test_kinematics src/kinematics/test_kinematics.cpp)
-
-target_link_libraries(test_kinematics ${catkin_LIBRARIES})
+target_link_libraries(move_to ${catkin_LIBRARIES})

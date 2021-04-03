@@ -51,7 +51,7 @@ void Kinematics::printRobotState() {
 
 bool Kinematics::moveToPoseGoal(geometry_msgs::Pose goal_pose, double tolerance = -1.0) {
 	
-  ROS_INFO("Trying IK.....");
+  ROS_INFO("Trying pose goal move.....");
   move_group_->setApproximateJointValueTarget(goal_pose);
 
 	bool moveItSuccess = (move_group_->move() == moveit::planning_interface::MoveItErrorCode::SUCCESS);
@@ -65,9 +65,14 @@ bool Kinematics::moveToPoseGoal(geometry_msgs::Pose goal_pose, double tolerance 
 	return moveItSuccess;
 } 
 
-// TODO: Yet to be implemented
-bool Kinematics::moveToJointGoal(sensor_msgs::JointState) {
-	return true;
+bool Kinematics::moveToJointGoal(sensor_msgs::JointState joint_state) {
+  ROS_INFO("Trying joint goal move.....");
+  move_group_->setJointValueTarget(joint_state);
+
+	bool moveItSuccess = (move_group_->move() == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+  ROS_INFO_NAMED("kinematics-info", "Moving to joint goal %s", moveItSuccess ? "SUCCESS" : "FAILURE");
+	
+	return moveItSuccess;
 }
  
 bool Kinematics::isClose(geometry_msgs::Pose goal, double tolerance) {

@@ -40,17 +40,23 @@
 		<!-- Gazebo specific options -->
 		<arg name="gazebo_gui" default="true"/>
 		<arg name="paused" default="false"/>
-
-		<!-- launch the gazebo simulator and spawn the robot -->
-		<include file="$(find mvp_arm_4dof_moveit_config)/launch/gazebo.launch" >
-			<arg name="paused" value="$(arg paused)"/>
-			<arg name="gazebo_gui" value="$(arg gazebo_gui)"/>
-			<arg name="urdf_path" value="$(arg urdf_path)"/>
+  	<!-- startup simulated world -->
+		<include file="$(find gazebo_ros)/launch/empty_world.launch">
 			<arg name="world_name" value="$(arg world_name)"/>
+			<arg name="paused" value="$(arg paused)"/>
+			<arg name="gui" value="$(arg gazebo_gui)"/>
 		</include>
+
+		<!-- push robot_description to factory and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
+		<node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -x 0.35 -y 0 -z 0.02"
+			respawn="false" output="screen" />
 	</group>
 
+  <!-- Start ROS controllers -->
+	<include file="$(find mvp_arm_4dof_moveit_config)/launch/ros_controllers.launch"/>
+
   <!-- If needed, broadcast static tf for robot root -->
+<node pkg="tf" type="static_transform_publisher" name="camera_broadcaster" args="0 0 0.025 0.13 0 1 0 gripper_base_v1_1 camera 100" />
   <!-- We do not have a robot connected, so publish fake joint states -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" unless="$(arg use_gui)">
     <rosparam param="source_list">[move_group/fake_controller_joint_states]</rosparam>
