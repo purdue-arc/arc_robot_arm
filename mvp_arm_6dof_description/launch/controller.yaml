@@ -1,0 +1,31 @@
+mvp_arm_6dof_controller:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Position Controllers --------------------------------------
+  Rev17_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev17
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  Rev20_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev20
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  Rev26_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev26
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  Rev36_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev36
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  Rev40_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev40
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  Rev45_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev45
+    pid: {p: 100.0, i: 0.01, d: 10.0}
