@@ -22,9 +22,17 @@ catkin_make
 source ~/catkin_ws/devel/setup.bash
 ```
 
-## Quickstart (Sim or Sim + Real) 
+## Quickstart (Sim or Sim + Real)
 
-### Sim Only
+#### Roslaunch params
+- `real`: Run with hardware (Default: `false`)
+  - `robot`: Run with Arduino/Robot (Default: `true`)
+  - `camera`: Run with Arduino/Robot (Default: `true`)
+- `detect`: Run with Yolov5 Object Detection node (Default: `true`)
+- `vs`: Run with visual servoing node (Default: `false`)
+- `gazebo`: Run with gazebo environment for arm (Default: `false`)
+
+### Sim Only (Default)
 ```
 roslaunch arc_robot_arm robot.launch
 roscd arc_robot_arm/src/kinematics
@@ -50,6 +58,4 @@ roslaunch arc_robot_arm robot.launch real:=true
 roscd arc_robot_arm/src/kinematics
 rosrun arc_robot_arm test_kinematics
 ```
-#### Roslaunch params
-- If no Arduino/Robot -> add `robot:=false` to roslaunch command
-- If no Camera -> add `camera:=false` to roslaunch command
+
