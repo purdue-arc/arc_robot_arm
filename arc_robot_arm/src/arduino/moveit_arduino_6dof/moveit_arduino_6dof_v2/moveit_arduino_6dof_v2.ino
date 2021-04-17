@@ -7,17 +7,12 @@
  * For the full tutorial write up, visit
  * www.ros.org/wiki/rosserial_arduino_demos
  */
-
-#if defined(ARDUINO) && ARDUINO >= 100
-  #include "Arduino.h"
-#else
-  #include <WProgram.h>
-#endif
-
+#include "ros.h" // uses Serial1
 #include <DynamixelShield.h>
-#include <ros.h>
 #include <std_msgs/UInt16.h>
 #include <sensor_msgs/JointState.h>
+
+// TODO: Use enums instead of defines
 #define DOF 6
 #define OFFSET 90 // Offset angle from sim to real robot
 #define UPPER_REAL_GRIP 180
