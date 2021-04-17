@@ -1,7 +1,7 @@
 /* Author: Raghava Uppuluri */
 
 #include <ros/ros.h>
-#include <geometry_msgs/Pose.h>
+#include <geometry_msgs/PoseStamped.h>
 #include <sensor_msgs/JointState.h>
 
 #include <arc_robot_arm/kinematics.h>
@@ -14,16 +14,16 @@ class MoveGoalListener {
 	public:
 		Kinematics robot_arm;
 
-		void move_to_pose_cb(const geometry_msgs::Pose&);
+		void move_to_pose_cb(const geometry_msgs::PoseStamped&);
 		void move_to_joint_state_cb(const sensor_msgs::JointState&);
 };
 
-void MoveGoalListener::move_to_pose_cb(const geometry_msgs::Pose& goal_pose) {
+void MoveGoalListener::move_to_pose_cb(const geometry_msgs::PoseStamped& goal_pose) {
 	
   ROS_INFO("Message Recieved");
 
 	const double tolerance = 0.001; // meters
-	robot_arm.moveToPoseGoal(goal_pose, tolerance);	
+	robot_arm.moveToPoseGoal(goal_pose.pose, tolerance);	
 }
 
 void MoveGoalListener::move_to_joint_state_cb(const sensor_msgs::JointState& goal_state) {

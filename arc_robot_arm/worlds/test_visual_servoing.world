@@ -29,7 +29,7 @@
     </include>
     <include>
       <uri>model://kingW</uri>
-      <pose>0.175 -0.025 0.01 0 0 0</pose>
+      <pose>0.1 -0.025 0.01 0 0 0</pose>
     </include>
   </world>
 </sdf>

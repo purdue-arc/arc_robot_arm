@@ -7,9 +7,8 @@
  * For the full tutorial write up, visit
  * www.ros.org/wiki/rosserial_arduino_demos
  */
-#include "ros.h" // uses Serial1
+#include <ros.h> // uses Serial1
 #include <DynamixelShield.h>
-#include <std_msgs/UInt16.h>
 #include <sensor_msgs/JointState.h>
 
 // TODO: Use enums instead of defines
@@ -43,7 +42,6 @@ ros::NodeHandle nh;
 
 float gripper;
 float arm[DOF];
-ros::NodeHandle  nh;
 
 char print_str[15]; // used to print out 15 char outputs
 
