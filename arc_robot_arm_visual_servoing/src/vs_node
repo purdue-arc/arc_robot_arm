@@ -5,121 +5,68 @@ import sys
 import cv2
 import numpy as np
 
-from std_msgs.msg import String
-from sensor_msgs.msg import Image
-from sensor_msgs.msg import CameraInfo
-from cv_bridge import CvBridge, CvBridgeError
-import pyrealsense2 as rs2
-from tools.color_detection import get_bbox_color   
+from sensor_msgs.msg import JointState 
+from geometry_msgs.msg import Pose, PoseStamped
 
 if (not hasattr(rs2, 'intrinsics')):
     import pyrealsense2.pyrealsense2 as rs2
+
 from tools.depth_image_processing import DepthImageProcessing
 
 class VisualServoing:
+	'''VisualServoing
+	Implements position based visual servoing using depth image	
+	'''
 
 	def __init__(self):
-		image_sub_topic = rospy.get_param("image_topic")
-		depth_sub_topic = image_sub_topic.replace("color", "depth") 
-		confidence_sub_topic = image_sub_topic.replace("color", "confidence") 
-		depth_info_sub_topic = depth_sub_topic.replace("image_raw", "camera_info") 
+		move_to_pose_topic = "/move_to_pose"
+		move_to_joint_state_topic = "/move_to_joint_state"
 
-		self.bridge = CvBridge()
-		self.frame = None 
-		self.object_center = None 
-		self.intrinsics = None
-		self.pix_grade = None
+		self.joint_names = ['Rev1','Rev2','Rev3','Rev4']
 
-		self.image_pub = rospy.Publisher("visual_servoing_image", Image, queue_size=1000)
-		self.image_sub = rospy.Subscriber(image_sub_topic, Image, self.image_callback)
-		self.depth_image_sub = rospy.Subscriber(depth_sub_topic, Image, self.image_depth_callback)
-		self.depth_confidence_sub = rospy.Subscriber(confidence_sub_topic, Image, self.depth_confidence_callback)
-		self.depth_info_sub = rospy.Subscriber(depth_info_sub_topic, CameraInfo, self.image_depth_info_callback)
+		self.pose_pub = rospy.Publisher(move_to_pose_topic, PoseStamped, queue_size=1000)
+		self.joint_state_pub = rospy.Publisher(move_to_joint_state_topic, JointState, queue_size=1000)
 
-	def image_depth_callback(self, data):
-		try:
-			cv_image = self.bridge.imgmsg_to_cv2(data, data.encoding)
-			line = '\r'
+	def wait_for_kinematics(self):
+		r = rospy.Rate(10)
+		while(self.pose_pub.get_num_connections() == 0):
+			print("Waiting for move_to_pose to get setup")
+			r.sleep()
 
-			if self.intrinsics and self.object_center is not None:
-				target_pix = [self.object_center[1],self.object_center[0]] # convert (x, y) to (row, col) for indexing
-				depth = cv_image[target_pix[0], target_pix[1]]
-				result = rs2.rs2_deproject_pixel_to_point(self.intrinsics, target_pix, depth)
-				line += '  Coordinate: %8.2f %8.2f %8.2f.' % (result[0], result[1], result[2])
-			if (self.pix_grade is not None):
-				line += ' Grade: %2d' % self.pix_grade
+		while(self.joint_state_pub.get_num_connections() == 0):
+			print("Waiting for move_to_joint_state to get setup")
+			r.sleep()
 
-			if(line):
-				line += '\r'
-				sys.stdout.write(line)
-				sys.stdout.flush()
-		except CvBridgeError as e:
-			print(e)
-			return
-		except ValueError as e:
-			return
+		rospy.sleep(2)
 
-	def depth_confidence_callback(self, data):
-		try:
-			cv_image = self.bridge.imgmsg_to_cv2(data, data.encoding)
+	def move_to_scan_pose(self):
 
-			grades = np.bitwise_and(cv_image >> 4, 0x0f)
+		SCAN_JOINT_STATE = [-0.0169296936004711, 0.29984756294442627, 1.0763445405577863, -0.1696460018521434]
+		joint_state = JointState()
+		joint_state.position = SCAN_JOINT_STATE 
+		joint_state.name = self.joint_names 
 
-			if (self.object_center is not None):
-				target_pix = [self.object_center[1],self.object_center[0]] # convert (x, y) to (row, col) for indexing
-				self.pix_grade = grades[target_pix[0],target_pix[1]] 
-		except CvBridgeError as e:
-			print(e)
-			return
+		self.joint_state_pub.publish(joint_state)
+		rospy.sleep(5)
 
-	def image_depth_info_callback(self, camera_info):
-		try:
-			if self.intrinsics:
-				return
-			self.intrinsics = rs2.intrinsics()
-			self.intrinsics.width = camera_info.width
-			self.intrinsics.height = camera_info.height
-			self.intrinsics.ppx = camera_info.K[2]
-			self.intrinsics.ppy = camera_info.K[5]
-			self.intrinsics.fx = camera_info.K[0]
-			self.intrinsics.fy = camera_info.K[4]
-			if camera_info.distortion_model == 'plumb_bob':
-				self.intrinsics.model = rs2.distortion.brown_conrady
-			elif camera_info.distortion_model == 'equidistant':
-				self.intrinsics.model = rs2.distortion.kannala_brandt4
-			self.intrinsics.coeffs = [i for i in camera_info.D]
-		except CvBridgeError as e:
-			print(e)
-			return
-
-	def image_callback(self, image_data):
-		'''ROS Callback for image_topic
-		
-		Arguments:	
-		image_data -- message of type sensor_msgs.Image
-		'''
-		try:
-			self.frame = self.bridge.imgmsg_to_cv2(image_data, "bgr8")
-
-			# Color range for white chess piece (lower, upper) 
-			chess_white = (np.array([15, 61, 33]), np.array([21, 139, 250]))
-
-			bbox = get_bbox_color(self.frame, chess_white);
-			if(bbox is not None): 
-				height,width,dims = self.frame.shape
-				self.frame = cv2.drawMarker(self.frame, (round(width/2),round(height/2)), (0,0,255), 
-							markerSize=30, thickness=2, line_type=cv2.MARKER_CROSS)
-				x, y, width, height = bbox
-				self.object_center = (round(x + width/2), round(y + height/2)) # (x, y) where (0,0) is top left corner
-				cv2.rectangle(self.frame, (x, y), (x + width, y + height), (255,0,0), 2)
-
-			self.image_pub.publish(self.bridge.cv2_to_imgmsg(self.frame, "bgr8"))
-			
-		except CvBridgeError as e:
-			print(e)
+	def move_to_pose(self, pose):
+		self.pose_pub.publish(pose)
+		rospy.sleep(5)
 
 if __name__ == '__main__':
 	rospy.init_node('vs_node')
-	vs = VisualServoing()
 
+	vs = VisualServoing()
+	depth_proc = DepthImageProcessing()
+
+	vs.wait_for_kinematics()
+	
+	vs.move_to_scan_pose()
+	while not rospy.is_shutdown():
+		target_coord = depth_proc.get_target_coord()	
+		if(target_coord is not None):
+			print(target_coord)
+			vs.move_to_pose(target_coord)	
+			break
+		r.sleep()
 	rospy.spin()

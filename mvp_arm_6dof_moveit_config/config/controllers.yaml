@@ -1,0 +1,12 @@
+controller_list:
+  - name: arm_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - Rev17
+      - Rev20
+      - Rev26
+      - Rev36
+      - Rev40
+      - Rev45

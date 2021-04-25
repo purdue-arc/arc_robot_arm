@@ -1,9 +1,9 @@
 <launch>
 	<arg name="real" default="false"/>
-	<arg name="robot" default="true"/>
-	<arg name="camera" default="true"/>
-	<arg name="detect" default="true"/>
-	<arg name="vs" default="true"/>
+	<arg name="robot" default="false"/>
+	<arg name="camera" default="false"/>
+	<arg name="detect" default="false"/>
+	<arg name="vs" default="false"/>
 	<arg name="gazebo" default="false"/>
   <arg name="urdf_path" value="$(find arc_robot_arm)/urdf/arm_with_camera.xacro"/>
   <arg name="world_name" value="$(find arc_robot_arm)/worlds/test_visual_servoing.world"/>

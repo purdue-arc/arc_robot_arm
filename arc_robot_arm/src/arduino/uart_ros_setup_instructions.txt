@@ -1,0 +1,3 @@
+Serial1 on Arduino Mega
+white -> TX1 - PINOUT 18
+green -> RX1 - PINOUT 19
