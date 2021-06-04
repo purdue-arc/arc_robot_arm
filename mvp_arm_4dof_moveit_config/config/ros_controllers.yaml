@@ -2,6 +2,9 @@
 moveit_sim_hw_interface:
   joint_model_group:  arm
   joint_model_group_pose: home
+
+  joint_model_group: gripper 
+  joint_model_group_pose: closed 
 # Settings  for ros_control_boilerplate control loop
 generic_hw_control_loop:
   loop_hz:  300
@@ -15,9 +18,9 @@ hardware_interface:
     - Rev4
     - Rev5
     - Rev6
-  sim_control_mode: 1   # 0:  position, 1:  velocity
+  sim_control_mode: 0   # 0:  position, 1:  velocity
 arm_controller:
-  type: effort_controllers/JointTrajectoryController
+  type: position_controllers/JointPositionController
   joints:
     - Rev1
     - Rev2
@@ -31,7 +34,7 @@ arm_controller:
   state_publish_rate: 25
 
 gripper_controller:
-  type: effort_controllers/JointTrajectoryController
+  type: position_controllers/JointPositionController
   joints:
     - Rev5
     - Rev6
@@ -47,7 +50,7 @@ joint_state_controller:
   publish_rate: 50
 controller_list:
   - name: arm_controller
-    action_ns:  follow_joint_trajectory
+    action_ns: position_controller 
     default:  True
     type: FollowJointTrajectory
     joints:
@@ -56,7 +59,7 @@ controller_list:
       - Rev3
       - Rev4
   - name: gripper_controller
-    action_ns:  follow_joint_trajectory
+    action_ns: position_controller 
     default:  True
     type: FollowJointTrajectory
     joints:

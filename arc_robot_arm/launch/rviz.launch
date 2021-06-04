@@ -1,4 +1,5 @@
 <launch>
+
   <!-- specify the planning pipeline -->
   <arg name="pipeline" default="ompl" />
 
@@ -21,10 +22,13 @@
   <arg name="use_gui" default="false" />
   <arg name="use_rviz" default="true" />
 
+  <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
+  <include file="$(find mvp_arm_4dof_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="true"/>
+  </include>
 
-	<include file="$(find mvp_arm_4dof_moveit_config)/launch/planning_context.launch">
-	 <arg name="load_robot_description" value="true"/>
-	</include>
+  <!-- If needed, broadcast static tf for robot root -->
+  
 
   <!-- We do not have a robot connected, so publish fake joint states -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" unless="$(arg use_gui)">
@@ -45,32 +49,6 @@
     <arg name="debug" value="$(arg debug)"/>
     <arg name="pipeline" value="$(arg pipeline)"/>
   </include>
-
-  <arg name="urdf_path" default="$(find mvp_arm_4dof_description)/urdf/mvp_arm_4dof.urdf"/>
-
-  <arg name="gazebo" default="false" />
-  <arg name="world_name" default="worlds/empty.world"/>
-	<group if="$(arg gazebo)">
-		<!-- Gazebo specific options -->
-		<arg name="gazebo_gui" default="true"/>
-		<arg name="paused" default="false"/>
-  	<!-- startup simulated world -->
-		<include file="$(find gazebo_ros)/launch/empty_world.launch">
-			<arg name="world_name" value="$(arg world_name)"/>
-			<arg name="paused" value="$(arg paused)"/>
-			<arg name="gui" value="$(arg gazebo_gui)"/>
-		</include>
-
-		<!-- push robot_description to factory and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
-		<node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -x 0.35 -y 0 -z 0.02"
-			respawn="false" output="screen" />
-	</group>
-
-  <!-- If needed, broadcast static tf for robot root -->
-	<node pkg="tf" type="static_transform_publisher" name="camera_broadcaster" args="0 0 0.025 0.13 0 1 0 gripper_base_v1_1 camera 100" />
-
-
-
 
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
   <include file="$(find mvp_arm_4dof_moveit_config)/launch/moveit_rviz.launch" if="$(arg use_rviz)">

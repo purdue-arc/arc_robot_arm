@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 
 import rospy
+import tf
 import sys
 import cv2
 import numpy as np
-
 from sensor_msgs.msg import JointState 
 from geometry_msgs.msg import Pose, PoseStamped
-
-if (not hasattr(rs2, 'intrinsics')):
-    import pyrealsense2.pyrealsense2 as rs2
 
 from tools.depth_image_processing import DepthImageProcessing
 
@@ -26,6 +23,7 @@ class VisualServoing:
 
 		self.pose_pub = rospy.Publisher(move_to_pose_topic, PoseStamped, queue_size=1000)
 		self.joint_state_pub = rospy.Publisher(move_to_joint_state_topic, JointState, queue_size=1000)
+		self.tf_listener = tf.TransformListener()
 
 	def wait_for_kinematics(self):
 		r = rospy.Rate(10)
@@ -41,17 +39,39 @@ class VisualServoing:
 
 	def move_to_scan_pose(self):
 
-		SCAN_JOINT_STATE = [-0.0169296936004711, 0.29984756294442627, 1.0763445405577863, -0.1696460018521434]
+		SCAN_JOINT_STATE = [0, -0.25, 0.8, 1]
 		joint_state = JointState()
 		joint_state.position = SCAN_JOINT_STATE 
 		joint_state.name = self.joint_names 
 
 		self.joint_state_pub.publish(joint_state)
-		rospy.sleep(5)
 
 	def move_to_pose(self, pose):
 		self.pose_pub.publish(pose)
-		rospy.sleep(5)
+
+	def _to_pose(self, joints, joint_names) :
+		x,y,z = joints
+		pose = Pose()
+		pose.position.x = float(x)
+		pose.position.y = float(y)
+		pose.position.z = float(z)
+		return pose
+
+	def focus_on_object(self, object_center, camera_center):
+		if object_center and camera_center:
+			object_center = np.array(object_center)
+			camera_center = np.array(camera_center)
+			diff = camera_center - camera_center
+
+			try:
+				(trans, rot) = self.tf_listener.lookupTransform('/camera_color_optical_frame', '/base_link', rospy.Time(0))
+			except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
+				pass
+
+			left_finger_to_grip_pos = [-0.08636, 0, -0.0127]
+	
+			Pose target_pose =  
+
 
 if __name__ == '__main__':
 	rospy.init_node('vs_node')
@@ -62,11 +82,18 @@ if __name__ == '__main__':
 	vs.wait_for_kinematics()
 	
 	vs.move_to_scan_pose()
+	
+	vs.focus_on_object(depth_proc.object_center, depth_proc.camera_center)
+
+	'''
+	r = Rate(10)
 	while not rospy.is_shutdown():
 		target_coord = depth_proc.get_target_coord()	
 		if(target_coord is not None):
 			print(target_coord)
-			vs.move_to_pose(target_coord)	
+			#vs.move_to_pose(target_coord)	
 			break
 		r.sleep()
+	'''
+
 	rospy.spin()

@@ -1,5 +1,5 @@
 <launch>
-  <arg name="image_topic" default="/cv_camera_node/image_rect_color" />
+  <arg name="image_topic" default="/camera/color/image_raw" />
 
 	<group ns="visual_servoing">
 		<param name="image_topic" type="str" value="$(arg image_topic)" />

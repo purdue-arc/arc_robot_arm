@@ -11,17 +11,16 @@
 <!-- Object detection -->
 	<group if="$(arg detect)">
 		<include file="$(find yolov5_pytorch_ros)/launch/detector.launch">	
-			<arg name="image_topic" if="$(eval gazebo == false)" value="/cv_camera_node/image_rect_color"/>
-			<arg name="image_topic" if="$(eval gazebo == true)" value="/camera/color/image_raw"/>
-    	<arg name="confidence" value="0.40"/>
-    	<arg name="weights_name" value="chess_v2.pt"/>
+			<arg name="image_topic" value="/camera/color/image_raw"/>
+    	<arg name="confidence" value="0.60"/>
+    	<arg name="weights_name" value="chess_v3.pt"/>
 		</include>
 	</group>
 
 <!-- Visual Servoing -->
 	<group if="$(arg vs)">
 		<include file="$(find arc_robot_arm_visual_servoing)/launch/visual_servoing.launch">	
-			<arg name="image_topic" if="$(eval gazebo == false)" value="/cv_camera_node/image_rect_color"/> <arg name="image_topic" if="$(eval gazebo == true)" value="/camera/color/image_raw"/>
+			<arg name="image_topic" value="/camera/color/image_raw"/>
 		</include>
 	</group>
 
@@ -31,7 +30,6 @@
     <arg name="urdf_path" value="$(arg urdf_path)"/>
     <arg name="world_name" value="$(arg world_name)"/>
 	</include>
-
 
 	<node pkg="arc_robot_arm" type="move_to" name="move_to" output="screen"/>
 
@@ -43,7 +41,7 @@
 			</node>
 		</group>
 		<group if="$(arg camera)">
-			<include file="$(find arc_robot_arm)/launch/camera.launch"/>
+      <include file="$(find realsense2_camera)/launch/rs_camera.launch"/>
 		</group>
 		<node pkg="arc_robot_arm" type="sensors_tf_broadcaster" name="sensors_tf_broadcaster"/>
 	</group>

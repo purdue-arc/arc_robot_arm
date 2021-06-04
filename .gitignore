@@ -1,0 +1,10 @@
+datasets/
+depreciated/
+*venv*
+yolov5
+.vscode*
+aruco*
+chesslab*
+darknet*
+Chess*
+*.pyc
