@@ -1,0 +1,3 @@
+<launch>
+	<node pkg="protoarm_kinematics" type="move_to" name="move_to" output="screen"/>
+</launch>

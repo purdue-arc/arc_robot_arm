@@ -14,7 +14,6 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   sensor_msgs
   std_msgs
-	yolov5_pytorch_ros
 )
 
 ## System dependencies are found with CMake's conventions
@@ -22,7 +21,7 @@ find_package(OpenCV REQUIRED)
 
 catkin_package(
   INCLUDE_DIRS
-	CATKIN_DEPENDS cv_bridge image_transport roscpp rospy sensor_msgs std_msgs yolov5_pytorch_ros
+	CATKIN_DEPENDS cv_bridge image_transport roscpp rospy sensor_msgs std_msgs
 )
 
 ###########
