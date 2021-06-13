@@ -1,5 +1,6 @@
 <launch>
 
+  <!-- this argument is not used here, only necessary so that this launch file has the same args as fake_moveit_controller_manager.launch -->
   <arg name="execution_type" default="interpolate" />
 
   <!-- loads moveit_controller_manager on the parameter server which is taken as argument

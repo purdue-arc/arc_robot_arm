@@ -4,8 +4,8 @@ controller_list:
     joints:
       - Rev1
       - Rev2
-      - Rev4
       - Rev3
+      - Rev4
       - Rev5
   - name: fake_gripper_controller
     type: $(arg execution_type)

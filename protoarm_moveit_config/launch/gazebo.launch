@@ -11,9 +11,6 @@
     <arg name="gui" value="$(arg gazebo_gui)"/>
   </include>
 
-  <rosparam file="$(find protoarm_gazebo)/config/gazebo_controllers.yaml" command="load"/>
-  <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller gripper_controller" respawn="false" output="screen"/>
-
   <!-- send robot urdf to param server -->
   <param name="robot_description" command="$(find xacro)/xacro '$(find protoarm_description)/urdf/protoarm.xacro'"/>
 

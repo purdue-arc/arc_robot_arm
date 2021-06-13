@@ -17,27 +17,19 @@ protoarm_controller:
     type: effort_controllers/JointPositionController
     joint: Rev3
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  Rev4_position_controller:
-    type: effort_controllers/JointPositionController
-    joint: Rev4
-    pid: {p: 100.0, i: 0.01, d: 10.0}
   Rev5_position_controller:
     type: effort_controllers/JointPositionController
     joint: Rev5
-    pid: {p: 100.0, i: 0.01, d: 10.0}
-  G_Rev2_position_controller:
-    type: effort_controllers/JointPositionController
-    joint: G_Rev2
-    pid: {p: 100.0, i: 0.01, d: 10.0}
-  G_Rev3_position_controller:
-    type: effort_controllers/JointPositionController
-    joint: G_Rev3
     pid: {p: 100.0, i: 0.01, d: 10.0}
   G_Rev1_position_controller:
     type: effort_controllers/JointPositionController
     joint: G_Rev1
     pid: {p: 100.0, i: 0.01, d: 10.0}
-  G_Rev4_position_controller:
+  G_Rev2_position_controller:
     type: effort_controllers/JointPositionController
-    joint: G_Rev4
+    joint: G_Rev2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  Rev4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: Rev4
     pid: {p: 100.0, i: 0.01, d: 10.0}

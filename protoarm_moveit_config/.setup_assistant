@@ -1,11 +1,11 @@
 moveit_setup_assistant_config:
   URDF:
     package: protoarm_description
-    relative_path: urdf/protoarm.urdf
+    relative_path: urdf/protoarm.xacro
     xacro_args: ""
   SRDF:
     relative_path: config/protoarm.srdf
   CONFIG:
     author_name: Raghava Uppuluri
     author_email: ruppulur@purdue.edu
-    generated_timestamp: 1622987349
+    generated_timestamp: 1623571253

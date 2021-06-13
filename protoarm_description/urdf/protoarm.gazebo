@@ -28,13 +28,6 @@
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="wrist_1">
-  <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
-  <selfCollide>true</selfCollide>
-</gazebo>
-
 <gazebo reference="forearm_1">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
@@ -49,13 +42,6 @@
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="right_gear_1">
-  <material>${body_color}</material>
-  <mu1>0.2</mu1>
-  <mu2>0.2</mu2>
-  <selfCollide>true</selfCollide>
-</gazebo>
-
 <gazebo reference="right_finger_1">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
@@ -63,7 +49,7 @@
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="left_gear_1">
+<gazebo reference="right_pad_1">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
@@ -71,6 +57,20 @@
 </gazebo>
 
 <gazebo reference="left_finger_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="left_pad_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference="wrist_1">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
