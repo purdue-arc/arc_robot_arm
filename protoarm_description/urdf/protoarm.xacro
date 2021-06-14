@@ -113,7 +113,7 @@
 <link name="right_finger_1">
 	<inertial>
     <origin xyz="0 0 0" rpy="0 0 0" />
-    <mass value="0.05" />
+    <mass value="0.1" />
     <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
 	</inertial>
   <visual>
@@ -132,11 +132,11 @@
 </link>
 
 <link name="right_pad_1">
-  <inertial>
+	<inertial>
     <origin xyz="0 0 0" rpy="0 0 0" />
-    <mass value="0.01"/>
-    <inertia ixx="0.0" ixy="0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
-  </inertial>
+    <mass value="0.1" />
+    <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
+	</inertial>
   <visual>
     <origin rpy="0 0 0" xyz="0.221612 -0.041843 -0.322926"/>
     <geometry>
@@ -155,7 +155,7 @@
 <link name="left_finger_1">
 	<inertial>
     <origin xyz="0 0 0" rpy="0 0 0" />
-    <mass value="0.05" />
+    <mass value="0.1" />
     <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
 	</inertial>
   <visual>
@@ -174,10 +174,11 @@
 </link>
 
 <link name="left_pad_1">
-  <inertial>
+	<inertial>
     <origin xyz="0 0 0" rpy="0 0 0" />
-    <mass value="0.01"/> <inertia ixx="0.0" ixy="0.0" ixz="-0.0" iyy="0.0" iyz="-0.0" izz="0.0"/>
-  </inertial>
+    <mass value="0.1" />
+    <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
+	</inertial>
   <visual>
     <origin rpy="0 0 0" xyz="0.221766 0.039676 -0.326185"/>
     <geometry>

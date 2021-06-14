@@ -55,21 +55,25 @@ bool Kinematics::moveToPoseGoal(geometry_msgs::Pose goal_pose, double tolerance 
   ROS_INFO("Trying pose goal move.....");
   move_group_->setApproximateJointValueTarget(goal_pose);
 
-	bool plan_sucesss = (move_group_->move() == moveit::planning_interface::MoveItErrorCode::SUCCESS);
-  ROS_INFO_NAMED("kinematics-info", "Moving to pose goal %s", plan_success ? "SUCCESS" : "FAILURE");
+  moveit::planning_interface::MoveGroupInterface::Plan plan;
+	bool plan_success = (move_group_->plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
 
-  robot_trajectory::RobotTrajectory rt(move_group_.getCurrentState()->getRobotModel(), "arm");
-  rt.setRobotTrajectoryMsg(*move_group_.getCurrentState(), trajectory);
+  ROS_INFO_NAMED("kinematics-info", "Planning to pose goal %s", plan_success ? "SUCCESS" : "FAILURE");
+
+  moveit_msgs::RobotTrajectory trajectory = plan.trajectory_;
+  robot_trajectory::RobotTrajectory rt(move_group_->getCurrentState()->getRobotModel(), "arm");
+  rt.setRobotTrajectoryMsg(*move_group_->getCurrentState(), trajectory);
+  
   trajectory_processing::IterativeParabolicTimeParameterization iptp;
   bool success = iptp.computeTimeStamps(rt);
-  ROS_INFO("Computed time stamp %s",success?"SUCCEEDED":"FAILED");
+  ROS_INFO("Computed time stamp %s",success ? "SUCCEEDED":"FAILED");
   rt.getRobotTrajectoryMsg(trajectory);
 
   plan.trajectory_ = trajectory;
-  ROS_INFO("Visualizing plan (%.2f%% acheived)",fraction * 100.0);
+  ROS_INFO("Visualizing plan...");
 
   if (success) {
-    move_group_.execute(plan);
+    move_group_->execute(plan);
     return true;
   } 
   else {
@@ -82,10 +86,7 @@ bool Kinematics::moveToJointGoal(sensor_msgs::JointState joint_state) {
   ROS_INFO("Trying joint goal move.....");
   move_group_->setJointValueTarget(joint_state);
 
-  moveit::planning_interface::MoveGroupInterface::Plan plan;
-	bool plan_success = (move_group_->plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
-  trajectory_processing::IterativeParabolicTimeParameterization iptp;
-  plan.trajectory
+	bool plan_success = (move_group_->move() == moveit::planning_interface::MoveItErrorCode::SUCCESS);
 
   ROS_INFO_NAMED("kinematics-info", "Moving to joint goal %s", plan_success ? "SUCCESS" : "FAILURE");
 	
