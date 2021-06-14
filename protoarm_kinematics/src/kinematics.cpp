@@ -1,8 +1,7 @@
 /*********************************************************************
  * Software License Agreement (BSD License)
  *
- *  Copyright (c) 2013, SRI International
- *  All rights reserved.
+ *  Copyright (c) 2013, SRI International *  All rights reserved.
  *
  *********************************************************************/
 /* Author: Raghava Uppuluri */
@@ -50,55 +49,50 @@ void Kinematics::printRobotState() {
   ROS_INFO_NAMED("kinematics-info", "End effector link: %s", move_group_->getEndEffectorLink().c_str());
 } 
 
-bool Kinematics::moveToPoseGoal(geometry_msgs::Pose goal_pose, double tolerance = -1.0) {
-	
-  ROS_INFO("Trying pose goal move.....");
+bool Kinematics::moveToPoseGoal(geometry_msgs::Pose goal_pose) {
   move_group_->setApproximateJointValueTarget(goal_pose);
 
   moveit::planning_interface::MoveGroupInterface::Plan plan;
 	bool plan_success = (move_group_->plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
-
   ROS_INFO_NAMED("kinematics-info", "Planning to pose goal %s", plan_success ? "SUCCESS" : "FAILURE");
+
+  bool move_success = plan_success ? Kinematics::executePlan(plan) : false; 
+  ROS_INFO_NAMED("kinematics-info", "Moving to pose goal %s", move_success ? "SUCCESS" : "FAILURE");
+
+	return move_success;
+} 
+
+bool Kinematics::moveToJointGoal(sensor_msgs::JointState joint_state) {
+  move_group_->setJointValueTarget(joint_state);
+
+  moveit::planning_interface::MoveGroupInterface::Plan plan;
+	bool plan_success = (move_group_->plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+  ROS_INFO_NAMED("kinematics-info", "Planning to joint goal %s", plan_success ? "SUCCESS" : "FAILURE");
+
+  bool move_success = plan_success ? Kinematics::executePlan(plan) : false; 
+  ROS_INFO_NAMED("kinematics-info", "Moving to joint goal %s", move_success ? "SUCCESS" : "FAILURE");
+	
+	return move_success;
+}
+ 
+bool Kinematics::executePlan(moveit::planning_interface::MoveGroupInterface::Plan plan) {
 
   moveit_msgs::RobotTrajectory trajectory = plan.trajectory_;
   robot_trajectory::RobotTrajectory rt(move_group_->getCurrentState()->getRobotModel(), "arm");
   rt.setRobotTrajectoryMsg(*move_group_->getCurrentState(), trajectory);
   
   trajectory_processing::IterativeParabolicTimeParameterization iptp;
-  bool success = iptp.computeTimeStamps(rt);
-  ROS_INFO("Computed time stamp %s",success ? "SUCCEEDED":"FAILED");
+  bool time_stamp_success = iptp.computeTimeStamps(rt);
+  ROS_INFO("Computed time stamp %s", time_stamp_success ? "SUCCEEDED":"FAILED");
+
   rt.getRobotTrajectoryMsg(trajectory);
-
   plan.trajectory_ = trajectory;
-  ROS_INFO("Visualizing plan...");
 
-  if (success) {
+  if (time_stamp_success) {
     move_group_->execute(plan);
     return true;
   } 
   else {
-    ROS_WARN("no success");
     return false;
   }
-} 
-
-bool Kinematics::moveToJointGoal(sensor_msgs::JointState joint_state) {
-  ROS_INFO("Trying joint goal move.....");
-  move_group_->setJointValueTarget(joint_state);
-
-	bool plan_success = (move_group_->move() == moveit::planning_interface::MoveItErrorCode::SUCCESS);
-
-  ROS_INFO_NAMED("kinematics-info", "Moving to joint goal %s", plan_success ? "SUCCESS" : "FAILURE");
-	
-	return plan_success;
 }
- 
-bool Kinematics::isClose(geometry_msgs::Pose goal, double tolerance) {
-	const geometry_msgs::Pose actual = move_group_->getCurrentPose().pose;
-
-	double x_err = std::abs(actual.position.x - goal.position.x); 	
-	double y_err = std::abs(actual.position.y - goal.position.y); 	
-	double z_err = std::abs(actual.position.z - goal.position.z); 	
-
-	return sqrt(pow(x_err, 2) + pow(y_err, 2) + pow(z_err, 2)) < tolerance;
-}	

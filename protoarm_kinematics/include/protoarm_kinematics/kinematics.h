@@ -18,11 +18,10 @@ class Kinematics {
 		Kinematics();  // Initializes MoveGroup API within ROS
 		
 		void printRobotState(); 
-		bool moveToPoseGoal(geometry_msgs::Pose, double); 
+		bool moveToPoseGoal(geometry_msgs::Pose); 
 		bool moveToJointGoal(sensor_msgs::JointState); 
+    bool executePlan(moveit::planning_interface::MoveGroupInterface::Plan);
 		void setVelocityScalingFactor(double);
-
-		bool isClose(geometry_msgs::Pose, double);  // Determines if eef is close to target		
 	
 		const std::string PLANNING_GROUP = "arm";
 		const double VELOCITY_SCALING_FACTOR = 0.5;

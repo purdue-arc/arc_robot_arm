@@ -22,8 +22,7 @@ void MoveGoalListener::move_to_pose_cb(const geometry_msgs::PoseStamped& goal_po
 	
   ROS_INFO("Message Recieved");
 
-	const double tolerance = 0.001; // meters
-	robot_arm.moveToPoseGoal(goal_pose.pose, tolerance);	
+	robot_arm.moveToPoseGoal(goal_pose.pose);	
 }
 
 void MoveGoalListener::move_to_joint_state_cb(const sensor_msgs::JointState& goal_state) {
