@@ -1,7 +1,7 @@
 # arc_robot_arm
 
 ## Goal
-With this project, our goal is to explore the robotic manipulation, robot vision, robot control, and reinforcement learning by building a robot arm. In our journey, we plan to publish our progress, tutorials, and understandings [here](wiki.purduearc.com) - WIP as of 6/14/21.
+With this project, our goal is to explore the robotic manipulation, robot vision, robot control, and reinforcement learning by building a robot arm. In our journey, we plan to publish our progress, tutorials, and understandings [here](https://wiki.purduearc.com) - WIP as of 6/14/21.
 
 ## Protoarm
 This is protoarm (short for prototype arm), a 5-DOF robot arm adapted slightly from [HowToMechatronics' model](https://www.youtube.com/watch?v=_B3gWd3A_SI) that we built first to understand ROS, MoveIt, and the software stack for robot arms.
