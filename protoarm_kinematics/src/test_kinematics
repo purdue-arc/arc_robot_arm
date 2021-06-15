@@ -60,6 +60,15 @@ if __name__ == '__main__':
     joint_states = _generate_tests('test_move_to_joint_state.txt', test_type="joint_state", joint_names=joint_names)	
 
     r = rospy.Rate(10)
+    '''
+    while(joint_state_pub.get_num_connections() == 0):
+        r.sleep()
+
+    for joint_state in joint_states: 
+        joint_state_pub.publish(joint_state)
+        r.sleep()
+    '''
+
     while(pose_pub.get_num_connections() == 0):
         r.sleep()
 
@@ -67,9 +76,4 @@ if __name__ == '__main__':
         pose_pub.publish(pose)
         r.sleep()
 
-    while(joint_state_pub.get_num_connections() == 0):
-        r.sleep()
 
-    for joint_state in joint_states: 
-        joint_state_pub.publish(joint_state)
-        r.sleep()

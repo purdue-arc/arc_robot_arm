@@ -11,6 +11,7 @@
     <arg name="allow_trajectory_execution" value="true"/>
     <arg name="fake_execution" value="false"/>
     <arg name="info" value="true"/>
+    <arg name="planning_plugin" value="ompl_interface/OMPLPlanner"/>
     <arg name="pipeline" value="ompl"/>
     <arg name="debug" value="false"/>
     <arg name="load_robot_description" value="false"/>

@@ -13,6 +13,7 @@
 
   <!-- move_group settings -->
   <arg name="pipeline" default="ompl" />
+  <arg name="planning_plugin" default="ompl_interface/OMPLPlanner"/>
   <arg name="allow_trajectory_execution" default="true"/>
   <arg name="fake_execution" default="false"/>
   <arg name="execution_type" default="interpolate"/> <!-- set to 'last point' to skip intermediate trajectory in fake execution -->
@@ -86,6 +87,7 @@
     <param name="max_safe_path_cost" value="$(arg max_safe_path_cost)"/>
     <param name="jiggle_fraction" value="$(arg jiggle_fraction)" />
     <param name="default_planning_pipeline" value="$(arg pipeline)" />
+    <param name="planning_plugin" value="$(arg planning_plugin)" />
     <param name="capabilities" value="$(arg capabilities)" />
     <param name="disable_capabilities" value="$(arg disable_capabilities)" />
 

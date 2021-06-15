@@ -157,7 +157,6 @@ arm:
   projection_evaluator: joints(Rev1,Rev2)
   longest_valid_segment_fraction: 0.005
 gripper:
-  default_planner_config: RRTstar
   planner_configs:
     - AnytimePathShortening
     - SBL
