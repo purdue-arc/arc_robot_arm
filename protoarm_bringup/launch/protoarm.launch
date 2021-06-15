@@ -1,4 +1,4 @@
 <launch>
-		<include file="$(find protoarm_kinematics)/launch/kinematics.launch"/>	
-		<include file="$(find protoarm_moveit_config)/launch/demo_gazebo.launch"/>	
+  <include file="$(find protoarm_kinematics)/launch/kinematics.launch"/>  
+  <include file="$(find protoarm_moveit_config)/launch/demo_gazebo.launch"/>  
 </launch>

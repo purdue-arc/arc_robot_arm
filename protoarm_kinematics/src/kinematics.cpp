@@ -24,17 +24,14 @@
 #include <protoarm_kinematics/kinematics.h>
 
 Kinematics::Kinematics() { 
-	move_group_ = new moveit::planning_interface::MoveGroupInterface(PLANNING_GROUP);
-	
+  move_group_ = new moveit::planning_interface::MoveGroupInterface(PLANNING_GROUP);
   robot_model_loader::RobotModelLoader robot_model_loader("robot_description");
-
   robot_model_ = robot_model_loader.getModel();
-
   robot_state_.reset(new robot_state::RobotState(robot_model_));
 
-	// Set Params	
-	move_group_->setMaxVelocityScalingFactor(VELOCITY_SCALING_FACTOR);
-	move_group_->setPlanningTime(PLANNING_TIME);
+  // Set Params 
+  move_group_->setMaxVelocityScalingFactor(VELOCITY_SCALING_FACTOR);
+  move_group_->setPlanningTime(PLANNING_TIME);
 
 }
 
@@ -45,7 +42,6 @@ void Kinematics::printRobotState() {
   std::vector<double> joint_values;
   std::cout << "EEF Name: " << joint_model_group->getEndEffectorName() << std::endl;
   ROS_INFO_NAMED("kinematics-info", "Reference frame: %s", move_group_->getPlanningFrame().c_str());
-
   ROS_INFO_NAMED("kinematics-info", "End effector link: %s", move_group_->getEndEffectorLink().c_str());
 } 
 
@@ -53,30 +49,29 @@ bool Kinematics::moveToPoseGoal(geometry_msgs::Pose goal_pose) {
   move_group_->setApproximateJointValueTarget(goal_pose);
 
   moveit::planning_interface::MoveGroupInterface::Plan plan;
-	bool plan_success = (move_group_->plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+  bool plan_success = (move_group_->plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
   ROS_INFO_NAMED("kinematics-info", "Planning to pose goal %s", plan_success ? "SUCCESS" : "FAILURE");
 
   bool move_success = plan_success ? Kinematics::executePlan(plan) : false; 
   ROS_INFO_NAMED("kinematics-info", "Moving to pose goal %s", move_success ? "SUCCESS" : "FAILURE");
 
-	return move_success;
+  return move_success;
 } 
 
 bool Kinematics::moveToJointGoal(sensor_msgs::JointState joint_state) {
   move_group_->setJointValueTarget(joint_state);
 
   moveit::planning_interface::MoveGroupInterface::Plan plan;
-	bool plan_success = (move_group_->plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+  bool plan_success = (move_group_->plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
   ROS_INFO_NAMED("kinematics-info", "Planning to joint goal %s", plan_success ? "SUCCESS" : "FAILURE");
 
   bool move_success = plan_success ? Kinematics::executePlan(plan) : false; 
   ROS_INFO_NAMED("kinematics-info", "Moving to joint goal %s", move_success ? "SUCCESS" : "FAILURE");
-	
-	return move_success;
+  
+  return move_success;
 }
  
 bool Kinematics::executePlan(moveit::planning_interface::MoveGroupInterface::Plan plan) {
-
   moveit_msgs::RobotTrajectory trajectory = plan.trajectory_;
   robot_trajectory::RobotTrajectory rt(move_group_->getCurrentState()->getRobotModel(), "arm");
   rt.setRobotTrajectoryMsg(*move_group_->getCurrentState(), trajectory);
