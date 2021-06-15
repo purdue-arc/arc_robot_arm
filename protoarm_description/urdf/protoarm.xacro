@@ -1,0 +1,291 @@
+<?xml version="1.0" ?>
+<robot name="protoarm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find protoarm_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find protoarm_description)/urdf/protoarm.trans" />
+<xacro:include filename="$(find protoarm_description)/urdf/protoarm.gazebo" />
+<link name="world"/>
+<link name="base_link">
+	<inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="3.06" />
+    <inertia ixx="0.3" ixy="0.0" ixz="0.0" iyy="0.3" iyz="0.0" izz="0.3" />
+	</inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="shoulder_1">
+	<inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="3.06" />
+    <inertia ixx="0.3" ixy="0.0" ixz="0.0" iyy="0.3" iyz="0.0" izz="0.3" />
+	</inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.006279 -0.004346 -0.131179"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/shoulder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.006279 -0.004346 -0.131179"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/shoulder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="humerus_1">
+	<inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="3.06" />
+    <inertia ixx="0.3" ixy="0.0" ixz="0.0" iyy="0.3" iyz="0.0" izz="0.3" />
+	</inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.020207 -0.000222 -0.17144"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/humerus_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.020207 -0.000222 -0.17144"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/humerus_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="forearm_1">
+	<inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="3.06" />
+    <inertia ixx="0.3" ixy="0.0" ixz="0.0" iyy="0.3" iyz="0.0" izz="0.3" />
+	</inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.017319 -0.000979 -0.291403"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/forearm_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.017319 -0.000979 -0.291403"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/forearm_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="palm_1">
+	<inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="3.06" />
+    <inertia ixx="0.3" ixy="0.0" ixz="0.0" iyy="0.3" iyz="0.0" izz="0.3" />
+	</inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.135027 -0.00469 -0.297799"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/palm_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.135027 -0.00469 -0.297799"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/palm_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_finger_1">
+	<inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="0.1" />
+    <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
+	</inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.172286 -0.013294 -0.313884"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/right_finger_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.172286 -0.013294 -0.313884"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/right_finger_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_pad_1">
+	<inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="0.1" />
+    <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
+	</inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.221612 -0.041843 -0.322926"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/right_pad_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.221612 -0.041843 -0.322926"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/right_pad_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_finger_1">
+	<inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="0.1" />
+    <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
+	</inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.171552 0.013576 -0.314907"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/left_finger_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.171552 0.013576 -0.314907"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/left_finger_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_pad_1">
+	<inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="0.1" />
+    <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1" />
+	</inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.221766 0.039676 -0.326185"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/left_pad_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.221766 0.039676 -0.326185"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/left_pad_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wrist_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.017641925972066652 0.005015171425043511 0.005922235102376161"/>
+    <mass value="0.1295112121194818"/>
+    <inertia ixx="2e-05" ixy="4e-06" ixz="0.0" iyy="4e-05" iyz="-1e-06" izz="3.1e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.107006 0.008795 -0.291635"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/wrist_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.107006 0.008795 -0.291635"/>
+    <geometry>
+      <mesh filename="package://protoarm_description/meshes/wrist_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="grouding" type="fixed">
+	<parent link="world"/>
+	<child link="base_link"/>
+</joint>
+
+<joint name="Rev1" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.006279 0.004346 0.131179"/>
+  <parent link="base_link"/>
+  <child link="shoulder_1"/>
+  <axis xyz="-0.002854 0.005633 0.99998"/>
+  <dynamics damping="1.0"/>
+</joint>
+
+<joint name="Rev2" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.013928 -0.004124 0.040261"/>
+  <parent link="shoulder_1"/>
+  <child link="humerus_1"/>
+  <axis xyz="-0.025335 0.999663 -0.005703"/>
+  <dynamics damping="1.0"/>
+</joint>
+
+<joint name="Rev3" type="continuous">
+  <origin rpy="0 0 0" xyz="0.002888 0.000757 0.119963"/>
+  <parent link="humerus_1"/>
+  <child link="forearm_1"/>
+  <axis xyz="0.025335 -0.999663 0.005703"/>
+  <dynamics damping="1.0"/>
+</joint>
+
+<joint name="Rev5" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.028021 0.013485 0.006164"/>
+  <parent link="wrist_1"/>
+  <child link="palm_1"/>
+  <axis xyz="0.027296 -0.998903 0.038055"/>
+  <dynamics damping="1.0"/>
+</joint>
+
+<joint name="G_Rev1" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.037259 0.008604 0.016085"/>
+  <parent link="palm_1"/>
+  <child link="right_finger_1"/>
+  <axis xyz="-0.063894 -0.039735 -0.997165"/>
+  <dynamics damping="1.0"/>
+</joint>
+
+<joint name="right_pad" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.049326 0.028549 0.009042"/>
+  <parent link="right_finger_1"/>
+  <child link="right_pad_1"/>
+</joint>
+
+<joint name="G_Rev2" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.036525 -0.018266 0.017108"/>
+  <parent link="palm_1"/>
+  <child link="left_finger_1"/>
+  <axis xyz="0.063894 0.039735 0.997165"/>
+  <dynamics damping="1.0"/>
+</joint>
+
+<joint name="left_pad" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.050214 -0.0261 0.011278"/>
+  <parent link="left_finger_1"/>
+  <child link="left_pad_1"/>
+</joint>
+
+<joint name="Rev4" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.089687 -0.009774 0.000232"/>
+  <parent link="forearm_1"/>
+  <child link="wrist_1"/>
+  <axis xyz="-0.997823 -0.02494 0.061059"/>
+  <dynamics damping="1.0"/>
+</joint>
+
+</robot>

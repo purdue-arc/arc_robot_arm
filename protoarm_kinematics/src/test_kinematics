@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+import rospy
+from geometry_msgs.msg import PoseStamped
+from sensor_msgs.msg import JointState 
+import yaml
+
+def _generate_tests(filename, test_type='pose', joint_names=[]):
+    '''Extracts joint_states and poses from test files to make testing easier
+
+    Parameters:
+    filename -- name of file
+    test_type -- goal state description type of 'pose' or 'joint_state'
+    joint_names -- optional param, necessary if test_type is 'joint_state'
+    '''
+    test_types = ['joint_state', 'pose']
+    if test_type not in test_types:
+        raise ValueError("Invalid test type. Expected one of: %s" % test_types)
+    elif test_type == 'joint_state' and len(joint_names) == 0:
+        raise ValueError("Joint names are omitted. Expected list of joint names")
+
+    def extract_joint_state(line, joint_names) :
+        joints = line.split()
+        joint_state = JointState()
+        joint_state.position = [float(joint) for joint in joints]
+        joint_state.name = joint_names 
+        return joint_state 
+
+    def extract_pose(line): 
+        x,y,z = line.split()
+        pose = PoseStamped()
+        pose.pose.position.x = float(x)
+        pose.pose.position.y = float(y)
+        pose.pose.position.z = float(z)
+        return pose
+
+    with open(filename) as f:
+        content = f.readlines()
+
+    # Removes whitespace
+    lines = [x.strip() for x in content if x[0] != '#']
+
+    tests = []
+    
+    for line in lines: 
+        test = extract_pose(line) if test_type == 'pose' else extract_joint_state(line, joint_names)
+        tests.append(test)	
+
+    return tests
+
+if __name__ == '__main__':
+    rospy.init_node('test_kinematics')
+
+    pose_pub = rospy.Publisher("move_to_pose", PoseStamped, queue_size=1000)
+    joint_state_pub = rospy.Publisher("move_to_joint_state", JointState, queue_size=1000)
+
+    poses = _generate_tests('test_move_to_pose.txt', test_type="pose")	
+
+    joint_names = ['Rev1','Rev2','Rev3','Rev4']
+            
+    joint_states = _generate_tests('test_move_to_joint_state.txt', test_type="joint_state", joint_names=joint_names)	
+
+    r = rospy.Rate(10)
+    '''
+    while(joint_state_pub.get_num_connections() == 0):
+        r.sleep()
+
+    for joint_state in joint_states: 
+        joint_state_pub.publish(joint_state)
+        r.sleep()
+    '''
+
+    while(pose_pub.get_num_connections() == 0):
+        r.sleep()
+
+    for pose in poses: 
+        pose_pub.publish(pose)
+        r.sleep()
+
+

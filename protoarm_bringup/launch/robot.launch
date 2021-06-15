@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="gazebo" default="false"/>
+  <arg name="urdf_path" value="$(find protoarm_description)/urdf/protoarm.xacro"/>
+
+  <!-- Gazebo -->
+  <include file="$(find protoarm_moveit_config)/launch/gazebo.launch"/>
+
+  <!-- MoveIt -->
+  <include file="$(find protoarm_moveit_config)/launch/move_group.launch">
+    <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="fake_execution" value="false"/>
+    <arg name="info" value="true"/>
+    <arg name="planning_plugin" value="ompl_interface/OMPLPlanner"/>
+    <arg name="pipeline" value="ompl"/>
+    <arg name="debug" value="false"/>
+    <arg name="load_robot_description" value="false"/>
+  </include>
+
+  <!-- Given the published joint states, publish tf for the robot links -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
+  <!-- Run Rviz and load the default config to see the state of the move_group node -->
+  <include file="$(find protoarm_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="rviz_config" value="$(find protoarm_moveit_config)/launch/moveit.rviz"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <!-- IK -->
+	<include file="$(find protoarm_kinematics)/launch/kinematics.launch"/>	
+
+  <param name="robot_description" command="xacro '$(arg urdf_path)'"/>
+
+  <!-- The semantic description that corresponds to the URDF -->
+  <param name="robot_description_semantic" textfile="$(find protoarm_moveit_config)/config/protoarm.srdf" />
+
+</launch>
