@@ -1,9 +1,0 @@
-<launch>
-  <arg name="image_topic" default="/camera/color/image_raw" />
-
-	<group ns="visual_servoing">
-		<param name="image_topic" type="str" value="$(arg image_topic)" />
-		<node name="visual_servoing_node" pkg="arc_robot_arm_visual_servoing" type="vs_node" output="screen" respawn="true"/>
-	</group>
-
-</launch>
