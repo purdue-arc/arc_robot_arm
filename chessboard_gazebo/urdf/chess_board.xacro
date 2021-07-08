@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mvp_arm_4dof_with_camera">
+  <xacro:arg name="load_camera" default="true"/>
+  
+  <xacro:include filename="$(find mvp_arm_4dof_description)/urdf/mvp_arm_4dof.xacro"/>
+
+	<xacro:if value="$(arg load_camera)">
+		<xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro"/>
+		<xacro:sensor_d435 name="camera" topics_ns="camera" parent="gripper_base_v1_1" publish_pointcloud="true">
+			<origin xyz="0 0 0.01" rpy="0 0 ${pi}" />
+		</xacro:sensor_d435>
+	</xacro:if>
+
+</robot>
