@@ -1,10 +1,18 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="gazebo" default="false"/>
-  <arg name="urdf_path" value="$(find protoarm_description)/urdf/protoarm.xacro"/>
+  <arg name="verbose" default="false"/>
+  <arg name="urdf_path" default="$(find protoarm_description)/urdf/protoarm.xacro"/>
+  <arg name="srdf_path" default="$(find protoarm_description)/urdf/protoarm.srdf"/>
+  <arg name="world_name" default="worlds/empty.world"/>
+  <arg name="gazebo_spawn_coords" default="-x 0 -y 0 -z 0"/>
 
   <!-- Gazebo -->
-  <include file="$(find protoarm_moveit_config)/launch/gazebo.launch"/>
+  <include file="$(find protoarm_moveit_config)/launch/gazebo.launch">
+    <arg name="world_name" value="$(arg world_name)"/>
+    <arg name="verbose" value="$(arg verbose)"/>
+    <arg name="gazebo_spawn_coords" value="$(arg gazebo_spawn_coords)"/>
+  </include>
 
   <!-- MoveIt -->
   <include file="$(find protoarm_moveit_config)/launch/move_group.launch">
@@ -29,9 +37,10 @@
   <!-- IK -->
   <include file="$(find protoarm_kinematics)/launch/kinematics.launch"/>  
 
+  <!-- The robot description that corresponds to the URDF -->
   <param name="robot_description" command="xacro '$(arg urdf_path)'"/>
 
   <!-- The semantic description that corresponds to the URDF -->
-  <param name="robot_description_semantic" textfile="$(find protoarm_moveit_config)/config/protoarm.srdf" />
+  <param name="robot_description_semantic" textfile="$(arg srdf_path)" />
 
 </launch>

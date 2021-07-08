@@ -21,7 +21,7 @@
 #define Rev5_PIN 10
 #define GRIPPER_PIN 11
 
-#define DOF 5 // Only 4 are used
+#define DOF 5 
 #define OFFSET 90 // Offset angle from sim to real robot
 #define UPPER_REAL_GRIP 180
 #define LOWER_REAL_GRIP 90
@@ -32,7 +32,6 @@
 #define LOWER_SIM_GRIP 0
 #define UPPER_SIM_ARM 90
 #define LOWER_SIM_ARM -90
-
 
 ros::NodeHandle  nh;
 
@@ -48,15 +47,7 @@ char print_str[15]; // used to print out 15 char outputs
 float gripper = 180.0; // angle in degrees [90-180]
 float arm[DOF] = {90,90,90,90,90}; // angles in degrees [0,180]
 
-inline float RadiansToDegrees(float position_radians)
-{
-  return position_radians * 57.2958;
-}
 
-float mapf(float x, float in_min, float in_max, float out_min, float out_max)
-{
-  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-}
 
 int val_arm_joints() {
   for(int i = 0; i < DOF; i++){

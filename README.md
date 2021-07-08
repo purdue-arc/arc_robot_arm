@@ -1,61 +1,39 @@
 # arc_robot_arm
 This is where the robot arm project from the Autonomous Robotics Club at Purdue lives!!
 
-# Getting Started
+## Quick start
 
-## Prerequisites
-1. Full ROS install of melodic or noetic on native linux/WSL or on virtual ROS env (i.e. [ROS Development Studio](https://rds.theconstructsim.com/))
-2. ROS catkin workspace is setup (steps assume catkin workspace folder is `catkin_ws` and located in home dir
-3. Clone this repository to `src` folder in catkin workspace 
-4. Build (Compiles C/C++ files)
-```
-catkin build
-```
-or
+1. [Setup ROS](http://localhost:4000/wiki/tutorials/setup-ros) if you haven't done so.
 
+2. Clone this repo into the `src` folder in your ROS workspace
 ```
-cd ~/catkin_ws
-catkin_make
+git clone https://github.com/purdue-arc/arc_robot_arm.git
 ```
-5. Source  
-```
-source ~/catkin_ws/devel/setup.bash
-```
+3. Download all package dependencies / Setup environment
 
-## Quickstart (Sim or Sim + Real)
-
-#### Roslaunch params
-- `real`: Run with hardware (Default: `false`)
-  - `robot`: Run with Arduino/Robot (Default: `true`)
-  - `camera`: Run with Arduino/Robot (Default: `true`)
-- `detect`: Run with Yolov5 Object Detection node (Default: `true`)
-- `vs`: Run with visual servoing node (Default: `false`)
-- `gazebo`: Run with gazebo environment for arm (Default: `false`)
-
-### Sim Only (Default)
+**Non-Robostack**:
 ```
-roslaunch arc_robot_arm robot.launch
-roscd arc_robot_arm/src/kinematics
-rosrun arc_robot_arm test_kinematics
+cd path/to/root_workspace_dir
+rosdep install --from-paths src --ignore-src --rosdistro=noetic -y
 ```
-
-### Gazebo
+**Robostack Only**:
 ```
-
-roslaunch arc_robot_arm robot.launch gazebo:=true
+# Ensure base conda environment is activated
+cd arc_robot_arm
+conda env create -f robot_arm_environment.yml
+conda activate robot-arm-env
 ```
-
-### Sim + Real
-
-#### Prerequisites
-- Arduino with arduino code loaded is connected at /dev/ttyACM0 (can change the launch file to match yours)
-- Robot is wired + powered correctly, tested using Arduino test code
-- Camera connected at device 0, is calibrated and has camera.yaml file loaded
-
-#### Run Sim + Real 
+4. Build + source
 ```
-roslaunch arc_robot_arm robot.launch real:=true
-roscd arc_robot_arm/src/kinematics
-rosrun arc_robot_arm test_kinematics
+catkin build && source path/to/catkin_ws/devel/setup.bash
 ```
-
+5. Launch the robot
+```
+roslaunch protoarm_bringup robot.launch
+```
+6. Run some test goal positions (in another terminal window)
+```
+roscd protoarm_kinematics/src && rosrun protoarm_kinematics test_kinematics
+```
+Should see the robot move something like this (to the right and back to the left) in Gazebo and MoveIt:
+![ik_demo](https://github.com/purdue-arc/wiki/blob/master/wiki/robot-arm/assets/gifs/ik_demo.gif)
