@@ -1,5 +1,4 @@
 # arc_robot_arm
-This is where the robot arm project from the Autonomous Robotics Club at Purdue lives!!
 
 ## Quick start
 
@@ -36,4 +35,4 @@ roslaunch protoarm_bringup robot.launch
 roscd protoarm_kinematics/src && rosrun protoarm_kinematics test_kinematics
 ```
 Should see the robot move something like this (to the right and back to the left) in Gazebo and MoveIt:
-![ik_demo](https://github.com/purdue-arc/wiki/blob/master/wiki/robot-arm/assets/gifs/ik_demo.gif)
+![ik_demo](https://github.com/purdue-arc/arc_robot_arm/blob/main/assets/gifs/ik_demo.gif)
