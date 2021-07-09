@@ -56,7 +56,6 @@
   <depend>std_msgs</depend>
   <depend>tf</depend>
   <depend>moveit</depend>
-  <depend>moveit_visual_tools</depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

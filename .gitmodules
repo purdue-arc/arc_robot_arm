@@ -1,6 +1,6 @@
+[submodule "realsense_gazebo_plugin"]
+	path = realsense_gazebo_plugin
+	url = https://github.com/pal-robotics/realsense_gazebo_plugin.git
 [submodule "yolov5_pytorch_ros"]
 	path = yolov5_pytorch_ros
 	url = https://github.com/raghavauppuluri13/yolov5_pytorch_ros.git
-[submodule "realsense_ros_gazebo"]
-	path = realsense_ros_gazebo
-	url = https://github.com/nilseuropa/realsense_ros_gazebo.git

@@ -43,7 +43,7 @@ def _generate_tests(filename, test_type='pose', joint_names=[]):
     
     for line in lines: 
         test = extract_pose(line) if test_type == 'pose' else extract_joint_state(line, joint_names)
-        tests.append(test)      
+        tests.append(test)	
 
     return tests
 
@@ -53,11 +53,11 @@ if __name__ == '__main__':
     pose_pub = rospy.Publisher("move_to_pose", PoseStamped, queue_size=1000)
     joint_state_pub = rospy.Publisher("move_to_joint_state", JointState, queue_size=1000)
 
-    poses = _generate_tests('test_move_to_pose.txt', test_type="pose")  
+    poses = _generate_tests('test_move_to_pose.txt', test_type="pose")	
 
     joint_names = ['Rev1','Rev2','Rev3','Rev4']
             
-    joint_states = _generate_tests('test_move_to_joint_state.txt', test_type="joint_state", joint_names=joint_names)    
+    joint_states = _generate_tests('test_move_to_joint_state.txt', test_type="joint_state", joint_names=joint_names)	
 
     r = rospy.Rate(10)
     '''
