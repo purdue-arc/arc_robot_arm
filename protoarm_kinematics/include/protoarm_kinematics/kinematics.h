@@ -14,23 +14,23 @@
 #include <moveit_msgs/PlanningScene.h>
 
 class Kinematics {
-	public:
-		Kinematics();  // Initializes MoveGroup API within ROS
-		
-		void printRobotState(); 
-		bool moveToPoseGoal(geometry_msgs::Pose); 
-		bool moveToJointGoal(sensor_msgs::JointState); 
+  public:
+    Kinematics();  // Initializes MoveGroup API within ROS
+    
+    void printRobotState(); 
+    bool moveToPoseGoal(geometry_msgs::Pose); 
+    bool moveToJointGoal(sensor_msgs::JointState); 
     bool executePlan(moveit::planning_interface::MoveGroupInterface::Plan);
-		void setVelocityScalingFactor(double);
-	
-		const std::string PLANNING_GROUP = "arm";
-		const double VELOCITY_SCALING_FACTOR = 0.5;
-		const double PLANNING_TIME = 2;
+    void setVelocityScalingFactor(double);
+  
+    const std::string PLANNING_GROUP = "arm";
+    const double VELOCITY_SCALING_FACTOR = 0.5;
+    const double PLANNING_TIME = 2;
 
-  	moveit::planning_interface::MoveGroupInterface* move_group_;
-		robot_model::RobotModelPtr robot_model_;
-		robot_state::RobotStatePtr robot_state_;
-  	moveit::planning_interface::PlanningSceneInterface* planning_scene_interface_;
+    moveit::planning_interface::MoveGroupInterface* move_group_;
+    robot_model::RobotModelPtr robot_model_;
+    robot_state::RobotStatePtr robot_state_;
+    moveit::planning_interface::PlanningSceneInterface* planning_scene_interface_;
 };
 
 #endif

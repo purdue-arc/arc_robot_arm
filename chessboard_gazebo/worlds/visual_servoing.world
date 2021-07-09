@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+  <world name="test_visual_servoing"> 
+    <!-- A gazebo links attacher -->
+    <plugin name="ros_link_attacher_plugin" filename="libgazebo_ros_link_attacher.so"/> 
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+      <pose>0 0 -0.0405 0 0 0</pose>
+    </include>
+
+    <!-- camera view -->
+    <gui>
+      <camera name="user_default">
+            <pose>0.556 -0.9132 0.8266 0 0.59 2.15</pose>
+      </camera>
+    </gui>
+
+    <!-- chessboard -->
+    <include>
+      <uri>model://chessboard</uri>
+      <pose>0 0 -0.02 0 0 1.5708</pose>
+      <static>1</static>
+    </include>
+    <include>
+      <uri>model://kingW</uri>
+      <pose>0.1 -0.025 0.01 0 0 0</pose>
+    </include>
+  </world>
+</sdf>

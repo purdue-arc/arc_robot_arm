@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="protoarm_realsense">
+  <xacro:include filename="$(find protoarm_description)/urdf/protoarm.xacro"/>
+  <xacro:include filename="$(find realsense_ros_gazebo)/xacro/depthcam.xacro"/>
+  <xacro:realsense_d435 sensor_name="camera" parent_link="forearm_1" rate="10">
+    <origin xyz="-0.08 0 0.025" rpy="0 0 ${pi}" />
+  </xacro:realsense_d435>
+</robot>
