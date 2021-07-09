@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-  <include file="$(find protoarm_bringup)/launch/robot.launch">
-    <arg name="world_name" value="$(find chessboard_gazebo)/worlds/visual_servoing.world"/>
-    <arg name="urdf_path" value="$(find protoarm_description)/urdf/protoarm_realsense.xacro"/>
-    <arg name="srdf_path" value="$(find protoarm_description)/urdf/protoarm_realsense.srdf"/>
-    <arg name="gazebo_spawn_coords" value="-x 0.35 -y 0 -z 0"/>
-  </include>
-</launch>
