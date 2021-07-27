@@ -1,5 +1,0 @@
-# IK Test Cases
-# Moves gripper_base link to specified joint state
-# J1 J2 J3 J4 (radians)
-# Camera Scan Position 
--0.0169296936004711 0.29984756294442627 1.0763445405577863 -0.1696460018521434
