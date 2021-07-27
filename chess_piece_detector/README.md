@@ -8,7 +8,7 @@ The chess piece detection model was trained on [this](https://www.amazon.com/Che
 
 > Make sure to [setup](https://github.com/purdue-arc/arc_robot_arm/blob/main/README.md) your robot arm environment if you haven't already
 
-1. Launch the robot arm in the Gazebo sim with the chessboard **and** the Realsense ROS camera [here]()
+1. Launch the robot arm in the Gazebo sim with the chessboard **and** the Realsense ROS camera [here](https://github.com/purdue-arc/arc_robot_arm/tree/refactoring/protoarm_bringup)
 
 2. Launch the detector
 ```
