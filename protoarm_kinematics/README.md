@@ -12,7 +12,7 @@ roslaunch protoarm_bringup sim.launch
 ```
 3. Run some test goal positions (in another terminal window)
 ```
-roscd protoarm_kinematics/src && rosrun protoarm_kinematics test_kinematics
+rosrun protoarm_kinematics test_kinematics
 ```
 Should see the robot move something like this (to the right and back to the left) in Gazebo and MoveIt:
 ![ik_demo](https://github.com/purdue-arc/arc_robot_arm/blob/main/assets/gifs/ik_demo.gif)

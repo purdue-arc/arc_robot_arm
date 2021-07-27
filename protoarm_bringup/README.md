@@ -30,13 +30,8 @@ export GAZEBO_PLUGIN_PATH=/EDIT_ME/full/path/to/catkin_ws/devel/lib:$GAZEBO_PLUG
 ```
 roslaunch protoarm_bringup sim.launch realsense:=true
 ```
-3. Open `rqt` 
-
-```
-# In another window (make sure to activate conda env and source ROS workspace in the new env if not done automatically)
-rqt
-```
-4. Click on `Plugins > Visualization > Image View` 
+3. Run `rqt` in another window (make sure to activate conda env and source ROS workspace in the new env if not done automatically)
+4. In the new window, click on `Plugins > Visualization > Image View` 
 5. Select the `/camera/color/image_raw` topic and see the camera output 
 
 ## Documentation
