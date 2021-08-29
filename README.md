@@ -14,16 +14,16 @@ git clone --recursive https://github.com/purdue-arc/arc_robot_arm.git
 ```
 3. Download all package dependencies / Setup environment
 
-**Non-Robostack**:
+**Linux or Non-robostack**:
 ```
 cd path/to/root_workspace_dir
 rosdep install --from-paths src --ignore-src --rosdistro=noetic -y
 ```
-**Robostack Only**:
+**MacOS using Robostack**:
 ```
 # Ensure base conda environment is activated
 cd arc_robot_arm
-mamba env create -f robot_arm_environment.yml
+mamba env create -f robot_arm_env_macos.yml
 conda activate robot-arm-env
 ```
 4. Build + source (Do this every time you download new packages)
