@@ -1,8 +1,5 @@
-#if defined(ARDUINO) && ARDUINO >= 100
-  #include "Arduino.h"
-#else
-  #include <WProgram.h>
-#endif
+#ifndef UTILS_H
+#define UTILS_H
 
 inline float RadiansToDegrees(float position_radians)
 {
@@ -13,3 +10,5 @@ float mapf(float x, float in_min, float in_max, float out_min, float out_max)
 {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
+
+#endif

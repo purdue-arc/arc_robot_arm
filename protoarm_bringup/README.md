@@ -30,6 +30,9 @@ export GAZEBO_PLUGIN_PATH=/EDIT_ME/full/path/to/catkin_ws/devel/lib:$GAZEBO_PLUG
 ```
 roslaunch protoarm_bringup sim.launch realsense:=true
 ```
+
+Now, the camera topics are running, so you can run visual servoing, an RL algorithm, that subscribe to those exposed topics. To visualize them, follow the following steps.
+
 3. Run `rqt` in another window (make sure to activate conda env and source ROS workspace in the new env if not done automatically)
 4. In the new window, click on `Plugins > Visualization > Image View` 
 5. Select the `/camera/color/image_raw` topic and see the camera output 
