@@ -20,8 +20,8 @@ Note: This method doesn't allow for hardware access or networking since it is br
 
 1. Setup ROS Noetic if you haven't done so.
 
-- If you are an experienced Linux user with a native Linux system, use the [official tutorials](https://docs.ros.org/)
-- If you have Mac (Or Linux system and prefer to use conda virtual envs): [Setup ROS](https://wiki.purduearc.com/wiki/tutorials/setup-ros)
+- If you are an experienced Linux user with a native Linux system, use the [official ROS tutorials](https://docs.ros.org/)
+- If you have Mac (Or Linux system and prefer to use conda virtual envs), then [setup ROS with RoboStack](https://wiki.purduearc.com/wiki/tutorials/setup-ros)
 
 2. Clone this repo into the `src` folder in your ROS workspace recursively to get the `yolov5_pytorch_ros` and `realsense_ros_gazebo` packages
 
