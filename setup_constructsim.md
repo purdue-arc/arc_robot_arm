@@ -4,9 +4,7 @@
 
 1. [Create](https://app.theconstructsim.com) a ConstructSim account if you haven't already here 
 
-2. Fork [this ROSject](https://app.theconstructsim.com/#/Rosject/459280)
-
-If you cannot find it, search for `ARC Robot Arm` > hit Fork
+2. Fork [this ROSject](https://app.theconstructsim.com/#/Rosject/459280) (If you cannot find it, search for `ARC Robot Arm` > hit Fork)
 
 3. Run the ROSject that you just forked 
 
