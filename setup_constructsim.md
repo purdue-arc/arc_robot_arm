@@ -38,6 +38,8 @@ source ~/catkin_ws/devel/setup.bash
 echo 'source ~/catkin_ws/devel/setup.bash' >> ~/.bashrc 
 ```
 
+> Note: Build + source every time you add new packages. Source every time you open a fresh terminal, or add the line to your ~/.bashrc so it sources automatically
+
 6. Continue following tutorials in the ROS packages
 - Launch the robot in Gazebo simulation with the chessboard world and Realsense ROS gazebo camera, using the [protoarm_bringup](https://github.com/purdue-arc/arc_robot_arm/tree/main/protoarm_bringup) package 
 - Use the IK to run some test goal positions using the [protoarm_kinematics](https://github.com/purdue-arc/arc_robot_arm/tree/main/protoarm_kinematics) package 
