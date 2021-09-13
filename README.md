@@ -6,7 +6,12 @@ Our overarching goal is to explore the robotic manipulation, robot vision, robot
 
 ## Setup 
 
-1. [Setup ROS](https://wiki.purduearc.com/wiki/tutorials/setup-ros) if you haven't done so.
+1. Setup ROS Noetic if you haven't done so.
+
+3 Options:
+- If you have Mac/Linux: [Setup ROS](https://wiki.purduearc.com/wiki/tutorials/setup-ros)
+- If you have Windows or have spent longer than 30min-1hr setting up ROS with no luck and just want an easy method, use [this](https://github.com/purdue-arc/arc_robot_arm/blob/main/setup_constructsim.md)
+- If you are an experienced user that has a native Linux system, use the [official tutorials](https://docs.ros.org/)
 
 2. Clone this repo into the `src` folder in your ROS workspace recursively to get the `yolov5_pytorch_ros` and `realsense_ros_gazebo` packages
 ```
