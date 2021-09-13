@@ -44,4 +44,8 @@
   <!-- The semantic description that corresponds to the URDF -->
   <param name="robot_description_semantic" textfile="$(arg srdf_path)" />
 
+  <node pkg="rosserial_python" type="serial_node.py" name="rosserial" output="screen">
+    <param name="port" value="/dev/ttyACM0" />
+    <param name="baud" value="57600" />
+  </node>
 </launch>
