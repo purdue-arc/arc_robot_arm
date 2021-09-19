@@ -48,10 +48,10 @@
   <!--   <test_depend>gtest</test_depend> -->
   <!-- Use doc_depend for packages you need only for building documentation: -->
   <!--   <doc_depend>doxygen</doc_depend> -->
-  <depend>gazebo-ros</depend>
-  <depend>gazebo-ros-control</depend>
-  <depend>ros-controllers</depend>
-  <depend>joint-state-controller</depend>
+  <depend>gazebo_ros</depend>
+  <depend>gazebo_ros_control</depend>
+  <depend>ros_controllers</depend>
+  <depend>joint_state_controller</depend>
   <buildtool_depend>catkin</buildtool_depend>
 
 
