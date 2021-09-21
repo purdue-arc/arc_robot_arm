@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Load hardware interface -->
+  <node name="protoarm_hardware_interface" pkg="protoarm_hw" type="protoarm_hw_loop" output="log" />
+</launch>
