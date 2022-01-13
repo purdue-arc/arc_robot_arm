@@ -1,0 +1,3 @@
+[submodule "chessboard_gazebo"]
+	path = chessboard_gazebo
+	url = https://github.com/purdue-arc/chessboard_gazebo
