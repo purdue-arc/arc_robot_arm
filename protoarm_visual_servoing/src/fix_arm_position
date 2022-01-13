@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+import rospy
+from tools.pid_controller import PIDController
+from geometry_msgs.msg import PointStamped
+from sensor_msgs.msg import JointState
+from std_msgs.msg import Float32MultiArray
+import numpy as np
+
+class FixArmPosition:
+    def __init__(self, joint1_length, joint2_length):
+        #Node Initialization
+        rospy.init_node('fix_arm_position')
+        rospy.Subscriber('error', PointStamped, self.__update_arm_positions) #Assumes input of error from goal, can be changed later
+        self.pub = rospy.Publisher("/joint_states", JointState) #Outputs velocities for servos to move at
+
+        #PID Controllers
+        self.r_controller = PIDController(0, 0, 0, 0) #TODO find actual PID Values
+        self.theta_controller = PIDController(0, 0, 0, 0) #TODO find actual PID Values
+        self.z_controller = PIDController(0, 0, 0, 0) #TODO find actual PID Values
+        self.prev_time = 0
+        
+        #Joint Lengths
+        self.joint1_length = joint1_length
+        self.joint2_length = joint2_length
+        
+    def __update_arm_positions(self, point):
+        #Converting from cartesian to Cylindrical
+        r = point.point.x * point.point.x + point.point.y * point.point.y
+        theta = np.arctan2(point.point.y / point.point.x)
+        z = point.point.z
+
+        #Updating PID Controllers
+        time = point.header.stamp.secs
+        dr = self.r_controller.calculate(r, time - self.prev_time)
+        dtheta = self.theta_controller.calculate(theta, time - self.prev_time)
+        dz = self.z_controller.calculate(z, time - self.prev_time)
+
+        velocities = [0] * 3
+
+        j1 = self.joint1_length
+        j2 = self.joint2_length
+
+        #Base Joint Rotation velocity (Rotation on Yaw)
+        velocities[0] = dtheta
+
+        #End arm joins velocities (Rotation on Pitch)
+        c1 = r * r + z * z - j1 * j1 - j2 ** 2
+        c2 = np.sqrt(1 - (c1 * c1 / (4 * j1 * j1 * j2 * j2)))
+        q2r = -dr * r / (j1 * j2 * c2)
+        q2z = -dz * z / (j1 * j2 * c2)
+        velocities[2] = q2r + q2z #Closer to tip joint
+
+        c3 = np.arccos(c1) / (2 * j1 * j2)
+        c4 = c1 / (2 * j1) + j1
+        c5 = j2 * np.sin(c3) / (j1 * c4 * c4)
+        c6 = np.cos(c3) / (j1 * c4 * np.sqrt(1 - c1 * c1))
+        c7 = j2 * j2 * np.sin(c3) * np.sin(c3) / (c4 * c4) + 1
+        q1r = dr * (r * (c5 + c6) / c7 - z / (r * r * (z * z / (r * r) + 1)))
+        q1z = dz * (z * (c5 + c6) / c7 - r / (z * z * (r * r / (z * z) + 1)))
+        velocities[1] = q1r + q1z #Close to base joint
+
+        publish_data = Float32MultiArray()
+        publish_data.data = velocities
+        self.pub.publish(publish_data)
+        self.prev_time = time
+
+
+if __name__ == "main":
+    FixArmPosition()
+    rospy.spin()

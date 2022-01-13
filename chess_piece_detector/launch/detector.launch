@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <include file="$(find yolov5_pytorch_ros)/launch/detector.launch">
+    <!-- Camera topic and weights, config and classes files -->
+    <arg name="image_topic"	                value="/camera/color/image_raw"/>
+    <!-- Absolute path to weights file (change this) -->
+    <arg name="weights_path"	              value="$(find chess_piece_detector)/weights/chess_v3.pt"/>
+
+    <!-- Published topics -->
+    <arg name="publish_image"	              value="true"/>
+    <arg name="detected_objects_topic"      value="detected_objects_in_image"/>
+    <arg name="detections_image_topic"      value="detections_image_topic"/>
+
+    <!-- Detection confidence -->
+    <arg name="confidence"                  value="0.5"/>
+  </include>
+</launch>
