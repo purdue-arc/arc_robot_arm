@@ -1,19 +1,14 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="realsense" default="false"/>
+  <arg name="realsense" default="true"/>
 
   <arg name="verbose" default="false"/>
+
   <arg name="urdf_path" default="$(find protoarm_description)/urdf/protoarm.xacro"/>
   <arg name="srdf_path" default="$(find protoarm_description)/urdf/protoarm.srdf"/>
+  
   <arg name="world_name" default="worlds/empty.world"/>
   <arg name="gazebo_spawn_coords" default="-x 0 -y 0 -z 0"/>
-
-    
-  <!-- Runs robot arm with realsense -->
-  <group if="$(arg realsense)">
-    <arg name="urdf_path" value="$(find protoarm_description)/urdf/protoarm_realsense.xacro"/>
-    <arg name="srdf_path" value="$(find protoarm_description)/urdf/protoarm_realsense.srdf"/>
-  </group>
 
   <!-- MoveIt -->
   <include file="$(find protoarm_moveit_config)/launch/move_group.launch">
@@ -36,17 +31,16 @@
   <!-- The semantic description that corresponds to the URDF -->
   <param name="robot_description_semantic" textfile="$(arg srdf_path)" />
 
-  <!-- Run Rviz and load the default config to see the state of the move_group node
+  <!-- Run Rviz and load the default config to see the state of the move_group node -->
   <include file="$(find protoarm_moveit_config)/launch/moveit_rviz.launch">
     <arg name="rviz_config" value="$(find protoarm_moveit_config)/launch/moveit.rviz"/>
     <arg name="debug" value="false"/>
   </include> 
-  -->
 
   <!-- rosserial 
   <node pkg="rosserial_python" type="serial_node.py" name="rosserial" output="screen">
-    <param name="port" value="/dev/tty.usbmodem141201" />
+    <param name="port" value="<replace>" />
     <param name="baud" value="57600" />
   </node>
-  -->
+-->
 </launch>
