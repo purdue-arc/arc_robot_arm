@@ -1,3 +1,9 @@
 [submodule "chessboard_gazebo"]
 	path = chessboard_gazebo
 	url = https://github.com/purdue-arc/chessboard_gazebo
+[submodule "yolov5_pytorch_ros"]
+	path = yolov5_pytorch_ros
+	url = https://github.com/raghavauppuluri13/yolov5_pytorch_ros
+[submodule "realsense_ros_gazebo"]
+	path = realsense_ros_gazebo
+	url = https://github.com/nilseuropa/realsense_ros_gazebo.git
