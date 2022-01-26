@@ -1,14 +1,17 @@
-<?xml version="1.0"?>
 <launch>
-  <arg name="realsense" default="true"/>
+  <!-- Default params -->
+  <arg name="chess" default="false"/>
+  <arg name="realsense" default="false"/>
 
   <arg name="verbose" default="false"/>
+  <arg name="urdf_path" default="$(find protoarm_description)/urdf/protoarm.xacro" unless="$(arg realsense)"/>
+  <arg name="srdf_path" default="$(find protoarm_description)/urdf/protoarm.srdf" unless="$(arg realsense)"/>
+  <arg name="world_name" default="worlds/empty.world" unless="$(arg chess)"/>
+  <arg name="gazebo_spawn_coords" default="-x 0 -y 0 -z 0" unless="$(arg chess)"/>
 
-  <arg name="urdf_path" default="$(find protoarm_description)/urdf/protoarm.xacro"/>
-  <arg name="srdf_path" default="$(find protoarm_description)/urdf/protoarm.srdf"/>
-  
-  <arg name="world_name" default="worlds/empty.world"/>
-  <arg name="gazebo_spawn_coords" default="-x 0 -y 0 -z 0"/>
+  <!-- Runs robot arm with realsense -->
+  <arg name="urdf_path" default="$(find protoarm_description)/urdf/protoarm_realsense.xacro" if="$(arg realsense)"/>
+  <arg name="srdf_path" default="$(find protoarm_description)/urdf/protoarm_realsense.srdf" if="$(arg realsense)"/>
 
   <!-- MoveIt -->
   <include file="$(find protoarm_moveit_config)/launch/move_group.launch">
@@ -20,16 +23,10 @@
     <arg name="load_robot_description" value="false"/>
   </include>
 
-  <!-- Given the published joint states, publish tf for the robot links -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
-
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-
-  <!-- The robot description that corresponds to the URDF -->
-  <param name="robot_description" command="xacro '$(arg urdf_path)'"/>
-
-  <!-- The semantic description that corresponds to the URDF -->
-  <param name="robot_description_semantic" textfile="$(arg srdf_path)" />
+  <!-- We do not have a robot connected, so publish fake joint states -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+    <rosparam param="source_list">[move_group/fake_controller_joint_states]</rosparam>
+  </node>
 
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
   <include file="$(find protoarm_moveit_config)/launch/moveit_rviz.launch">
@@ -37,10 +34,18 @@
     <arg name="debug" value="false"/>
   </include> 
 
-  <!-- rosserial 
-  <node pkg="rosserial_python" type="serial_node.py" name="rosserial" output="screen">
-    <param name="port" value="<replace>" />
-    <param name="baud" value="57600" />
-  </node>
--->
+  <!-- The robot description that corresponds to the URDF -->
+  <param name="robot_description" command="xacro '$(arg urdf_path)'"/>
+
+  <!-- The semantic description that corresponds to the URDF -->
+  <param name="robot_description_semantic" textfile="$(arg srdf_path)" />
+
+    <!-- rosserial 
+    <node pkg="rosserial_python" type="serial_node.py" name="rosserial" output="screen">
+      <param name="port" value="<replace>" />
+      <param name="baud" value="57600" />
+    </node>
+    -->
+
+    <node name="test_kinematics" pkg="protoarm_kinematics" type="test_kinematics"/>
 </launch>
