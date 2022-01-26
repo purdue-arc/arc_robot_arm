@@ -22,6 +22,10 @@ catkin_package(
    CATKIN_DEPENDS std_msgs roscpp rospy geometry_msgs tf2_ros
 )
 
+include_directories(
+	include
+  ${catkin_INCLUDE_DIRS}
+)
 
 add_library(${PROJECT_NAME}
   src/kinematics.cpp
