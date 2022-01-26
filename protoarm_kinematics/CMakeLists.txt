@@ -9,7 +9,6 @@ find_package(catkin REQUIRED COMPONENTS
  geometry_msgs
  moveit_core
  moveit_ros_planning_interface
- moveit_visual_tools
  std_msgs
  roscpp
  tf2_ros
@@ -23,17 +22,16 @@ catkin_package(
    CATKIN_DEPENDS std_msgs roscpp rospy geometry_msgs tf2_ros
 )
 
+include_directories(
+	include
+  ${catkin_INCLUDE_DIRS}
+)
 
 add_library(${PROJECT_NAME}
   src/kinematics.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
-
-include_directories(
-	include
-  ${catkin_INCLUDE_DIRS}
-)
 
 add_executable(test_kinematics src/test_kinematics.cpp src/kinematics.cpp)
 

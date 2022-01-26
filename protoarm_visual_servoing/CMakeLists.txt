@@ -1,3 +1,6 @@
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 cmake_minimum_required(VERSION 3.0.2)
 project(protoarm_visual_servoing)
 
@@ -7,11 +10,18 @@ project(protoarm_visual_servoing)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS 
+    roscpp 
+    std_msgs
+    moveit_core
+    moveit_ros_planning_interface
+    geometry_msgs
+    protoarm_kinematics
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
-
+find_package(Eigen3 REQUIRED)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -99,9 +109,9 @@ find_package(catkin REQUIRED)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+   INCLUDE_DIRS include
 #  LIBRARIES protoarm_visual_servoing
-#  CATKIN_DEPENDS other_catkin_pkg
+   CATKIN_DEPENDS std_msgs roscpp rospy geometry_msgs tf2_ros protoarm_kinematics
 #  DEPENDS system_lib
 )
 
@@ -112,8 +122,8 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
-# ${catkin_INCLUDE_DIRS}
+ include
+ ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -145,6 +155,10 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+add_executable(test_vs src/test_vs.cpp)
+
+target_link_libraries(test_vs ${catkin_LIBRARIES})
 
 #############
 ## Install ##

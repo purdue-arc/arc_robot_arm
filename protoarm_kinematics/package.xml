@@ -56,7 +56,6 @@
   <depend>std_msgs</depend>
   <depend>tf</depend>
   <depend>moveit</depend>
-  <depend>moveit_visual_tools</depend>
   <depend>moveit_ros_planning_interface</depend>
 
 
