@@ -90,8 +90,8 @@ void set_arm_joints(const sensor_msgs::JointState& joint_state) {
   arm[0] = constrain_arm_joint(joint_state.position[0]);
   arm[1] = constrain_arm_joint(joint_state.position[1]);
   arm[2] = constrain_arm_joint(joint_state.position[2]);
-  arm[3] = constrain_arm_joint(joint_state.position[3]);
-  arm[4] = constrain_arm_joint(-1 * joint_state.position[4]);
+  //arm[3] = constrain_arm_joint(joint_state.position[3]);
+  arm[4] = constrain_arm_joint(-1 * joint_state.position[3]);
 }
 
 // checks whether the JointState msg is for the arm or gripper movegroup
