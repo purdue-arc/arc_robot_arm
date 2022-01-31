@@ -46,5 +46,9 @@
     <param name="baud" value="57600" />
   </node>
 
-    <node name="test_kinematics" pkg="protoarm_kinematics" type="test_kinematics"/>
+  <!-- Runs depthai camera and apriltag detection code -->
+  <include file="$(find protoarm_bringup)/launch/localization.launch"/>
+
+  <!-- rosserial -->
+  <node name="test_kinematics" pkg="protoarm_kinematics" type="test_kinematics"/>
 </launch>
