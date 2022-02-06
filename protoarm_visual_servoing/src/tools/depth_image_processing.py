@@ -50,9 +50,7 @@ class DepthImageProcessing:
             "visual_servoing_image", Image, queue_size=1000
         )
 
-        self.depth_image_sub = rospy.Subscriber(
-            depth_topic, Image, self.image_depth_cb
-        )
+        self.depth_image_sub = rospy.Subscriber(depth_topic, Image, self.image_depth_cb)
         self.depth_confidence_sub = rospy.Subscriber(
             confidence_sub_topic, Image, self.depth_confidence_cb
         )
