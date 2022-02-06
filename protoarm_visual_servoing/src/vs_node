@@ -2,14 +2,15 @@
 
 import sys
 
-import cv2
 import numpy as np
 import rospy
 import tf
 from geometry_msgs.msg import Pose, PoseStamped
 from sensor_msgs.msg import JointState
 
+import cv2
 from tools.depth_image_processing import DepthImageProcessing
+
 
 class VisualServoing:
     '''VisualServoing

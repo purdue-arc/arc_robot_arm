@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-import math
-import rospy
+
 
 class PIDController:
     def __init__(self, p, i, d, setpoint):

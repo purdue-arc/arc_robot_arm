@@ -9,7 +9,7 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Pose.h>
 
-#include <protoarm_kinematics/kinematics.h>
+#include "protoarm_kinematics/kinematics.h"
 
 std::vector<geometry_msgs::Pose> testFileToPoses(std::string test_file_name) {
 	std::vector<geometry_msgs::Pose> test_goal_poses;
@@ -36,18 +36,13 @@ return test_goal_poses;
 }
 
 int main(int argc, char** argv) {
-	ros::init(argc, argv, "test_kinematics");
+	ros::init(argc, argv, "test_vs");
 	ros::NodeHandle node_handle("~");
 	ros::AsyncSpinner spinner(1);
 	spinner.start();
 	ROS_INFO("Waiting for context to come up");
 
 	Kinematics robot_arm = Kinematics();
-	std::vector<geometry_msgs::Pose> test_goal_poses = testFileToPoses("test_kinematics.txt");
-
-	for(int i = 0; i < test_goal_poses.size(); i++) {
-		robot_arm.moveToPoseGoal(test_goal_poses[i]);	
-	}
 
 	return 0;
 }
