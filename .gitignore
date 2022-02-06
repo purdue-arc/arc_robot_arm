@@ -2,7 +2,7 @@ datasets/
 depreciated/
 *venv*
 yolov5
-.vscode*
+*.vscode*
 aruco*
 *.pyc
 *.pt
