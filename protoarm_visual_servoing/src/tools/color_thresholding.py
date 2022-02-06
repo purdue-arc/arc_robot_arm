@@ -2,8 +2,9 @@
 Script to determine color range in HSV of a selected region
 """
 
-import cv2 as cv
 import numpy as np
+
+import cv2 as cv
 
 img = cv.imread("top.png")
 print(img)

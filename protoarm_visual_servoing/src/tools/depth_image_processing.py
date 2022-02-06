@@ -2,21 +2,22 @@
 
 import sys
 
-import cv2
 import numpy as np
 import pyrealsense2 as rs2
 import rospy
 from cv_bridge import CvBridge, CvBridgeError
 from geometry_msgs.msg import PoseStamped
 from sensor_msgs.msg import CameraInfo, Image
-from std_msgs.msg import String
 from tf import TransformListener
-from yolov5_pytorch_ros.msg import BoundingBox, BoundingBoxes
+from yolov5_pytorch_ros.msg import BoundingBoxes
+
+import cv2
+
+from .color_detection import get_bbox_color
 
 if not hasattr(rs2, "intrinsics"):
     import pyrealsense2.pyrealsense2 as rs2
 
-from .color_detection import get_bbox_color
 
 WHITE_CHESS_PIECE_SIM = (np.array([17, 70, 37]), np.array([19, 126, 230]))
 
@@ -27,11 +28,11 @@ class DepthImageProcessing:
     """
 
     def __init__(self):
-        image_sub_topic = rospy.get_param("image_topic")
-        depth_sub_topic = image_sub_topic.replace("color", "depth")
-        depth_sub_topic = depth_sub_topic.replace("image_raw", "image_rect_raw")
-        confidence_sub_topic = image_sub_topic.replace("color", "confidence")
-        depth_info_sub_topic = depth_sub_topic.replace("image_raw", "camera_info")
+        image_topic = rospy.get_param("image_topic")
+        depth_topic = image_topic.replace("color", "depth")
+        depth_topic = depth_topic.replace("image_raw", "image_rect_raw")
+        confidence_sub_topic = image_topic.replace("color", "confidence")
+        depth_info_sub_topic = depth_topic.replace("image_raw", "camera_info")
         detections_topic = "/detected_objects_in_image"
 
         self.bridge = CvBridge()
@@ -50,7 +51,7 @@ class DepthImageProcessing:
         )
 
         self.depth_image_sub = rospy.Subscriber(
-            depth_sub_topic, Image, self.image_depth_cb
+            depth_topic, Image, self.image_depth_cb
         )
         self.depth_confidence_sub = rospy.Subscriber(
             confidence_sub_topic, Image, self.depth_confidence_cb
@@ -59,7 +60,7 @@ class DepthImageProcessing:
             depth_info_sub_topic, CameraInfo, self.image_depth_info_cb
         )
 
-        self.image_sub = rospy.Subscriber(image_sub_topic, Image, self.image_cb)
+        self.image_sub = rospy.Subscriber(image_topic, Image, self.image_cb)
         self.detections_sub = rospy.Subscriber(
             detections_topic, BoundingBoxes, self.detections_cb
         )
@@ -83,7 +84,6 @@ class DepthImageProcessing:
                     self.depth,
                 )
 
-                # self.target_coord_base = self.camera_to_base_coords(target_coord_camera) #
             if self.pix_grade is not None:
                 line += " Grade: %2d" % self.pix_grade
 
@@ -94,7 +94,7 @@ class DepthImageProcessing:
         except CvBridgeError as e:
             print(e)
             return
-        except ValueError as e:
+        except ValueError:
             return
 
     def depth_confidence_cb(self, data):

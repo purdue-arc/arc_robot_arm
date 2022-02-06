@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-import cv2
 import numpy as np
+
+import cv2
 
 
 def _get_color_mask(frame, hsv_color_range):

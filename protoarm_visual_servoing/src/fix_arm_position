@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
+import numpy as np
 import rospy
-from tools.pid_controller import PIDController
 from geometry_msgs.msg import PointStamped
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Float32MultiArray
-import numpy as np
+
+from tools.pid_controller import PIDController
+
 
 class FixArmPosition:
     def __init__(self, joint1_length, joint2_length):
