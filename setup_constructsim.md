@@ -4,7 +4,7 @@
 
 1. [Create](https://app.theconstructsim.com) a ConstructSim account if you haven't already here 
 
-2. Fork [this ROSject](https://app.theconstructsim.com/#/Rosject/459280) (If you cannot find it, search for `ARC Robot Arm` > hit Fork)
+2. Fork [this ROSject](https://app.theconstructsim.com/#/Rosject/459280) (If you cannot find it, search for `ARC Robot Arm` > hit fork on the first result)
 
 3. Run the ROSject that you just forked 
 
@@ -27,6 +27,7 @@ rosdep install --from-paths src --ignore-src --rosdistro noetic -y
 # Builds all your ROS packages
 catkin build 
 ```
+> If you get the following error `Killed signal terminated program cc1plus` where the build crashes for the `realsense_gazebo_ros` pkg, run this to limit the memory usage by the build command: `catkin build --force-cmake --mem-limit 95`
 
 ```bash
 # Sets your workspace dir + updates package links
@@ -40,6 +41,7 @@ echo 'source ~/catkin_ws/devel/setup.bash' >> ~/.bashrc
 
 6. Continue following tutorials in the ROS packages
 - Launch the robot in Gazebo simulation with the chessboard world and Realsense ROS gazebo camera, using the [protoarm_bringup](https://github.com/purdue-arc/arc_robot_arm/tree/main/protoarm_bringup) package 
+> Can skip the `export GAZEBO..` steps as they are already done for you
 - Use the IK to run some test goal positions using the [protoarm_kinematics](https://github.com/purdue-arc/arc_robot_arm/tree/main/protoarm_kinematics) package 
 
 
