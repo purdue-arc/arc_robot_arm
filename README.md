@@ -10,20 +10,15 @@ Check out the wiki pages [here](https://wiki.purduearc.com/wiki/robot-arm/start-
 
 ## Quick start 
 
-### No-BS setup
-
-If you have Windows or have spent longer than 30min-1hr setting up ROS or this package with no luck and just want an easy method, use [this](https://github.com/purdue-arc/arc_robot_arm/blob/main/setup_constructsim.md)
-
-Note: This method doesn't allow for hardware access or networking since it is browser-based, but can run all simulations and can learn ROS fundamentals and still implement things.
-
-### Normal Setup 
-
 1. Setup ROS Noetic if you haven't done so.
 
 - If you are an experienced Linux user with a native Linux system, use the [official ROS tutorials](https://docs.ros.org/)
-- If you have Mac (Or Linux system and prefer to use conda virtual envs), then [setup ROS with RoboStack](https://wiki.purduearc.com/wiki/tutorials/setup-ros)
 
-2. Clone this repo into the `src` folder in your ROS workspace recursively to get the `yolov5_pytorch_ros` and `realsense_ros_gazebo` packages
+- If you have Windows or have spent longer than 30min-1hr setting up ROS or this package with no luck and just want an easy method, use [the ConstructSim instructions](https://github.com/purdue-arc/arc_robot_arm/blob/main/setup_constructsim.md)
+
+> Note: The ConstructSim doesn't allow for hardware access or networking since it is browser-based, but it can still run all the simulations 
+
+1. Clone this repo into the `src` folder in your ROS workspace recursively to get the `yolov5_pytorch_ros` and `realsense_ros_gazebo` packages
 
 ```
 git clone --recursive https://github.com/purdue-arc/arc_robot_arm.git
