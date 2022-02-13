@@ -38,10 +38,6 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_library(${PROJECT_NAME}
-  src/kinematics.cpp
-)
-
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
 add_executable(test_kinematics src/test_kinematics.cpp src/kinematics.cpp)

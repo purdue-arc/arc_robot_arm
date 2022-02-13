@@ -1,4 +1,4 @@
-#include "pid_controller.h"
+#include <protoarm_visual_servoing/pid_controller.h>
 
 PIDController::PIDController(float p, float i, float d, float setpoint, float dt) {
     this->p = p;

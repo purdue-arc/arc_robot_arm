@@ -14,6 +14,7 @@ private:
     float prev_error;
     float integral;
 public:
+    PIDController() {};
     PIDController(float p, float i, float d);
     PIDController(float p, float i, float d, float setpoint);
     PIDController(float p, float i, float d, float setpoint, float dt);
@@ -28,4 +29,4 @@ public:
     void reset_integral();
 };
 
-#endif PID_CONTROLLER_H
+#endif
