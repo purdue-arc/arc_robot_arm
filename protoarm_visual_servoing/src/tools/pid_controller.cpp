@@ -19,7 +19,7 @@ PIDController::PIDController(float p, float i, float d) {
 }
 
 float PIDController::calculate(float position, float setpoint, float dt) {
-    float error = setpoint - error;
+    float error = setpoint - position;
     float vel = this->p * error;
     
     this->integral += error * dt;

@@ -16,8 +16,11 @@
 #include "protoarm_kinematics/kinematics.h"
 
 //TODO: find values
+#define BOARD_TAG_ID 2
+#define WRIST_ID 1
+
 #define BOARD_SIZE 10
-#define FREQUENCY 10
+#define FREQUENCY 1
 #define GOAL_HEIGHT 10
 
 std::vector<float> quat_to_euler(geometry_msgs::Quaternion q) { //Returns in RPY
@@ -56,7 +59,7 @@ class VisualServoing {
             y_controller = PIDController(0, 0, 0);
             z_controller = PIDController(0, 0, 0);
 
-            nh->subscribe("/apriltag", 10, &VisualServoing::tag_detections_cb, this);
+            nh->subscribe("/tag_detections", 10, &VisualServoing::tag_detections_cb, this);
             nh->subscribe("/move", 10, &VisualServoing::setpoint_cb, this);
         } 
 
@@ -73,10 +76,18 @@ class VisualServoing {
 
             robot_arm.moveToPoseGoal(current_goal);
         }
-        void tag_detections_cb(const apriltag_ros::AprilTagDetectionArray& detections) {
+        void tag_detections_cb(const apriltag_ros::AprilTagDetectionArrayConstPtr& msg) {
             //Assuming first tag is board, second tag is arm, might need to change
-            board_position = detections.detections[0].pose.pose.pose;
-            arm_position = detections.detections[1].pose.pose.pose;
+            for(auto& detection : msg->detections) {
+                int id = detection.id[0];
+                
+                if(id == BOARD_TAG_ID) {
+                    board_position = detection.pose.pose.pose;
+                }     
+                else if(id == WRIST_ID) {
+                    arm_position = detection.pose.pose.pose;
+                }     
+            }
         }
         void setpoint_cb(const std_msgs::String& move) {
             float x_shift = (move.data[0] - 'a') * BOARD_SIZE;
