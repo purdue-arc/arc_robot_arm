@@ -7,8 +7,9 @@ Panels:
         - /MotionPlanning1
         - /Camera1
         - /Image1
+        - /TF1
       Splitter Ratio: 0.7425600290298462
-    Tree Height: 140
+    Tree Height: 278
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -45,7 +46,7 @@ Visualization Manager:
       Class: moveit_rviz_plugin/MotionPlanning
       Enabled: true
       Move Group Namespace: ""
-      MoveIt_Allow_Approximate_IK: false
+      MoveIt_Allow_Approximate_IK: true
       MoveIt_Allow_External_Program: false
       MoveIt_Allow_Replanning: false
       MoveIt_Allow_Sensor_Positioning: false
@@ -212,10 +213,10 @@ Visualization Manager:
       Velocity_Scaling_Factor: 1
     - Class: rviz/Camera
       Enabled: false
-      Image Rendering: background and overlay
-      Image Topic: /cv_camera_node/image_rect_color
+      Image Rendering: background
+      Image Topic: /camera/color/image_raw
       Name: Camera
-      Overlay Alpha: 0.5
+      Overlay Alpha: 0
       Queue Size: 2
       Transport Hint: raw
       Unreliable: false
@@ -223,12 +224,13 @@ Visualization Manager:
       Visibility:
         "": true
         Grid: true
+        Image: true
         MotionPlanning: true
         Value: true
       Zoom Factor: 1
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /tag_detections_image
+      Image Topic: /oakd/tag_detections_image
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -237,6 +239,73 @@ Visualization Manager:
       Queue Size: 2
       Transport Hint: raw
       Unreliable: false
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        base_link:
+          Value: true
+        gear1_v1_1:
+          Value: true
+        gear2_v1_1:
+          Value: true
+        gripper_base_v1_1:
+          Value: true
+        link_1_v1_1:
+          Value: true
+        link_2_v1_1:
+          Value: true
+        link_3_v1_1:
+          Value: true
+        link_4_v1_1:
+          Value: true
+        oak-d-base-frame:
+          Value: true
+        oak-d_frame:
+          Value: true
+        oak_imu_frame:
+          Value: true
+        oak_left_camera_frame:
+          Value: true
+        oak_left_camera_optical_frame:
+          Value: true
+        oak_model_origin:
+          Value: true
+        oak_rgb_camera_frame:
+          Value: true
+        oak_rgb_camera_optical_frame:
+          Value: true
+        oak_right_camera_frame:
+          Value: true
+        oak_right_camera_optical_frame:
+          Value: true
+        tag_1:
+          Value: true
+        tag_2:
+          Value: true
+        world:
+          Value: true
+      Marker Alpha: 1
+      Marker Scale: 0.20000000298023224
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        world:
+          base_link:
+            link_1_v1_1:
+              link_2_v1_1:
+                link_3_v1_1:
+                  link_4_v1_1:
+                    gripper_base_v1_1:
+                      gear1_v1_1:
+                        {}
+                      gear2_v1_1:
+                        {}
+      Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
@@ -270,9 +339,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.10479722172021866
+      Pitch: -0.27020326256752014
       Target Frame: base_link
-      Yaw: 3.674947738647461
+      Yaw: 3.8399477005004883
     Saved: ~
 Window Geometry:
   Camera:
@@ -290,7 +359,7 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000003bafc0200000009fb000000100044006900730070006c006100790073010000003b000000c7000000c700fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a0056006900650077007300000003b0000000b0000000a000fffffffb0000000c00430061006d00650072006100000002ff000001610000001600fffffffb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006701000001080000016a0000016a00fffffffb0000000c00430061006d006500720061010000040f000001c40000000000000000fb0000000a0049006d00610067006501000002780000017d0000001600ffffff000004d4000003ba00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000003bafc0200000008fb000000100044006900730070006c006100790073010000003b00000151000000c700fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a0056006900650077007300000003b0000000b0000000a000fffffffb0000000c00430061006d00650072006100000002ff000001610000001600fffffffb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016fc0000019200000263000001840100001afa000000000100000002fb0000000a0049006d0061006700650100000000ffffffff0000005a00fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000000000002a2000001ca00fffffffb0000000c00430061006d006500720061010000040f000001c40000000000000000000004d4000003ba00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1916

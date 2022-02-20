@@ -56,9 +56,9 @@
   <depend>roscpp</depend>
   <depend>rospy</depend>
   <depend>moveit</depend>
+  <depend>apriltag_ros</depend>
   <depend>moveit_ros_planning_interface</depend>
   <buildtool_depend>catkin</buildtool_depend>
-
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
