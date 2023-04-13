@@ -170,8 +170,10 @@
       <origin rpy="0 0 0" xyz="0 0 $(arg J3_J4)"/>
       <parent link="link_4"/>
       <child link="link_5"/>
+      <axis xyz="0.0 0.0 1.0"/>
     </joint>
     <joint name="eef" type="fixed">
+      <origin rpy="0 0 0" xyz="0 0 $(arg J4_eef)"/>
       <parent link="link_5"/>
       <child link="eef"/>
       <axis xyz="0.0 0.0 1.0"/>
