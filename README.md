@@ -9,7 +9,7 @@ Our overarching goal is to explore the robotic manipulation by building a chess-
 1. Setup ROS Noetic if you haven't done so.
 
 
-2. Clone this repo into the `src` folder in your ROS workspace recursively to get the `yolov5_pytorch_ros` and `realsense_ros_gazebo` packages
+2. Clone this repo into the `src` folder in your ROS workspace recursively to get the Dynamixel packages
 
 ```
 git clone --recursive https://github.com/purdue-arc/arc_robot_arm.git
