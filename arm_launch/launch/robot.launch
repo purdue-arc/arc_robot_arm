@@ -1,5 +1,14 @@
 <?xml version="1.0"?>
 <launch>
-  <include file="$(find arm_launch)/launch/overhead.launch" />
+  <arg name="overhead" default="false" />
+  <arg name="rviz" default="false" />
+  <arg name="display_overhead" default="false" />
+
+  <include if="$(arg overhead)" file="$(find arm_launch)/launch/overhead.launch" >
+      <arg name="display" value="$(arg display_overhead)"/>
+  </include>
   <include file="$(find arm_control)/launch/controller.launch" />
+  <include if="$(arg rviz)" file="$(find arm_description)/launch/display.launch">
+    <arg name="robot_state_pub" value="false"/>
+  </include>
 </launch>
