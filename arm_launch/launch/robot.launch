@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find arm_launch)/launch/overhead.launch" />
+  <include file="$(find arm_control)/launch/controller.launch" />
+</launch>
