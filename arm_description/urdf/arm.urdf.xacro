@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <material name="silver">
+      <color rgba="0.700 0.700 0.700 1.000"/>
+    </material>
+
+    <xacro:arg name="base_rad" default="0.0775" />
+    <xacro:arg name="base_h" default="0.061367" />
+    <xacro:arg name="link_0_h" default="0.005" />
+
+    <xacro:arg name="base_J0" default="0.0865" />
+    <xacro:arg name="J0_J1" default="0.045" />
+    <xacro:arg name="J1_J2" default="0.112" />
+    <xacro:arg name="J2_J3" default="0.110" />
+    <xacro:arg name="J3_J4" default="0.068" />
+    <xacro:arg name="J4_eef" default="0.128" />
+
+    <link name="world"/>
+
+    <!-- arm links -->
+    <link name="base_link">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 ${$(arg base_h)/2}"/>
+        <geometry>
+            <cylinder length="$(arg base_h)" radius="$(arg base_rad)"/>
+        </geometry>
+        <material name="silver"/>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 ${$(arg base_h)/2}"/>
+        <geometry>
+            <cylinder length="$(arg base_h)" radius="$(arg base_rad)"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="world_fixed" type="fixed">
+      <parent link="world"/>
+      <child link="base_link"/>
+    </joint>
+
+    <link name="link_0">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 ${$(arg link_0_h)/2}"/>
+        <geometry>
+            <cylinder length="$(arg link_0_h)" radius="$(arg base_rad)"/>
+        </geometry>
+        <material name="silver"/>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 ${$(arg link_0_h)/2}"/>
+        <geometry>
+            <cylinder length="$(arg link_0_h)" radius="$(arg base_rad)"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="link_1">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="package://arm_description/meshes/link_1.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+        <material name="silver"/>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="package://arm_description/meshes/link_1.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="link_2">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="package://arm_description/meshes/link_2.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+        <material name="silver"/>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="package://arm_description/meshes/link_2.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="link_3">
+      <visual>
+        <geometry>
+            <mesh filename="package://arm_description/meshes/link_3.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+        <material name="silver"/>
+      </visual>
+      <collision>
+        <geometry>
+            <mesh filename="package://arm_description/meshes/link_3.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="link_4">
+      <visual>
+        <geometry>
+            <mesh filename="package://arm_description/meshes/link_4.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+        <material name="silver"/>
+      </visual>
+      <collision>
+        <geometry>
+            <mesh filename="package://arm_description/meshes/link_4.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="link_5">
+      <visual>
+        <geometry>
+            <mesh filename="package://arm_description/meshes/link_5.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+        <material name="silver"/>
+      </visual>
+      <collision>
+        <geometry>
+            <mesh filename="package://arm_description/meshes/link_5.stl" scale="0.01 0.01 0.01"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="eef"/>
+
+    <!-- revolute joints -->
+
+    <joint name="joint_1" type="continuous">
+      <origin rpy="0 0 0" xyz="0 0 $(arg base_J0)"/>
+      <parent link="base_link"/>
+      <child link="link_0"/>
+      <axis xyz="0.0 0.0 1.0"/>
+    </joint>
+
+    <joint name="fix_link0_link1" type="fixed">
+      <parent link="link_0"/>
+      <child link="link_1"/>
+    </joint>
+
+    <joint name="joint_2" type="continuous">
+      <origin rpy="0 0 0" xyz="0 0 $(arg J0_J1)"/>
+      <parent link="link_0"/>
+      <child link="link_2"/>
+      <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <joint name="joint_3" type="continuous">
+      <origin rpy="0 0 0" xyz="0 0 $(arg J1_J2)"/>
+      <parent link="link_2"/>
+      <child link="link_3"/>
+      <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <joint name="joint_4" type="continuous">
+      <origin rpy="0 0 0" xyz="0 0 $(arg J2_J3)"/>
+      <parent link="link_3"/>
+      <child link="link_4"/>
+      <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <joint name="joint_5" type="continuous">
+      <origin rpy="0 0 0" xyz="0 0 $(arg J3_J4)"/>
+      <parent link="link_4"/>
+      <child link="link_5"/>
+    </joint>
+    <joint name="eef" type="fixed">
+      <parent link="link_5"/>
+      <child link="eef"/>
+      <axis xyz="0.0 0.0 1.0"/>
+    </joint>
+
+</robot>
