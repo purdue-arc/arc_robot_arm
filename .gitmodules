@@ -7,3 +7,13 @@
 [submodule "realsense_ros_gazebo"]
 	path = realsense_ros_gazebo
 	url = https://github.com/nilseuropa/realsense_ros_gazebo.git
+[submodule "third_party/dynamixel_interface"]
+	path = third_party/dynamixel_interface
+	url = https://github.com/csiro-robotics/dynamixel_interface.git
+[submodule "third_party/DynamixelSDK"]
+	path = third_party/DynamixelSDK
+	url = https://github.com/ROBOTIS-GIT/DynamixelSDK.git
+[submodule "third_party/relaxed_ik_ros1"]
+	path = third_party/relaxed_ik_ros1
+	url = https://github.com/raghavauppuluri13/relaxed_ik_ros1.git
+	branch = arc-robot-arm
