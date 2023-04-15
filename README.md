@@ -36,7 +36,7 @@ roslaunch arm_launch robot.launch rviz:=true overhead:=true display_overhead:=tr
 ```
 > Now, you should see an image view from the camera feed and robot in RViz
 
-## Grasping with RelaxedIK
+## Control with RelaxedIK
 
 1. [Install Rust](https://www.rust-lang.org/tools/install)
 2. Revert rust toolchain to supported version
@@ -49,10 +49,35 @@ rustup install 1.58.1 && rustup default 1.58.1
 roscd relaxed_ik_ros1/relaxed_ik_core && cargo build
 ```
 
-5. Run grasping demo 
+5. Run robot with IK
 
 ```
-roslaunch arm_launch grasping.launch
+roslaunch arm_launch robot.launch ik:=true
+```
+6. Control with keyboard
+
+```
+rosrun arm_control keyboard_ikgoal_driver.py
+```
+
+Controls
+```
+c - kill the controller controller script
+w - move chain 1 along +X
+x - move chain 1 along -X
+a - move chain 1 along +Y
+d - move chain 1 along -Y
+q - move chain 1 along +Z
+z - move chain 1 along -Z
+1 - rotate chain 1 around +X
+2 - rotate chain 1 around -X
+3 - rotate chain 1 around +Y
+4 - rotate chain 1 around -Y
+5 - rotate chain 1 around +Z
+6 rotate chain 1 around -Z
+
+- : close gripper 
++ : open gripper
 ```
 
 ### Sources

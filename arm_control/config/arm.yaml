@@ -53,7 +53,7 @@ ports:
             min_pos: 0         # minimum servo position (in raw encoder count)
             max_pos: 1000        # maximum servo position, Note when MIN > MAX ROTATION IS REVERSED
           - id: 6                # (ID set in servo eeprom, must be unique on this port)
-            joint_name: gripper  # (MUST BE UNIQUE ACROSS ALL PORTS)
+            joint_name: eef  # (MUST BE UNIQUE ACROSS ALL PORTS)
             zero_pos: 315       # initial (0 rad) servo position (in raw encoder count)
             min_pos: 115         # minimum servo position (in raw encoder count)
             max_pos: 315         # maximum servo position, Note when MIN > MAX ROTATION IS REVERSED
