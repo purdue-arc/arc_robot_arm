@@ -130,6 +130,7 @@
     </link>
 
     <link name="eef"/>
+    <link name="overhead"/>
 
     <!-- revolute joints -->
 
@@ -170,6 +171,12 @@
       <origin rpy="0 0 0" xyz="0 0 $(arg J3_J4)"/>
       <parent link="link_4"/>
       <child link="link_5"/>
+      <axis xyz="0.0 0.0 1.0"/>
+    </joint>
+    <joint name="arm_to_cam" type="fixed">
+      <origin rpy="0 0 0" xyz="-0.054 0 0.065"/>
+      <parent link="link_5"/>
+      <child link="overhead"/>
       <axis xyz="0.0 0.0 1.0"/>
     </joint>
     <joint name="eef" type="fixed">
