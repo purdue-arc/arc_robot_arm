@@ -8,6 +8,9 @@
 
   <group ns="usb_cam" >
     <node pkg="image_proc" type="image_proc" name="image_proc" args="image:=image_raw"/>
+    <include file="$(find arm_launch)/launch/apriltag.launch">
+      <arg name="camera_frame" value="overhead" />
+    </include>
   </group>
 
   <node if="$(arg display)" name="image_view" pkg="image_view" type="image_view"
